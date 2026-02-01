@@ -1,0 +1,59 @@
+1. Installed FFMegg, Python,( ytdlp , whisper )
+2.whisper is slow so just downloaded the youtube subtitles from ytdlp
+3.i wanted more automated than that , like after the timestamp there should be be prompt : like get the best 10 video content each different dont loose the time stamps , how will they figure it out , by analysing hooks , emotional , funny story shocks as advanced possible like a professional analyser who analyzes and tell what part to take to make a short video . Then it will give another srt without changing the original video timestamps , it also tells me to where to cut the original video bit by bit then merge it , then i dont know there should be automatic software who takes the original video and the content srt with timestamps and it will just remove timestamps video content which are not present then in i take the final merge video , apply one preset from subtiles sounds spaleshes etc
+another thing , sing the as the content is 60s all the segments is not individual story rarther the segments together make a story, also lets start step by step
+no whisper is slow i want to do it in here  , also cant you do like this we will not decide the chunk size like , he talks about his unkle 40s but the chunk is capped at 30 thats bad , again a suddent shock in someones face like 2s 
+no its not like 30s cap  you analyze the video bit by bit create chunk like it canbe 2s even 1 even 10 etc whats matter is after chunking and merged it makes a whole content video a single story , also give me its json with mentioning each chunks timestamps i will later cut it according to it 
+
+4.chunk json make from lmarena faster better.
+5. cut video chunk with ffmeg commands one click then one click merge sample command for one chunk - 
+
+
+You are an FFmpeg automation assistant.
+
+Task:
+Generate a SINGLE Windows .bat file that:
+1) Cuts video clips from a source video using exact timestamps
+2) Saves each clip in a /clips folder
+3) Automatically creates list.txt
+4) Merges all clips into one final MP4
+5) Requires ZERO manual editing after creation
+
+Constraints:
+- Input file name: input.webm
+- Output format: MP4 (H.264 + AAC)
+- Fast but accurate (use libx264, preset veryfast, crf 23)
+- Audio: AAC 128k
+- Overwrite without asking
+- Must work when double-clicked
+- Must not require the user to type ffmpeg commands manually
+
+FFmpeg rules:
+- Every cut command must start with `ffmpeg`
+- No partial lines
+- Output file must always be last
+- Use -ss BEFORE -i
+- Create /clips if missing
+
+After cutting:
+- Auto-generate list.txt inside the bat
+- Merge clips in correct order using concat
+- Output final file as FINAL_SHORT.mp4
+- End with `echo DONE` and `pause`
+
+Input I will provide:
+- A list of timestamps in this format:
+  HH:MM:SS.mmm-HH:MM:SS.mmm
+- The order matters and must be preserved
+
+Output format:
+- ONLY the contents of the .bat file
+- No explanations
+- No markdown
+- No commentary
+
+Here are the timestamps:
+[PASTE TIMESTAMPS HERE]
+
+6.NEXT Problems is ai is suffering to find aligned chunks to make a good content , all the time its not aligned feels  just  video cut from  middle , or not cut at all [ fix ]
+
