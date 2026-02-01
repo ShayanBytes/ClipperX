@@ -1,0 +1,64 @@
+@echo off
+setlocal EnableDelayedExpansion
+
+REM ========= CONFIG =========
+set INPUT=input.webm
+set CLIP_DIR=clips
+set LIST_FILE=list.txt
+set OUTPUT=WEMBLEY_IS_CURSED_SHORT.mp4
+
+REM ========= PREP =========
+if not exist "%CLIP_DIR%" mkdir "%CLIP_DIR%"
+if exist "%LIST_FILE%" del "%LIST_FILE%"
+if exist "%OUTPUT%" del "%OUTPUT%"
+
+REM ========= CUTS =========
+ffmpeg -y -ss 00:00:00.160 -to 00:00:01.800 -i "%INPUT%" -c:v libx264 -preset veryfast -crf 23 -c:a aac -b:a 128k "%CLIP_DIR%\clip01.mp4"
+ffmpeg -y -ss 00:00:08.559 -to 00:00:10.160 -i "%INPUT%" -c:v libx264 -preset veryfast -crf 23 -c:a aac -b:a 128k "%CLIP_DIR%\clip02.mp4"
+ffmpeg -y -ss 00:01:06.400 -to 00:01:08.720 -i "%INPUT%" -c:v libx264 -preset veryfast -crf 23 -c:a aac -b:a 128k "%CLIP_DIR%\clip03.mp4"
+ffmpeg -y -ss 00:02:01.600 -to 00:02:03.280 -i "%INPUT%" -c:v libx264 -preset veryfast -crf 23 -c:a aac -b:a 128k "%CLIP_DIR%\clip04.mp4"
+ffmpeg -y -ss 00:02:22.800 -to 00:02:24.080 -i "%INPUT%" -c:v libx264 -preset veryfast -crf 23 -c:a aac -b:a 128k "%CLIP_DIR%\clip05.mp4"
+ffmpeg -y -ss 00:03:00.000 -to 00:03:01.840 -i "%INPUT%" -c:v libx264 -preset veryfast -crf 23 -c:a aac -b:a 128k "%CLIP_DIR%\clip06.mp4"
+ffmpeg -y -ss 00:03:35.910 -to 00:03:36.560 -i "%INPUT%" -c:v libx264 -preset veryfast -crf 23 -c:a aac -b:a 128k "%CLIP_DIR%\clip07.mp4"
+ffmpeg -y -ss 00:03:38.560 -to 00:03:39.280 -i "%INPUT%" -c:v libx264 -preset veryfast -crf 23 -c:a aac -b:a 128k "%CLIP_DIR%\clip08.mp4"
+ffmpeg -y -ss 00:03:47.040 -to 00:03:48.720 -i "%INPUT%" -c:v libx264 -preset veryfast -crf 23 -c:a aac -b:a 128k "%CLIP_DIR%\clip09.mp4"
+ffmpeg -y -ss 00:03:54.959 -to 00:03:56.400 -i "%INPUT%" -c:v libx264 -preset veryfast -crf 23 -c:a aac -b:a 128k "%CLIP_DIR%\clip10.mp4"
+ffmpeg -y -ss 00:04:34.400 -to 00:04:36.639 -i "%INPUT%" -c:v libx264 -preset veryfast -crf 23 -c:a aac -b:a 128k "%CLIP_DIR%\clip11.mp4"
+ffmpeg -y -ss 00:04:36.639 -to 00:04:38.560 -i "%INPUT%" -c:v libx264 -preset veryfast -crf 23 -c:a aac -b:a 128k "%CLIP_DIR%\clip12.mp4"
+ffmpeg -y -ss 00:04:47.919 -to 00:04:48.639 -i "%INPUT%" -c:v libx264 -preset veryfast -crf 23 -c:a aac -b:a 128k "%CLIP_DIR%\clip13.mp4"
+ffmpeg -y -ss 00:04:48.639 -to 00:04:50.240 -i "%INPUT%" -c:v libx264 -preset veryfast -crf 23 -c:a aac -b:a 128k "%CLIP_DIR%\clip14.mp4"
+ffmpeg -y -ss 00:04:56.720 -to 00:04:59.350 -i "%INPUT%" -c:v libx264 -preset veryfast -crf 23 -c:a aac -b:a 128k "%CLIP_DIR%\clip15.mp4"
+
+REM ========= BUILD LIST =========
+(
+echo file '%CLIP_DIR%/clip01.mp4'
+echo file '%CLIP_DIR%/clip02.mp4'
+echo file '%CLIP_DIR%/clip03.mp4'
+echo file '%CLIP_DIR%/clip04.mp4'
+echo file '%CLIP_DIR%/clip05.mp4'
+echo file '%CLIP_DIR%/clip06.mp4'
+echo file '%CLIP_DIR%/clip07.mp4'
+echo file '%CLIP_DIR%/clip08.mp4'
+echo file '%CLIP_DIR%/clip09.mp4'
+echo file '%CLIP_DIR%/clip10.mp4'
+echo file '%CLIP_DIR%/clip11.mp4'
+echo file '%CLIP_DIR%/clip12.mp4'
+echo file '%CLIP_DIR%/clip13.mp4'
+echo file '%CLIP_DIR%/clip14.mp4'
+echo file '%CLIP_DIR%/clip15.mp4'
+) > "%LIST_FILE%"
+
+REM ========= SAFE MERGE (GUARANTEED OUTPUT) =========
+ffmpeg -y -f concat -safe 0 -i "%LIST_FILE%" ^
+-c:v libx264 -preset veryfast -crf 23 ^
+-c:a aac -b:a 128k ^
+-movflags +faststart ^
+"%OUTPUT%"
+
+echo.
+echo ======================================
+echo   DONE — FINAL SHORT CREATED
+echo   Output: %OUTPUT%
+echo ======================================
+echo.
+pause
