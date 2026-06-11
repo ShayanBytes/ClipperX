@@ -1,0 +1,1 @@
+"""ClipperX frontend (PySide6)."""

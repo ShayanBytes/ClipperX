@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -v -E '\\\\.\\(mp4|mov|avi|mkv|png|jpg|jpeg|wav|mp3|ttf|otf|srt|vtt\\)$')",
+      "Bash(grep -v -iE '\\\\.\\(mp4|mov|avi|mkv|png|jpg|jpeg|wav|mp3|ttf|otf|srt|vtt|pyc\\)$')",
+      "Bash(grep -v -iE '\\\\.\\(mp4|mov|avi|mkv|png|jpg|jpeg|wav|mp3|ttf|otf|pyc\\)$')",
+      "Read(//c/SHAYAN/Softwares/Clipping/**)",
+      "Bash(ffmpeg -version)",
+      "Bash(ffprobe -v error -select_streams v:0 -show_entries stream=width,height,r_frame_rate,nb_frames,duration -of default=noprint_wrappers=1 0212.mp4)",
+      "Bash(ffprobe -v error -select_streams a:0 -show_entries stream=channels,codec_name -of default=noprint_wrappers=1 0212.mp4)",
+      "Bash(./.venv/Scripts/python.exe -c \"import mediapipe, cv2, numpy; print\\('mp', mediapipe.__version__\\); print\\('cv2', cv2.__version__\\); print\\('np', numpy.__version__\\)\")",
+      "Bash(.venv/Scripts/python.exe -m py_compile presets.py config.py main.py backend/pipeline.py backend/models.py backend/reframer/*.py scripts/*.py frontend/*.py)",
+      "Bash(.venv/Scripts/python.exe scripts/test_recovery.py)",
+      "Bash(.venv/Scripts/python.exe scripts/test_presets.py)",
+      "Bash(.venv/Scripts/python.exe -m py_compile backend/reframer/crop_planner.py backend/reframer/speaker.py config.py)",
+      "Bash(.venv/Scripts/python.exe scripts/test_spring.py)"
+    ]
+  }
+}
