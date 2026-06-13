@@ -27,6 +27,7 @@ import math
 from typing import List, Optional, Tuple
 
 from backend.models import CropBox, FramePlan, FramingKind, VideoMeta
+from backend.reframer.layout import grid_cells
 from backend.reframer.speaker import FrameIntent
 
 
@@ -85,6 +86,7 @@ class CropPlanner:
         self.meta = meta
         self.W, self.H = meta.width, meta.height
         out_w, out_h = config["output_width"], config["output_height"]
+        self.out_w, self.out_h = int(out_w), int(out_h)
 
         # --- focus crop geometry at zoom=1 (the WIDEST 9:16 region the source allows) ---
         self.base_crop_h = self.H
@@ -93,18 +95,12 @@ class CropPlanner:
             self.base_crop_w = self.W
             self.base_crop_h = round(self.W * out_h / out_w)
 
-        # --- split crop geometry (each half is out_w x out_h/2) ---
-        self.split_h = self.H
-        self.split_w = round(self.H * out_w / (out_h / 2))
-        if self.split_w > self.W:
-            self.split_w = self.W
-            self.split_h = round(self.W * (out_h / 2) / out_w)
-
         self.dead_ratio = float(config["dead_zone_ratio"])
         self.max_vel = float(config["max_velocity_px_per_frame"])
         self.alpha = float(config["ema_alpha"])              # split path only
         self.v_pos = float(config["vertical_position"])
         self.saliency_bias = float(config["saliency_bias"])
+        self.split_face_mult = float(config.get("split_face_mult", 3.6))
 
         # spring camera (L4)
         omega = float(config.get("camera_responsiveness", 0.22))
@@ -118,7 +114,9 @@ class CropPlanner:
         # split / transition state
         self.prev_active: Optional[int] = None
         self.was_split = False
-        self.split_cx: List[Optional[float]] = [None, None]
+        self._split_n = 0
+        self.split_cx: List[Optional[float]] = []
+        self.split_cy: List[Optional[float]] = []
 
     def plan(
         self,
@@ -207,33 +205,54 @@ class CropPlanner:
             self.pan_y.step(target)
             self.pan_y.clamp(lo, hi)
 
-    # ---- split ----
+    # ---- split (2-4 cells -> grid) ----
     def _plan_split(self, intent: FrameIntent) -> FramePlan:
         targets = intent.split_targets
-        snap = not self.was_split or intent.is_cut
-        boxes = []
-        half_lo = self.split_w / 2
-        half_hi = self.W - self.split_w / 2
-        for slot in range(2):
-            tx = targets[slot][0]
-            cur = self.split_cx[slot]
-            if snap or cur is None:
-                cur = self._clamp(tx, half_lo, half_hi)
+        n = max(2, min(4, len(targets)))
+        targets = targets[:n]
+        cells_out = grid_cells(n, self.out_w, self.out_h)
+
+        # snap when entering a split, on a cut, or when the cell COUNT changes (a different grid)
+        snap = (not self.was_split) or intent.is_cut or intent.allow_snap or self._split_n != n
+        if self._split_n != n:
+            self.split_cx = [None] * n
+            self.split_cy = [None] * n
+        self._split_n = n
+
+        boxes: List[CropBox] = []
+        for i in range(n):
+            tx, ty, fw, fh = targets[i]
+            _, _, cw_out, ch_out = cells_out[i]
+            aspect = cw_out / ch_out
+
+            # crop a region around the face (face + shoulders + headroom), aspect-matched to the
+            # cell so it fills the cell without distortion; clamp to the source frame.
+            ch = min(float(self.H), max(40.0, fh * self.split_face_mult))
+            cw = ch * aspect
+            if cw > self.W:
+                cw, ch = float(self.W), self.W / aspect
+
+            lo_x, hi_x = cw / 2, self.W - cw / 2
+            lo_y, hi_y = ch / 2, self.H - ch / 2
+            des_x = self._clamp(tx, lo_x, hi_x)
+            des_y = self._clamp(ty + ch * (0.5 - self.v_pos), lo_y, hi_y)
+
+            cur_x, cur_y = self.split_cx[i], self.split_cy[i]
+            if snap or cur_x is None or cur_y is None:
+                cur_x, cur_y = des_x, des_y
             else:
-                cur += self.alpha * (self._clamp(tx, half_lo, half_hi) - cur)
-            self.split_cx[slot] = cur
-            x = self._clamp(cur - self.split_w / 2, 0, self.W - self.split_w)
-            y = self._clamp(self.H / 2 - self.split_h / 2, 0, self.H - self.split_h)
-            boxes.append(CropBox(int(round(x)), int(round(y)), self.split_w, self.split_h))
+                cur_x += self.alpha * (des_x - cur_x)
+                cur_y += self.alpha * (des_y - cur_y)
+            self.split_cx[i], self.split_cy[i] = cur_x, cur_y
+
+            x = self._clamp(cur_x - cw / 2, 0, self.W - cw)
+            y = self._clamp(cur_y - ch / 2, 0, self.H - ch)
+            boxes.append(CropBox(int(round(x)), int(round(y)),
+                                 int(round(cw)), int(round(ch))))
 
         self.was_split = True
         self.prev_active = None
-        return FramePlan(
-            frame_num=intent.frame_num,
-            kind=FramingKind.SPLIT,
-            top=boxes[0],     # left person on top
-            bottom=boxes[1],  # right person on bottom
-        )
+        return FramePlan(frame_num=intent.frame_num, kind=FramingKind.SPLIT, cells=boxes)
 
     @staticmethod
     def _clamp(v: float, lo: float, hi: float) -> float:

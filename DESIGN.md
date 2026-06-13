@@ -93,10 +93,11 @@ Classify by head-count, then commit through mode hysteresis (§2):
 | **HOLD** | `N_active == 0` | Freeze framing; slow drift toward motion centroid (held-up object stays in frame). Re-entry eases in. |
 | **SOLO** | `N_active == 1` | Calm follow, dead-zone, breathing room, rule-of-thirds bias. |
 | **DUAL** | `N_active == 2` | One dominant & sustained → punch-in on speaker. Comparable/rapid-exchange → two-shot (fit both). Too far apart to co-fit → SPLIT. |
-| **GROUP** | `N_active ≥ 3` | **V1 fallback**: frame weighted centroid of active subjects, zoom to fit hull + margin, move slowly. No per-person chasing yet. |
+| **GROUP** | `N_active ≥ 3` | **Implemented** (`speaker._group_decide`): if ONE person is a clearly-dominant reactor → punch in on them (reaction cut, `group_dominant_zoom`); else frame the size-weighted centroid + zoom-to-hull (spread crowd → base/widest; tight cluster → gentle floored punch-in), move slowly. Reactor importance is **motion-driven** (head velocity), not mouth — measured on real 4K footage the mouth signal is dead while head-speed separates a reactor (see §3). Hold/release hysteresis keeps the punch-in deliberate. |
 
-`max_people` is currently 3 — fine for V1. GROUP is deliberately dumb-but-safe so it
-never wrecks an emotional crowd moment by over-cropping.
+`max_people` is currently 4 — covers reaction scenes. GROUP centroid-fit is deliberately
+dumb-but-safe so it never wrecks an emotional crowd moment by over-cropping; the
+dominant-reactor punch-in rides on top of it only when someone clearly stands out.
 
 ---
 
@@ -115,8 +116,10 @@ Keep: dead-zone, speed-limit, scene-cut snap.
 slower spring scales the crop box; the renderer already rescales any box, so crop size is
 now per-frame. **Geometric limit:** the full-height 9:16 crop is already the *widest* 9:16
 region a 16:9 source allows, so zoom only **punches IN** (`z ≤ 1`); "zoom out past base to
-contain" is impossible in strict 9:16 — that is what SPLIT is for (see §10). No speaker
-logic *requests* a zoom yet — the primitive is in place; a driver lands with #5/#6.
+contain" is impossible in strict 9:16 — that is what SPLIT is for (see §10). **First driver
+implemented:** the *emphasis punch-in* — a sustained SOLO shot slowly pushes in
+(`speaker._emphasis_zoom`, dwell-based, resets to wide on any cut/switch/mode-change). Knobs:
+`emphasis_punch_in` / `emphasis_zoom` / `emphasis_after_frames`.
 
 **Snap is allowed in exactly one place: a detected scene cut.** Everywhere else,
 including speaker switches and re-acquisition, motion is bounded by the speed-limit.
@@ -173,7 +176,8 @@ Verified by `scripts/test_recovery.py` scenario C (stationary subject + dropouts
   rapid-exchange → two-shot rule.
 - ✅ **Recovery (§6)** — predictive target + confidence decay. Highest-impact fix.
 - ✅ **Scene-cut** is the sole snap source.
-- 🟡 **GROUP/CROWD** — single centroid-fit fallback. No bespoke 3–12-person logic yet.
+- ✅ **GROUP/CROWD** — single size-weighted centroid-fit fallback (`_group_framing`),
+  zoom-to-hull, slow. No bespoke 3–12-person per-speaker logic (by design for V1).
 
 Do not build per-person crowd switching until solo/dual feel pro on real footage.
 
@@ -199,8 +203,15 @@ Do not build per-person crowd switching until solo/dual feel pro on real footage
    the zoom primitive** for the §10 camera moves. NOTE: zoom only punches IN (9:16 geometry);
    no driver requests zoom yet — first consumer = an emphasis punch-in (#5). Verified by
    `scripts/test_spring.py`.
-5. **Importance blend** (§3) — add motion/size/face_conf only if mouth-only misbehaves.
-6. **GROUP fallback** (§4) — centroid-fit, slow.
+5. ✅ **Importance blend** (§3) — justified by real footage and built as the GROUP
+   **dominant-reactor** pick (`speaker._group_importance` / `_group_decide`). Mouth-only DID
+   misbehave: on 4K multi-person footage the FaceLandmarker can't attach a jawOpen to small/
+   distant heads, so the speaking signal is dead (top-reactor score p90 = 0.0000). Switched the
+   blend to **motion-driven** (`group_motion_weight = 1.0`: head velocity is the spine; speech
+   is an additive bonus where it survives). Hold/release hysteresis (`group_dominant_hold_frames`
+   = 8, tuned to bursty 5–11-frame reaction beats) keeps the punch-in deliberate.
+6. ✅ **GROUP fallback** (§4) — `speaker._group_framing`: size-weighted centroid + zoom-to-hull
+   (floored at `group_min_zoom`), no dominant-speaker chasing. Verified by `scripts/test_group.py`.
 
 Built alongside the roadmap: ✅ **Presets** (§9) — content-type policy layer over the
 mode machine (`presets.py`).
@@ -240,7 +251,7 @@ The move encodes the **relationship** between old and new framing. This is the r
 | Bring 2nd person in / co-frame both | pan / two-shot | ✅ |
 | Scope of what matters changed | zoom | 🟡 primitive ready (#4); needs a driver |
 | Reveal context (group laugh, play unfolds) | **zoom out to contain** | ⛔ impossible in strict 9:16 (use SPLIT) / needs bars + #6 |
-| Emphasize an emotional beat | slow zoom in | 🟡 primitive ready (#4); needs a driver (#5) |
+| Emphasize an emotional beat | slow zoom in | ✅ emphasis punch-in on held SOLO (#4 driver) |
 | Establish a space then commit | zoom out → in | ⛔ needs bars + #4/#6 |
 
 Primitives: **cut = discontinuity/pace/new subject · pan = continuity/same thing moving ·
@@ -276,4 +287,13 @@ switch hold, joint/split holds, scene threshold, mouth window. **New keys needed
 "zoom_responsiveness": 0.08,        # zoom spring omega/frame (slower than pan on purpose)
 "min_zoom": 0.62,                   # tightest punch-in (crop = this * base); 1.0 = base/widest
 "zoom_max_rate_per_frame": 0.02,    # cap on |Δzoom|/frame so a scale change reads as a move
+
+# Emphasis punch-in (first zoom driver) — implemented
+"emphasis_punch_in": True,          # slow push-in on a sustained SOLO shot (False = off)
+"emphasis_zoom": 0.92,              # target crop scale once emphasis engages (~8% tighter)
+"emphasis_after_frames": 90,        # ~3s of unbroken solo focus before the push-in begins
+
+# GROUP centroid-fit (#6) — implemented
+"group_fit_margin_ratio": 0.12,     # breathing room each side of the hull (frac of crop width)
+"group_min_zoom": 0.80,             # GROUP won't punch in tighter than this (no crowd over-crop)
 ```

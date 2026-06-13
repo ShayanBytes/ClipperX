@@ -30,7 +30,10 @@ class Detection:
     cy: float          # face center y
     w: float           # face bbox width
     h: float           # face bbox height
-    mouth_open: float  # inner-lip vertical gap / face height (0 = closed)
+    mouth_open: float  # jawOpen blendshape (0 = closed); 0 when not measurable
+    react: float = 0.0 # appearance motion: how much this face's pixels changed since last frame
+                       # (0..1). The primary REACTION cue - catches laughs/expressions/talking
+                       # even when the head doesn't translate and the mouth signal is occluded.
 
 
 @dataclass
@@ -42,7 +45,7 @@ class FrameDetections:
 
 class FramingKind(str, Enum):
     FOCUS = "focus"    # single crop following one subject (or held when absent)
-    SPLIT = "split"    # two stacked crops (top/bottom) showing two people
+    SPLIT = "split"    # 2-4 crops tiled into a grid, one reactor per cell
 
 
 class SceneMode(str, Enum):
@@ -70,9 +73,9 @@ class FramePlan:
     kind: FramingKind
     # FOCUS: `crop` is the single region.
     crop: Optional[CropBox] = None
-    # SPLIT: `top` and `bottom` are the two regions (each rendered to half height).
-    top: Optional[CropBox] = None
-    bottom: Optional[CropBox] = None
+    # SPLIT: `cells` are the 2-4 source regions, in slot order, each rendered into the matching
+    # rectangle from layout.grid_cells(len(cells)).
+    cells: Optional[List[CropBox]] = None
 
 
 @dataclass

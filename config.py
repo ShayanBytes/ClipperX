@@ -10,16 +10,29 @@ CONFIG = {
     "output_width": 1080,
     "output_height": 1920,
 
-    # === PERSON / FACE DETECTION (MediaPipe Tasks) ===
-    # Pose drives framing (works at any distance, incl. wide stage shots). Face is
-    # only run when 2+ people are present, to read mouth movement (active speaker).
+    # === PERSON / FACE DETECTION ===
+    # PRIMARY: YuNet (cv2.FaceDetectorYN) — a CNN face detector shipped in opencv-contrib.
+    # It finds ALL visible faces every frame (proven 2/2 close reaction faces where MediaPipe
+    # pose found 1), giving box + 5 landmarks + score. Faces are the subject in reaction content,
+    # so they drive framing now. Pose is kept only as a FALLBACK for frames with no detectable
+    # face (everyone turned away / distant body shots). MediaPipe FaceLandmarker is still used,
+    # but now run PER FACE CROP to read jawOpen (it works once we hand it a reliable, big face).
+    "face_detector_model": "models/face_detection_yunet_2023mar.onnx",
+    "det_width": 1920,                  # detect on a copy downscaled to this width (faster; boxes scaled
+                                        # back). 1920 keeps small/distant 3rd-4th faces that 1280 drops.
+    "min_face_score": 0.6,              # YuNet confidence floor for a face to count
+    "pose_fallback": True,              # run a single pose detection on frames where YuNet finds 0 faces
     "pose_model": "models/pose_landmarker_full.task",
     "face_model": "models/face_landmarker.task",
-    "max_people": 3,                    # detect up to N people per frame
+    "max_people": 4,                    # cap on faces considered per frame (4 covers reaction scenes)
     "min_pose_confidence": 0.4,
     "min_tracking_confidence": 0.4,
     "min_face_confidence": 0.4,
-    "face_match_dist_ratio": 0.15,      # max nose<->face distance (frac of width) to fuse mouth signal
+    "face_match_dist_ratio": 0.15,      # max landmark<->box distance (frac of width) to fuse mouth signal
+    # jawOpen via FaceLandmarker run on each face crop (restores the mouth signal, ungated from
+    # pose). Only attempted on faces big enough to landmark reliably; below that, motion carries.
+    "jaw_on_crop": True,
+    "jaw_min_face_px": 90,              # min YuNet face-box width (source px) before we bother landmarking
 
     # === SCENE CUT DETECTION (PySceneDetect ContentDetector) ===
     "scene_threshold": 27.0,            # correct scale for ContentDetector (higher = fewer cuts)
@@ -51,6 +64,12 @@ CONFIG = {
     # detection doesn't ping-pong the mode. HOLD<->present and scene cuts commit instantly.
     "mode_enter_frames": 18,            # ~0.6s a busier mode must persist before we adopt it
     "mode_collapse_frames": 36,         # ~1.2s a quieter mode must persist before we fall back
+    # Head-count for mode classification is the number of DISTINCT tracks seen within the last
+    # `mode_headcount_window` frames, not just the exact current frame. On flickery footage the
+    # detector finds 4 people only intermittently (avg 2, max 4); counting just this frame keeps
+    # the scene stuck in DUAL/SOLO and the 4th person is dropped. A short window bridges that
+    # flicker so a genuinely-4-person scene commits GROUP. window=1 = old exact-frame behaviour.
+    "mode_headcount_window": 12,        # ~0.4s @30fps; count a track present if seen this recently
 
     # === DUAL: SHOW BOTH (two-shot, else split) ===
     # When two people both matter (both talking, or trading lines rapidly) we frame BOTH.
@@ -92,7 +111,69 @@ CONFIG = {
     "emphasis_zoom": 0.92,              # target crop scale once emphasis engages (~8% tighter)
     "emphasis_after_frames": 90,        # ~3s of unbroken solo focus before the push-in begins
 
-    # === SUBJECT ABSENT (single person showing something) ===
+    # === GROUP centroid-fit (3+ people: V1 "dumb-but-safe" fallback, roadmap #6) ===
+    # GROUP doesn't chase a dominant speaker; it frames the size-weighted centroid of the
+    # heads and zooms to FIT their horizontal hull + margin. Spread crowd -> stay at base
+    # (widest, show the most); tight cluster -> a gentle punch-in. Never over-crops a crowd.
+    "group_fit_margin_ratio": 0.12,     # breathing room each side of the hull (frac of crop width)
+    "group_min_zoom": 0.80,             # GROUP won't punch in tighter than this (no crowd over-crop)
+
+    # === GROUP dominant-reactor focus (reaction cuts; DESIGN #5 importance blend) ===
+    # In a 3+ scene, if ONE person clearly dominates (a strong, sustained reaction - laughing,
+    # talking, gesturing) we PUNCH IN on them like a reaction cut, instead of always framing
+    # the whole group. Only when nobody stands out do we fall back to centroid-fit. Hysteresis
+    # (hold/release) stops it flipping between the reactor and the wide group every frame. The
+    # tighter punch-in also re-enables VERTICAL composition (a full-height crop can't pan y).
+    "group_dominant_focus": True,       # False -> always centroid-fit (old behaviour)
+    "group_dominant_threshold": 0.012,  # min IMPORTANCE to be a "dominant" reactor. On motion-driven footage
+                                        # importance ~= head-speed/frame-width; 0.012 sits between the measured
+                                        # group-frame median (0.0045) and p90 (0.033), so only a genuinely
+                                        # animated reactor clears it. On speech footage it's the mouth-std floor.
+    "group_dominant_margin": 0.006,     # the top reactor must beat the runner-up by this much importance
+                                        # (motion-lead p90 was 0.024, median 0.0025 -> fires only on real reactions)
+    "group_dominant_hold_frames": 8,    # sustained dominance before we commit the punch-in. Motion reactions
+                                        # are BURSTY (measured streaks 5-11 frames: a laugh / gesture); 12 was
+                                        # too strict (1 engagement on the whole 4K clip), 8 catches the beats
+                                        # (4 distinct reactors) while the release below keeps it deliberate.
+    "group_dominant_release_frames": 18,# sustained NON-dominance before we fall back to the group
+    "group_dominant_zoom": 0.72,        # punch-in scale on the dominant reactor (tighter than emphasis/group floor)
+    "group_motion_weight": 1.0,         # motion contribution to importance. 1.0 = head VELOCITY drives the
+                                        # reactor pick (a "reaction" here = visible motion: laugh/gesture/lean,
+                                        # not lip-sync). Measured on 4K footage the mouth signal is dead (top
+                                        # reactor speaking-score p90=0.0000) while head-speed SEPARATES a
+                                        # dominant mover (lead p90=0.024 of frame-width). Speech stays an
+                                        # additive bonus when present. 0 = speaking-only (old behaviour).
+
+    # === SHOW EVERY REACTOR (multi-way split; the "4-person reaction" fix) ===
+    # The core of the redesign: in a 3+ scene we no longer pick ONE dominant reactor and drop the
+    # rest. We count how many people are actually REACTING and show them all — 2 -> 2-way split,
+    # 3-4 -> a 2x2 quad grid (3 = two on top + one wide below). A single clear reactor still gets
+    # a solo punch-in; nobody reacting -> centroid-fit. Reaction = the same importance signal as
+    # the dominant-reactor pick (jaw-motion std + head/box motion), thresholded per person.
+    "reaction_threshold": 0.012,        # min reaction_score for a person to count as "reacting".
+                                        # reaction_score is mainly APPEARANCE motion (face pixels
+                                        # changing in place). Measured on the practice clip: active
+                                        # reactors ~0.025-0.05, static onlookers ~0.003, so 0.012
+                                        # cleanly separates them. jaw + head-motion add on top.
+    "reaction_appearance_weight": 1.0,  # weight on the appearance-motion cue in reaction_score
+    "reaction_hold_frames": 8,          # a person must sustain a reaction this long to add their cell
+    "reaction_release_frames": 18,      # ...and stop reacting this long before their cell is dropped
+    "max_split_cells": 4,               # most reactors shown at once (grid caps at a 2x2 quad)
+    # --- LAYOUT STABILITY (stop the grid reshuffling on detection flicker) ---
+    # The grid geometry changes with the cell COUNT (a 3-cell layout != a 4-cell quad), so every
+    # change of N is a hard relayout. On segments where detection fluctuates (e.g. 1-4 faces found
+    # frame-to-frame) that reads as the camera "moving randomly". Two debounces tame it:
+    "react_grid_hold_frames": 45,       # keep a lost grid-reactor in their cell (coasted at last
+                                        # position) this long before dropping it, so a brief blink
+                                        # doesn't collapse the grid (~0.9s@50fps / 1.5s@30fps).
+    "react_layout_shrink_frames": 30,   # the displayed cell-count only DROPS after the lower count
+                                        # persists this long. Growing is immediate (never leave a
+                                        # present reactor out); shrinking is slow (a momentary
+                                        # count dip doesn't reshuffle). ~0.6s@50fps / 1.0s@30fps.
+    "split_face_mult": 3.6,             # each split cell crops this * face-box-height around the face
+                                        # (face + shoulders + headroom), aspect-matched to the cell
+
+
     "saliency_bias": 0.25,              # how strongly to drift toward motion centroid when no face (0 = hold still)
 
     # === RENDER (ffmpeg) ===

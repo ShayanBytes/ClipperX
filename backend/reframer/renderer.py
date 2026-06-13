@@ -17,6 +17,7 @@ import cv2
 import numpy as np
 
 from backend.models import CropBox, FramePlan, FramingKind, VideoMeta
+from backend.reframer.layout import grid_cells
 
 
 def _crop_resize(frame: np.ndarray, box: CropBox, out_w: int, out_h: int) -> np.ndarray:
@@ -90,15 +91,24 @@ class VideoRenderer:
             raise RuntimeError(f"ffmpeg exited with code {proc.returncode}")
 
     def _compose(self, frame: np.ndarray, plan: FramePlan) -> np.ndarray:
-        if plan.kind == FramingKind.SPLIT and plan.top and plan.bottom:
-            top = _crop_resize(frame, plan.top, self.out_w, self.half)
-            bottom = _crop_resize(frame, plan.bottom, self.out_w, self.out_h - self.half)
-            out = np.vstack([top, bottom])
+        if plan.kind == FramingKind.SPLIT and plan.cells:
+            n = max(2, min(4, len(plan.cells)))
+            cells_out = grid_cells(n, self.out_w, self.out_h)
+            canvas = np.zeros((self.out_h, self.out_w, 3), dtype=np.uint8)
+            for box, (ox, oy, ow, oh) in zip(plan.cells[:n], cells_out):
+                canvas[oy:oy + oh, ox:ox + ow] = _crop_resize(frame, box, ow, oh)
             if self.divider > 0:
-                a = max(0, self.half - self.divider // 2)
-                b = min(self.out_h, a + self.divider)
-                out[a:b, :] = 0
-            return np.ascontiguousarray(out)
+                self._draw_dividers(canvas, cells_out)
+            return np.ascontiguousarray(canvas)
         # focus (or absent -> still a valid clamped crop)
         box = plan.crop if plan.crop else CropBox(0, 0, frame.shape[1], frame.shape[0])
         return np.ascontiguousarray(_crop_resize(frame, box, self.out_w, self.out_h))
+
+    def _draw_dividers(self, canvas: np.ndarray, cells_out):
+        """Black border lines between cells: a line wherever a cell edge sits inside the canvas."""
+        d = self.divider
+        for ox, oy, ow, oh in cells_out:
+            if oy > 0:                                  # top edge -> horizontal divider above
+                canvas[max(0, oy - d // 2):oy + (d - d // 2), :] = 0
+            if ox > 0:                                  # left edge -> vertical divider left
+                canvas[oy:oy + oh, max(0, ox - d // 2):ox + (d - d // 2)] = 0
