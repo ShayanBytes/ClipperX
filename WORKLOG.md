@@ -38,6 +38,41 @@
 
 ---
 
+## 2026-06-13 — Importance-based reactor selection (mechanism built, OFF by default, awaiting footage)
+
+**What & why.** Answering the OPEN QUESTION the prior entry raised: today every detected/reacting
+person up to `max_split_cells` gets a cell, because `reaction_threshold` is a *presence* gate not a
+discriminator. Correct when everyone is active (the validated quad), wrong for a frame with 4-8
+people where only 1-2 are the host/speaker and the rest are passive. Built the discriminator —
+but kept it **OFF by default** because it's blocked on a representative clip to tune against, and
+because the live signal is the same 4K appearance-churn that's near-uniform.
+
+**Design — a RELATIVE gate, not "exceed median".** `speaker._apply_importance_gate` (called inside
+`_update_reacting`, after the reactors are sorted strongest-first): keep a reactor only if its score
+is within `importance_keep_ratio` (0.55) of the TOP reactor's. This is the key choice: an
+"exceed-median+margin" test would always drop the bottom half and **kill the validated all-active
+quad**; a ratio gate passes everyone when they're all similarly active and prunes ONLY when there's
+a real activity gap. Guards: if the strongest reactor is itself below `importance_min_top_score`
+(0.02) nobody is really giving content → keep `importance_min_keep` (1) and let R==1 punch-in / R==0
+centroid-fit handle it; never starve the layout below `importance_min_keep`.
+
+**Changes.** `config.py`: new block `importance_select` (master switch, False) / `importance_keep_
+ratio` / `importance_min_top_score` / `importance_min_keep`. `speaker.py`: parse the 4 keys in
+`__init__`, new `_apply_importance_gate`, one call in `_update_reacting`. `scripts/test_importance.py`
+(new, 12 checks): gate OFF 4-hot → quad untouched; gate ON 4-equally-hot → STILL a quad (the
+invariant that protects the validated case); gate ON 2-hot+2-warm → only the 2 hosts; gate ON
+1-hot+3-warm → single-reactor punch-in; gate ON all-weak → no false multi-cell split.
+
+**Verification.** `test_importance.py` 12/12. All 6 prior suites still green (gate defaults off, so
+behaviour is byte-identical): recovery A-E, presets 10, spring 13, emphasis 9, group 16, reaction 21.
+
+**Next (blocked on the user).** Drop a "many people, only a few active" clip in `Imports/`, set
+`importance_select=True`, and tune `importance_keep_ratio`/`importance_min_top_score` against it via
+`diagnose_segments.py` (reactor-count R histogram) / `debug_overlay.py`. Open sub-decisions deferred
+with it: layouts >4 people (cap top-N vs 2×3/3×3 grid) and whether one cell may hold a *pair*.
+
+---
+
 ## 2026-06-13 — "Show every reactor" validated: tests, calibration instruments, layout stability
 
 **Context.** Picking up the YuNet + "show every reactor" redesign the prior session left mid-flight

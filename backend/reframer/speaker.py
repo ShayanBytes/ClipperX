@@ -117,6 +117,14 @@ class SpeakerTracker:
         self.react_hold = int(config.get("reaction_hold_frames", 8))
         self.react_release = int(config.get("reaction_release_frames", 18))
         self.max_cells = max(2, int(config.get("max_split_cells", 4)))
+        # importance-based reactor selection (off by default): when MORE people react than are
+        # genuinely "giving content", keep only those within importance_keep_ratio of the top
+        # reactor's score (a relative gate, so an all-equally-active crowd is untouched and only
+        # a real gap prunes the passive). See _apply_importance_gate.
+        self.importance_on = bool(config.get("importance_select", False))
+        self.importance_ratio = float(config.get("importance_keep_ratio", 0.55))
+        self.importance_floor = float(config.get("importance_min_top_score", 0.02))
+        self.importance_min_keep = max(1, int(config.get("importance_min_keep", 1)))
         # keep a lost track alive long enough to coast it through the full decay window
         self.coast_frames = max(self.recovery_decay, self.window, 12)
         # layout stability: retain a lost grid-reactor's cell, and only shrink the cell count slowly
@@ -327,7 +335,32 @@ class SpeakerTracker:
             if self._reacting.get(t.tid, False):
                 reacting.append(t)
         reacting.sort(key=self.reaction_score, reverse=True)
+        reacting = self._apply_importance_gate(reacting)
         return reacting[: self.max_cells]
+
+    def _apply_importance_gate(self, reacting: List[_Track]) -> List[_Track]:
+        """Prune passive people from a crowd so we frame only those *giving content*.
+
+        Off by default (`importance_select`). When on, this is a RELATIVE gate, not an absolute
+        one: keep a reactor only if its score is within `importance_keep_ratio` of the strongest
+        reactor's. So an all-equally-active group (e.g. the validated 4-person quad) is untouched —
+        everyone clears the ratio — and people are pruned ONLY when there's a real gap (1-2 hosts
+        animated, the rest passive). A lone weakly-reacting top scorer (below `importance_min_top_
+        score`) means "nobody is really giving content" → keep none (let R==0 centroid-fit handle
+        it). `importance_min_keep` guarantees we never starve the layout below that many people.
+
+        `reacting` is assumed already sorted strongest-first.
+        """
+        if not self.importance_on or len(reacting) <= 1:
+            return reacting
+        top = self.reaction_score(reacting[0])
+        if top < self.importance_floor:
+            return reacting[: self.importance_min_keep]
+        cutoff = top * self.importance_ratio
+        kept = [t for t in reacting if self.reaction_score(t) >= cutoff]
+        if len(kept) < self.importance_min_keep:
+            kept = reacting[: self.importance_min_keep]
+        return kept
 
     def _commit_shown(self, desired: int, is_cut: bool) -> int:
         """Layout hysteresis on the displayed cell-count. Growing (or a cut) is immediate so a

@@ -49,7 +49,19 @@
       "Bash(timeout 540 .venv/Scripts/python.exe scripts/diagnose_segments.py \"Imports/Multiple People.mp4\")",
       "Bash(.venv/Scripts/python.exe scripts/debug_overlay.py \"Imports/just 4 people scene .mp4\" exports/just4_debug.mp4)",
       "Bash(timeout 540 .venv/Scripts/python.exe scripts/_measure_churn.py \"Imports/Multiple People.mp4\")",
-      "Bash(.venv/Scripts/python.exe -c \"import backend.pipeline, backend.reframer.detector, backend.reframer.speaker, backend.reframer.crop_planner, backend.reframer.renderer, backend.reframer.layout, config, presets; from backend.reframer.speaker import SpeakerTracker; print\\('all imports OK; SpeakerTracker knobs:', 'react_grid_hold=', SpeakerTracker\\(config.CONFIG,1920,1080\\).react_grid_hold, 'layout_shrink=', SpeakerTracker\\(config.CONFIG,1920,1080\\).layout_shrink\\)\")"
+      "Bash(.venv/Scripts/python.exe -c \"import backend.pipeline, backend.reframer.detector, backend.reframer.speaker, backend.reframer.crop_planner, backend.reframer.renderer, backend.reframer.layout, config, presets; from backend.reframer.speaker import SpeakerTracker; print\\('all imports OK; SpeakerTracker knobs:', 'react_grid_hold=', SpeakerTracker\\(config.CONFIG,1920,1080\\).react_grid_hold, 'layout_shrink=', SpeakerTracker\\(config.CONFIG,1920,1080\\).layout_shrink\\)\")",
+      "Bash(.venv/Scripts/python -c \"import ast; ast.parse\\(open\\('backend/reframer/speaker.py'\\).read\\(\\)\\); ast.parse\\(open\\('config.py'\\).read\\(\\)\\); print\\('syntax OK'\\)\")",
+      "Bash(.venv/Scripts/python scripts/test_importance.py)",
+      "Bash(.venv/Scripts/python scripts/test_reaction.py)",
+      "Bash(.venv/Scripts/python scripts/diagnose_segments.py \"Imports/SIDEMEN FOOTBALL CATEGORIES [0vTRCfPWK2w].mp4\")",
+      "Bash(tee /tmp/sidemen_baseline.txt)",
+      "Bash(.venv/Scripts/python -c \"from backend.pipeline import probe_meta; m=probe_meta\\('Imports/SIDEMEN FOOTBALL CATEGORIES [0vTRCfPWK2w].mp4'\\); print\\(f'{m.width}x{m.height} @ {m.fps:.1f}fps  {m.total_frames} frames  {m.duration:.1f}s'\\)\")",
+      "Bash(.venv/Scripts/python scripts/tune_importance.py \"Imports/SIDEMEN FOOTBALL CATEGORIES [0vTRCfPWK2w].mp4\")",
+      "Bash(tee /tmp/sidemen_tune.txt)",
+      "Bash(ls -la \"Imports/SIDEMEN FOOTBALL CATEGORIES [0vTRCfPWK2w].mp4.dets.pkl\")",
+      "Bash(wc -l \"C:\\\\Users\\\\sayan\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--SHAYAN-Softwares-Clipping-ClipperX-0-3\\\\c80fb249-0ba1-4d88-aeed-8aaf1cd13dba\\\\tasks\\\\bu0nvvbt4.output\")",
+      "Bash(.venv/Scripts/python scripts/overlay_slice.py \"Imports/SIDEMEN FOOTBALL CATEGORIES [0vTRCfPWK2w].mp4\" --ratio 0.70)",
+      "Bash(.venv/Scripts/python scripts/overlay_slice.py \"Imports/SIDEMEN FOOTBALL CATEGORIES [0vTRCfPWK2w].mp4\" --off --start 198 --end 288)"
     ]
   }
 }

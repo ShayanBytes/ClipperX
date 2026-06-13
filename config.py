@@ -170,6 +170,22 @@ CONFIG = {
                                         # persists this long. Growing is immediate (never leave a
                                         # present reactor out); shrinking is slow (a momentary
                                         # count dip doesn't reshuffle). ~0.6s@50fps / 1.0s@30fps.
+    # --- IMPORTANCE-BASED REACTOR SELECTION (off by default; the "few active among many" case) ---
+    # Today every detected/reacting person up to max_split_cells gets a cell, because reaction_
+    # threshold is a presence gate, not a discriminator. That's correct when everyone is active
+    # (the validated 4-person quad). But in a frame with 4-8 people where only 1-2 are the host/
+    # speaker and the rest are passive, we'd still split to show up to 4. Turn this on to keep only
+    # the people *giving content*. It's a RELATIVE gate: keep a reactor only if its score is within
+    # importance_keep_ratio of the TOP reactor's. An all-equally-active group is untouched (everyone
+    # clears the ratio); pruning happens only when there's a real activity gap. BLOCKED ON A
+    # REPRESENTATIVE CLIP to tune ratio/floor — left off until the user drops "many people, few
+    # active" footage. See speaker._apply_importance_gate.
+    "importance_select": False,         # master switch; False = show everyone detected (current behaviour)
+    "importance_keep_ratio": 0.55,      # keep reactors scoring >= this fraction of the top reactor
+    "importance_min_top_score": 0.02,   # if the strongest reactor is weaker than this, nobody is really
+                                        # "giving content" -> keep only importance_min_keep (let centroid-fit handle it)
+    "importance_min_keep": 1,           # never prune the layout below this many people
+
     "split_face_mult": 3.6,             # each split cell crops this * face-box-height around the face
                                         # (face + shoulders + headroom), aspect-matched to the cell
 
