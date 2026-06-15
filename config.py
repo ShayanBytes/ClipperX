@@ -186,6 +186,18 @@ CONFIG = {
                                         # "giving content" -> keep only importance_min_keep (let centroid-fit handle it)
     "importance_min_keep": 1,           # never prune the layout below this many people
 
+    # === COLLECTIVE-SPLIT POLICY (focus-by-default; split only on a real tie) ===
+    # Step 1 of the saliency-director redesign. The old default was "show every reactor" — count
+    # everyone above the reaction_threshold presence gate and grid them — which made the engine
+    # quad-split faces ~half the time on real footage (measured 47% on the sidemen clip). This
+    # flips it: FEATURE the single most-active subject by default, and SPLIT only when 2+ people
+    # are comparably active at the same instant (a genuine collective beat — everyone laughing).
+    # A runner-up joins the split only if its reaction score is within split_collective_ratio of
+    # the leader's; the leader itself must clear split_min_top_score to count as real content
+    # (below it, nobody's giving content -> calm follow / centroid-fit, not a split).
+    "split_collective_ratio": 0.70,     # a runner-up joins the split only if score >= this * top score
+    "split_min_top_score": 0.030,       # the leader must clear this to be 'real content'; below -> calm follow
+
     "split_face_mult": 3.6,             # each split cell crops this * face-box-height around the face
                                         # (face + shoulders + headroom), aspect-matched to the cell
 

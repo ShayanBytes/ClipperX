@@ -61,7 +61,11 @@
       "Bash(ls -la \"Imports/SIDEMEN FOOTBALL CATEGORIES [0vTRCfPWK2w].mp4.dets.pkl\")",
       "Bash(wc -l \"C:\\\\Users\\\\sayan\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--SHAYAN-Softwares-Clipping-ClipperX-0-3\\\\c80fb249-0ba1-4d88-aeed-8aaf1cd13dba\\\\tasks\\\\bu0nvvbt4.output\")",
       "Bash(.venv/Scripts/python scripts/overlay_slice.py \"Imports/SIDEMEN FOOTBALL CATEGORIES [0vTRCfPWK2w].mp4\" --ratio 0.70)",
-      "Bash(.venv/Scripts/python scripts/overlay_slice.py \"Imports/SIDEMEN FOOTBALL CATEGORIES [0vTRCfPWK2w].mp4\" --off --start 198 --end 288)"
+      "Bash(.venv/Scripts/python scripts/overlay_slice.py \"Imports/SIDEMEN FOOTBALL CATEGORIES [0vTRCfPWK2w].mp4\" --off --start 198 --end 288)",
+      "Bash(git checkout *)",
+      "Bash(ffmpeg -y -ss 315 -i \"Imports/SIDEMEN FOOTBALL CATEGORIES [0vTRCfPWK2w].mp4\" -t 30 -c copy \"Imports/sidemen_slice_315.mp4\")",
+      "Bash(timeout 280 .venv/Scripts/python.exe scripts/tune_importance.py \"Imports/SIDEMEN FOOTBALL CATEGORIES [0vTRCfPWK2w].mp4\")",
+      "Bash(git stash *)"
     ]
   }
 }

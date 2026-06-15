@@ -138,6 +138,37 @@ checks.append(("H split has collapsed once past window+release+shrink",
 checks.append(("I the frame a split first appears requests a snap",
                next(i.allow_snap for i in steady(four) if i.kind == FramingKind.SPLIT)))
 
+# === COLLECTIVE-SPLIT POLICY (focus-by-default; split only on a real tie) ===
+# The headline behaviour flip: 2+ people clearing the presence gate no longer auto-splits. A split
+# now requires them to be COMPARABLY active (within split_collective_ratio of the leader, leader
+# above split_min_top_score). One clearly-dominant subject is FOCUSED, not split.
+MINTOP = CONFIG["split_min_top_score"]
+RATIO = CONFIG["split_collective_ratio"]
+STRONG = MINTOP * 3.0                 # a clear leader, comfortably "real content"
+# a runner-up that LATCHES as reacting (>THR) but is (a) below the leader's collective cutoff and
+# (b) below split_min_top, so an all-WEAK crowd has no real content to feature.
+WEAK = (THR + MINTOP) / 2.0
+assert THR < WEAK < MINTOP, "WEAK must latch (>THR) yet be 'not real content' (<min_top)"
+assert WEAK < STRONG * RATIO, "WEAK must also fail the leader's collective cutoff"
+
+# --- J: 1 dominant + 1 weak-but-present reactor -> FOCUS the leader, NOT a 2-way split ---
+#     (Old policy split whenever 2 latched; the un-gated focus-by-default is the whole point.)
+dom_pair = [(700, STRONG), (1200, WEAK)]
+ij = steady(dom_pair)[-1]
+checks.append(("J 1 dominant + 1 weak -> FOCUS (not split)", ij.kind == FramingKind.FOCUS))
+checks.append(("J focus targets the dominant subject (x~700)",
+               ij.focus_target is not None and abs(ij.focus_target[0] - 700) <= 60))
+checks.append(("J a single dominant is FOCUSED, not co-shown", ij.active_id is not None))
+
+# --- K: a crowd where the strongest is below split_min_top (nobody giving real content) ->
+#     centroid-fit / calm follow, never a quad of low-energy faces. ---
+weak_crowd = [(300, WEAK), (760, WEAK), (1200, WEAK), (1620, WEAK)]
+intents_k = steady(weak_crowd)
+checks.append(("K all-weak crowd -> never a multi-cell split",
+               all(split_n(i) <= 1 for i in intents_k)))
+checks.append(("K all-weak crowd -> no single dominant pick (group fallback)",
+               intents_k[-1].active_id is None))
+
 
 print(f"crop_w={crop_w:.0f}px  reaction_threshold={THR}  hold={HOLD}f  release={RELEASE}f\n")
 ok = True

@@ -79,10 +79,14 @@ if ic.split_targets:
 else:
     checks.append(("C survivors are the two hosts (x~300, ~1200)", False))
 
-# --- D: same mixed crowd with the gate OFF -> all 4 still shown (no accidental pruning) ---
+# --- D: same mixed crowd with the importance gate OFF. The gate no longer governs this case:
+#     the always-on COLLECTIVE-SPLIT policy (split_collective_ratio) sits in front of the gate and
+#     prunes the 2 WARM onlookers itself (WARM < HOT * split_collective_ratio), leaving the 2 HOT
+#     hosts -> a 2-way split. So pruning here is the collective layer's doing, NOT the gate's. ---
+assert WARM < HOT * CONFIG["split_collective_ratio"], "WARM must fall below the collective cutoff"
 idd = steady(mixed, OFF)[-1]
-checks.append(("D gate off, 2 hot + 2 warm -> all 4 cells (no pruning when off)",
-               split_n(idd) == 4))
+checks.append(("D gate off, 2 hot + 2 warm -> 2 cells (collective-split prunes, not the gate)",
+               split_n(idd) == 2))
 
 # --- E: gate ON, 1 host HOT + 3 passive WARM in a 3+ scene -> single-reactor punch-in ---
 #     The gate prunes the 3 warm onlookers, leaving R==1 -> the GROUP reaction-cut punch-in.

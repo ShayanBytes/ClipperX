@@ -125,6 +125,11 @@ class SpeakerTracker:
         self.importance_ratio = float(config.get("importance_keep_ratio", 0.55))
         self.importance_floor = float(config.get("importance_min_top_score", 0.02))
         self.importance_min_keep = max(1, int(config.get("importance_min_keep", 1)))
+        # === collective-split policy (focus-by-default; split only on a real tie) ===
+        # feature the single most-active subject; split only when 2+ are comparably active (a
+        # runner-up within split_collective_ratio of the leader, the leader above split_min_top).
+        self.split_collective_ratio = float(config.get("split_collective_ratio", 0.70))
+        self.split_min_top = float(config.get("split_min_top_score", 0.030))
         # keep a lost track alive long enough to coast it through the full decay window
         self.coast_frames = max(self.recovery_decay, self.window, 12)
         # layout stability: retain a lost grid-reactor's cell, and only shrink the cell count slowly
@@ -362,6 +367,37 @@ class SpeakerTracker:
             kept = reacting[: self.importance_min_keep]
         return kept
 
+    def _collective_subjects(self, reacting: List[_Track]) -> List[_Track]:
+        """Decide who to FRAME from the latched reactors, focus-by-default.
+
+        The old policy showed every reactor (a grid of everyone above the presence gate). This
+        flips it: feature the single most-active subject, and only widen to a SPLIT when 2+ people
+        are comparably active at the same instant — a genuine collective beat (everyone laughing /
+        all leaning in), not just "more than one face present".
+
+          * leader = reacting[0] (already sorted strongest-first).
+          * If the leader is below `split_min_top` it isn't real content -> return [] so the
+            caller falls to the calm follow / centroid-fit (no quad-spam on dead stretches).
+          * Otherwise keep the leader plus each *contiguous* runner-up scoring >= leader *
+            `split_collective_ratio`; stop at the first gap. One survivor = a clear winner = FOCUS;
+            two+ = a real tie = SPLIT. Capped at max_cells.
+
+        `reacting` is assumed sorted strongest-first.
+        """
+        if not reacting:
+            return []
+        top = self.reaction_score(reacting[0])
+        if top < self.split_min_top:
+            return []
+        cutoff = top * self.split_collective_ratio
+        winners: List[_Track] = []
+        for t in reacting:
+            if self.reaction_score(t) >= cutoff:
+                winners.append(t)
+            else:
+                break  # contiguous from the top: a gap ends the collective
+        return winners[: self.max_cells]
+
     def _commit_shown(self, desired: int, is_cut: bool) -> int:
         """Layout hysteresis on the displayed cell-count. Growing (or a cut) is immediate so a
         newly-reacting person is never left out; shrinking waits `layout_shrink` frames so a
@@ -402,40 +438,49 @@ class SpeakerTracker:
                                confidence=0.0, mode=SceneMode.HOLD)
 
         reacting = self._update_reacting(frame_num, live)
-        R = len(reacting)
 
-        # Desired layout: 2+ reactors -> a multi-cell grid; exactly one reactor in a 3+ scene ->
-        # a punch-in; otherwise the calm fallback. Commit it through the grow-fast/shrink-slow
-        # hysteresis so detection flicker doesn't reshuffle the grid every second.
-        if R >= 2:
-            desired = min(R, self.max_cells)
-        elif R == 1 and mode == SceneMode.GROUP and self.group_dom_on:
+        # Focus-by-default: feature the single most-active subject; SPLIT only when 2+ people are
+        # comparably active (a real collective beat). _collective_subjects returns the tied leader
+        # group (1 = clear winner -> FOCUS, 2+ = genuine tie -> SPLIT, [] = nobody worth featuring).
+        # Commit the count through the grow-fast/shrink-slow hysteresis so flicker can't reshuffle.
+        winners = self._collective_subjects(reacting)
+        if len(winners) >= 2:
+            desired = min(len(winners), self.max_cells)
+        elif winners:
             desired = 1
         else:
             desired = 0
         shown = self._commit_shown(desired, is_cut)
         shown = min(shown, len(live))   # can't display more cells than people actually present
 
-        # ----- 2+ cells -> SHOW THEM ALL (two-shot / 2-way / grid). Fill from the most salient
-        #       live people so a cell held open by the shrink debounce stays occupied. -----
+        # ----- 2+ cells -> a real collective: show them (two-shot / 2-way / grid). Fill from the
+        #       most salient live people so a cell held open by the shrink debounce stays occupied.
         if shown >= 2:
             pool = sorted(live, key=self.reaction_score, reverse=True)[:shown]
             return self._split_decide(frame_num, pool, shown, is_cut, mode)
         self._cofit = False
 
-        # ----- one reactor in a 3+ scene -> reaction-cut punch-in -----
-        if shown == 1 and mode == SceneMode.GROUP and self.group_dom_on:
-            t = reacting[0] if reacting else max(live, key=self.reaction_score)
+        # ----- one clear dominant subject -> punch in on them (any mode, not just GROUP). This is
+        #       the "choose the one who's actually doing something" path that replaces quad-spam.
+        #       Exception: in GROUP with group_dominant_focus OFF, the user wants the whole group
+        #       always -> skip the single-pick and fall through to centroid-fit.
+        if shown == 1 and not (mode == SceneMode.GROUP and not self.group_dom_on):
+            t = winners[0] if winners else max(live, key=self.reaction_score)
             hard = is_cut or self._prev_split_n > 0 or (self._active_id != t.tid)
             self._active_id = t.tid
             self._prev_split_n = 0
+            # tighter dominant-reactor framing in a crowd; calmer emphasis push-in when solo/dual
+            if mode == SceneMode.GROUP and self.group_dom_on:
+                zoom = self.group_dom_zoom
+            else:
+                zoom = self._emphasis_zoom(mode, t.tid, hard)
             return FrameIntent(frame_num, FramingKind.FOCUS,
                                focus_target=(t.cx, t.cy, t.w, t.h),
                                active_id=t.tid, is_cut=is_cut, allow_snap=hard,
                                confidence=self._confidence(t, frame_num), mode=mode,
-                               target_zoom=self.group_dom_zoom)
+                               target_zoom=zoom)
 
-        # ----- nobody (or one calm subject) -> centroid-fit a crowd, else calm follow -----
+        # ----- nobody worth featuring -> centroid-fit a crowd, else calm follow -----
         left_split = self._prev_split_n > 0
         self._prev_split_n = 0
         if mode == SceneMode.GROUP:

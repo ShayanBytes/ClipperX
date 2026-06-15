@@ -16,14 +16,15 @@
   (HOLD/SOLO/DUAL/GROUP, asymmetric hysteresis), DUAL two-shot/split, **Presets** layer,
   the **spring camera + zoom primitive (#4)**, the **emphasis punch-in** (first zoom
   driver), **GROUP centroid-fit (#6)**, and the **motion-driven dominant-reactor punch-in
-  (#5 importance blend)**. **V1 mode coverage is now complete.**
+  (#5 importance blend)**, and the **collective-split policy** (focus-by-default; split only on a
+  real activity tie — quad-spam 47%→17% on the football clip). **V1 mode coverage is now complete.**
 - **Roadmap (DESIGN.md §8):** #1 recovery ✅ · #2 mode machine ✅ · #3 two-shot DUAL ✅ ·
   **#4 spring camera + zoom ✅** · emphasis punch-in ✅ · **#5 importance blend ✅** (built as
   the GROUP dominant-reactor pick; mouth-only DID misbehave on 4K → switched to motion-driven,
   `group_motion_weight=1.0`) · **#6 GROUP centroid-fit ✅**.
 - **Tests (all green):** `test_recovery.py` (A–E), `test_presets.py` (10), `test_spring.py`
-  (13), `test_emphasis.py` (9), `test_group.py` (16). Run:
-  `.venv/Scripts/python scripts/<name>.py`.
+  (13), `test_emphasis.py` (9), `test_group.py` (16), `test_reaction.py` (+J/K),
+  `test_importance.py`. Run: `.venv/Scripts/python scripts/<name>.py`.
 - **The big remaining gap is VALIDATION, not code.** Everything below is unvalidated on
   real footage and needs the user's eyes (drop a clip in `Imports/`, then
   `.venv/Scripts/python scripts/debug_overlay.py <vid> [--preset NAME]` — overlay shows
@@ -35,6 +36,96 @@
   5. **GROUP dominant-reactor pick** — does motion punch in on the *right* reactor (segs 1/4/6
      of `Multiple People.mp4`), and does it feel deliberate or jumpy? (`exports/Multiple
      People_debug.mp4`, freshly rendered.)
+
+---
+
+## 2026-06-15 — Collective-split policy: focus-by-default, split only on a real tie (measured win)
+
+**What & why.** The headline behaviour flip the prior entries kept circling. The old default was
+"show every reactor" — count everyone above the `reaction_threshold` *presence* gate and grid them —
+which quad-split *faces* **47%** of the time on the SIDEMEN football clip. The importance gate could
+prune that, but only when explicitly turned ON and tuned (`ratio≈0.70`), and it was blocked on
+representative footage. This replaces the *default* itself: FEATURE the single most-active subject,
+and SPLIT only when 2+ people are comparably active at the same instant (a genuine collective beat —
+everyone laughing / all leaning in), not merely "more than one face present". Always-on, no opt-in.
+
+**Design — a contiguous tie from the top.** `speaker._collective_subjects(reacting)` (reactors come
+in sorted strongest-first): leader = `reacting[0]`; if it's below `split_min_top_score` (0.030) nobody
+is giving real content → return `[]` (caller falls to calm follow / centroid-fit, no quad-spam on dead
+stretches). Otherwise keep the leader plus each *contiguous* runner-up scoring ≥ `leader *
+split_collective_ratio` (0.70), stopping at the first gap. One survivor = clear winner → FOCUS; two+ =
+real tie → SPLIT (capped at `max_cells`). The single-pick FOCUS path is no longer GROUP-only — it now
+fires in any mode ("choose the one who's actually doing something"), reusing the dominant-reactor zoom
+in GROUP and the emphasis push-in zoom when solo/dual. The `group_dominant_focus=False` escape still
+forces whole-group centroid-fit.
+
+**Changes.** `config.py`: new COLLECTIVE-SPLIT block (`split_collective_ratio` 0.70,
+`split_min_top_score` 0.030). `speaker.py`: parse the 2 keys, new `_collective_subjects`, rewired the
+layout decision in the main `decide` path (winners→desired→`_commit_shown`), un-gated the single-pick
+FOCUS from GROUP-only. `scripts/test_reaction.py`: +cases J (1 dominant + 1 weak → FOCUS not split) and
+K (all-weak crowd → never a multi-cell split, no false pick). `scripts/test_importance.py`: case D
+rewritten — the always-on collective layer now prunes the 2 warm onlookers itself (was: gate-off →
+all 4 shown; now: gate-off → 2-way split, the collective layer's doing not the gate's).
+
+**Verification — measured before/after on `Imports/SIDEMEN FOOTBALL…mp4`** (28822f, via
+`tune_importance.py` from the `.dets.pkl` cache, default knobs):
+
+| | quad (4c) | multi (≥2c) | 1-cell focus | churn |
+|---|---|---|---|---|
+| OLD default | **47%** | 59% | 38% | 0.86/s |
+| NEW default | **17%** | 45% | 53% | 1.09/s |
+
+Quad-spam **47%→17%** at the *default* — the reduction the gate previously needed `ratio=0.70` + an
+explicit ON to reach. Now also insensitive to `importance_keep_ratio` 0.40–0.70 (the collective layer
+prunes in front of the gate). All 7 suites green: recovery A–E, presets 10, spring 13, emphasis 9,
+group 16, reaction (+J/K), importance (D rewritten).
+
+**Caveats / next.** (1) Churn ticked up 0.86→1.09/s — more single↔split transitions now that the
+default sits nearer the focus/split boundary; watch for visible flicker on the overlay before calling
+it done. (2) Still **unvalidated by eye** — render `debug_overlay.py` on the football + a real
+panel/podcast clip and confirm the FOCUS picks the right subject and the splits feel like genuine
+collective beats. (3) Football remains the wrong clip to *finish* tuning against (the real lever there
+is Phase-3 ball/object salience, per the entry below); the collective default should be confirmed on
+"many people, few active" footage. **Working tree is uncommitted** — pending the user's eyes.
+
+---
+
+## 2026-06-15 — Importance-gate latch: tried, measured, REVERTED (negative result)
+
+**What & why.** Hypothesis (sound on its face): `_apply_importance_gate` recomputes a hard
+`score >= cutoff` keep/drop boundary *every frame* with no memory, while everything else in
+speaker.py (`_reacting`, cell count) is debounced. That asymmetry was assumed to be the churn
+source on the football clip, so the fix was to latch each person's keep/drop the same way
+`_reacting` is latched (engage fast `keep_hold=4`, release slow `keep_release=24`).
+
+**Built it** (per-person streak dicts `_kept/_keep_on/_keep_off`, reset on cut, pruned in the
+dead-track cleanup, two new config knobs). All 7 suites green, `test_importance` 12/12.
+
+**Then measured it — the premise was WRONG on `Imports/SIDEMEN FOOTBALL…mp4`:**
+- gate OFF baseline churn = **0.86/s**
+- gate ON, ratio 0.55, NO latch = 1.03/s  → the gate adds only **+0.17/s**, not a dominant source
+- gate ON, ratio 0.55, latched 4/24 = **1.23/s**  → the latch made churn *WORSE*
+
+**Root cause of the null result.** `reaction_score` already feeds the gate a **windowed mean**
+(`_Track.react_level` averages over `mouth_window_frames`), so the value crossing the cutoff is
+pre-smoothed — the "raw per-frame boundary" we feared doesn't exist. A latch on top is redundant,
+and where it bites it *destabilizes the R-count*: holding a marginal person "kept" longer drags the
+reacting count across the R==1↔R==2 boundary, flip-flopping punch-in vs two-shot. A synthetic
+boundary-hover test confirmed even the no-latch gate barely flickers (1 cell-count change in 120f).
+
+**Reverted** (`git checkout` of config.py + speaker.py). Net change to tree = none.
+
+**Two takeaways that stick:**
+1. **The importance gate is not a meaningful churn source** — don't re-attempt hysteresis on it.
+   If churn is ever the target, profile the *baseline* 0.86/s (cell-count jitter / identity
+   reshuffles), not the gate.
+2. **Football is the wrong clip to tune this gate.** 47% of frames quad-split *faces* on a football
+   match — that's the Phase-3 object/ball-salience gap (ball/play is the subject, not 4 faces), a
+   separate module, NOT a `keep_ratio` problem. The gate still awaits a real panel/podcast clip
+   ("many people, few active") to tune against — exactly as the 2026-06-13 entry left it.
+
+**Next.** Unchanged from below: the gate stays OFF by default, blocked on representative footage.
+Real lever for a watchable football short = Phase 3 object salience, not selection tuning.
 
 ---
 
