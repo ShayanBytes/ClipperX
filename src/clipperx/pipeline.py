@@ -5,6 +5,7 @@ from dataclasses import asdict
 from pathlib import Path
 
 from .config import Config
+from .layouts import generate_layouts, select_layout
 from .perception import analyze
 from .planner import plan
 from .renderer import render
@@ -17,10 +18,22 @@ def reframe(source: Path, target: Path, config: Config | None = None) -> Path:
         raise FileNotFoundError(source)
     info, samples, centers = analyze(source, config)
     camera = plan(samples, centers, info.analysis_width, config)
+    selected_layouts = []
+    previous_layout = None
+    for sample in samples:
+        candidates = generate_layouts(
+            sample.entities,
+            sample.interactions,
+            info.analysis_width,
+            info.crop_width,
+        )
+        selected = select_layout(candidates, previous_layout)
+        selected_layouts.append((selected, candidates[:4]))
+        previous_layout = selected
     render(source, target, info, samples, camera, config)
     trace = {
-        "schema_version": 2,
-        "engine_version": "0.2.0",
+        "schema_version": 3,
+        "engine_version": "0.3.0",
         "config": asdict(config),
         "video": {**asdict(info), "path": str(info.path)},
         "camera": [
@@ -33,8 +46,15 @@ def reframe(source: Path, target: Path, config: Config | None = None) -> Path:
                 "face_count": sample.face_count,
                 "entities": [asdict(entity) for entity in sample.entities],
                 "interactions": [asdict(edge) for edge in sample.interactions],
+                "selected_layout": asdict(layout),
+                "layout_alternatives": [asdict(item) for item in alternatives],
             }
-            for sample, center in zip(samples, camera, strict=True)
+            for sample, center, (layout, alternatives) in zip(
+                samples,
+                camera,
+                selected_layouts,
+                strict=True,
+            )
         ],
     }
     trace_path = target.with_suffix(".json")

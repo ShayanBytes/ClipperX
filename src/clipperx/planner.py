@@ -19,7 +19,10 @@ def add_lookahead(samples: list[Sample], config: Config) -> np.ndarray:
 
 
 def plan(
-    samples: list[Sample], centers: np.ndarray, frame_width: int, config: Config
+    samples: list[Sample],
+    centers: np.ndarray,
+    frame_width: int,
+    config: Config,
 ) -> np.ndarray:
     evidence = add_lookahead(samples, config)
     count, candidates = evidence.shape
@@ -78,7 +81,11 @@ def plan(
     smoothed = path.copy()
     for _ in range(config.smoothing_passes):
         for index in range(1, count - 1):
-            same_shot = samples[index - 1].shot == samples[index].shot == samples[index + 1].shot
+            same_shot = (
+                samples[index - 1].shot
+                == samples[index].shot
+                == samples[index + 1].shot
+            )
             if same_shot:
                 smoothed[index] = (
                     0.25 * smoothed[index - 1]
