@@ -1,1 +1,0 @@
-"""ClipperX backend package."""
