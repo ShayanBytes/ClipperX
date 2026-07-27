@@ -231,9 +231,7 @@ The project intentionally treats its benchmark and safety gates as part of the p
 
 ![AI Provider](docs/images/ai-provider.png)
 
-## License
 
-Add your chosen license here, or include a `LICENSE` file in the repository.
 
 ---
 
