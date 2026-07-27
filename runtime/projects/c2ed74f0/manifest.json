@@ -1,0 +1,8 @@
+{
+  "status": "AwaitingExternalAI",
+  "progress": 58,
+  "stage": "Waiting for pasted external AI JSON",
+  "outputs": {
+    "semiAutomatedRequest": "semi-automated-request.json"
+  }
+}

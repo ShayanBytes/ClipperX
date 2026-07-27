@@ -1,0 +1,31 @@
+{
+  "id": "c2ed74f0",
+  "name": "Test 2",
+  "profile": "Action",
+  "provider": null,
+  "model": null,
+  "semiAutomated": true,
+  "status": "Failed",
+  "progress": 66,
+  "stage": "Failed during Adaptive intelligence · calibrating to this video",
+  "createdAt": "2026-07-26T04:15:56.203Z",
+  "updatedAt": "2026-07-26T04:49:29.418Z",
+  "inputFile": "Test_2.mp4",
+  "originalFileName": "Test_2.mp4",
+  "advanced": true,
+  "error": "Advanced engine exited 1. Traceback (most recent call last): |     composition=build_composition_plan(story,perception,out/'composition-plan.json',provider,api_model,api_key,base_url,lambda stage,progress:status(out,stage,progress));log_model_use(out,'composition_director',provider,api_model,composition.get('apiDirector',{}).get('used',False),error=composition.get('apiDirector',{}).get('error'));status(out,'Stage 2 complete � candidate space verified',63);composition,world_model,adaptive_calibration,candidate_utility,predictive_risk,counterfactuals,orchestration=orchestrate_direction(composition,perception,active,social,actions,story,out,provider,api_model,api_key,base_url,lambda stage,progress:status(out,stage,progress)); | ValueError: max() iterable argument is empty",
+  "outputs": {
+    "semiRequest": "/api/projects/c2ed74f0/assets/semi-automated-request.json"
+  },
+  "errorInfo": {
+    "code": "ENGINE_FAILURE",
+    "title": "Advanced processing stopped",
+    "summary": "The engine stopped at the current checkpoint. Your source video and completed analysis files are safe.",
+    "steps": [
+      "Open Run Details to see the last completed checkpoint.",
+      "Run Diagnostics to check local dependencies.",
+      "Try a short 720p test clip to isolate the problem."
+    ],
+    "canRepair": true
+  }
+}

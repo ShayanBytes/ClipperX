@@ -1,0 +1,13 @@
+import {spawnSync} from 'node:child_process';
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+export const projectRoot=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+export const configPath=path.join(projectRoot,'.clipperx-python.json');
+const run=(command,args,options={})=>spawnSync(command,args,{encoding:'utf8',windowsHide:true,timeout:20000,...options});
+const inspect=(command,prefix=[])=>{const probe=run(command,[...prefix,'-c',"import sys,json;print(json.dumps({'executable':sys.executable,'version':sys.version.split()[0],'prefix':sys.prefix,'base_prefix':getattr(sys,'base_prefix',sys.prefix)}))"]);if(probe.status!==0)return null;try{const info=JSON.parse(probe.stdout.trim());if(/hermes[\\/]hermes-agent/i.test(info.executable))return null;const pip=run(info.executable,['-m','pip','--version']).status===0;return {...info,pip,venv:info.prefix!==info.base_prefix};}catch{return null;}};
+const candidates=()=>{const values=[];const add=(command,prefix=[])=>{if(command)values.push({command,prefix});};if(process.platform==='win32'){add('py',['-3.11']);add('py',['-3.12']);const local=process.env.LOCALAPPDATA||'';for(const version of ['311','312','310','313'])add(path.join(local,'Programs','Python',`Python${version}`,'python.exe'));add('py',['-3']);add('python');add('python3');}else{for(const command of ['python3.11','python3.12','python3.10','python3','python'])add(command);}add(process.env.CLIPPERX_PYTHON);return values;};
+const compatible=(info,minMinor,maxMinor)=>{const [major,minor]=String(info?.version||'0').split('.').map(Number);return major===3&&minor>=minMinor&&minor<=maxMinor;};
+export function resolvePython({ensurePip=false,requirePip=false,useConfig=true,minMinor=0,maxMinor=99}={}){const tried=[];if(useConfig&&fs.existsSync(configPath)){try{const saved=JSON.parse(fs.readFileSync(configPath,'utf8'));const info=inspect(saved.executable);if(info&&compatible(info,minMinor,maxMinor)&&(!requirePip||info.pip))return {...info,source:'saved'};}catch{}}
+for(const item of candidates()){const key=`${item.command} ${item.prefix.join(' ')}`;if(tried.includes(key))continue;tried.push(key);let info=inspect(item.command,item.prefix);if(!info||!compatible(info,minMinor,maxMinor))continue;if(!info.pip&&ensurePip&&!info.venv){run(info.executable,['-m','ensurepip','--upgrade'],{stdio:'inherit',encoding:undefined});info=inspect(info.executable)||info;}if(requirePip&&!info.pip)continue;return {...info,source:key};}return null;}
+export function savePython(info){fs.writeFileSync(configPath,JSON.stringify({executable:info.executable,version:info.version,configuredAt:new Date().toISOString()},null,2));}

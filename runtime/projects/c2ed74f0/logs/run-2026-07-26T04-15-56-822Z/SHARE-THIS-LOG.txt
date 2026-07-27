@@ -1,0 +1,11 @@
+ClipperX diagnostic summary
+Run: run-2026-07-26T04-15-56-822Z
+Status: complete
+Started: 2026-07-26T04:16:00.085749+00:00
+Finished: 2026-07-26T04:19:32.964368+00:00
+Recorded events: 19
+AI model calls: 0
+Final stage: AwaitingExternalAI
+
+Share run-summary.json, model-usage.jsonl, events.jsonl, orchestrator-report.json, and the end of engine-console.log for diagnosis.
+API keys and credentials are never written to these files.

@@ -1,0 +1,1 @@
+import {spawnSync} from 'node:child_process';import {resolvePython} from './python-resolver.mjs';const python=resolvePython({requirePip:false});if(!python){console.error('No configured Python found. Run npm run setup:engine first.');process.exit(1);}const result=spawnSync(python.executable,process.argv.slice(2),{stdio:'inherit',windowsHide:true});process.exit(result.status??1);

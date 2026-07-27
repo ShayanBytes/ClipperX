@@ -1,0 +1,1567 @@
+{
+  "schemaVersion": "1.2",
+  "stage": "closed-loop-world-model",
+  "trackMemory": {
+    "person-001": {
+      "firstSeen": 0.0,
+      "lastSeen": 12.3142,
+      "observationCount": 27,
+      "medianConfidence": 0.8735,
+      "class": "person"
+    },
+    "person-002": {
+      "firstSeen": 0.0,
+      "lastSeen": 4.4779,
+      "observationCount": 29,
+      "medianConfidence": 0.8763,
+      "class": "person"
+    },
+    "person-003": {
+      "firstSeen": 0.0,
+      "lastSeen": 9.9153,
+      "observationCount": 58,
+      "medianConfidence": 0.9007000000000001,
+      "class": "person"
+    },
+    "person-004": {
+      "firstSeen": 0.0,
+      "lastSeen": 9.9153,
+      "observationCount": 59,
+      "medianConfidence": 0.8922,
+      "class": "person"
+    },
+    "person-005": {
+      "firstSeen": 0.0,
+      "lastSeen": 3.9981,
+      "observationCount": 26,
+      "medianConfidence": 0.8478,
+      "class": "person"
+    },
+    "person-006": {
+      "firstSeen": 0.0,
+      "lastSeen": 12.3142,
+      "observationCount": 55,
+      "medianConfidence": 0.8723,
+      "class": "person"
+    },
+    "7": {
+      "firstSeen": 0.0,
+      "lastSeen": 3.5183,
+      "observationCount": 9,
+      "medianConfidence": 0.4449,
+      "class": "sports ball"
+    },
+    "8": {
+      "firstSeen": 0.0,
+      "lastSeen": 0.0,
+      "observationCount": 1,
+      "medianConfidence": 0.2708,
+      "class": "sports ball"
+    },
+    "15": {
+      "firstSeen": 2.3989,
+      "lastSeen": 3.8382,
+      "observationCount": 7,
+      "medianConfidence": 0.3156,
+      "class": "sports ball"
+    },
+    "23": {
+      "firstSeen": 3.5183,
+      "lastSeen": 3.9981,
+      "observationCount": 4,
+      "medianConfidence": 0.39580000000000004,
+      "class": "sports ball"
+    },
+    "28": {
+      "firstSeen": 4.318,
+      "lastSeen": 4.7977,
+      "observationCount": 4,
+      "medianConfidence": 0.57845,
+      "class": "sports ball"
+    },
+    "person-007": {
+      "firstSeen": 5.7573,
+      "lastSeen": 10.0752,
+      "observationCount": 28,
+      "medianConfidence": 0.8937999999999999,
+      "class": "person"
+    },
+    "person-008": {
+      "firstSeen": 5.7573,
+      "lastSeen": 9.5955,
+      "observationCount": 20,
+      "medianConfidence": 0.91075,
+      "class": "person"
+    },
+    "person-009": {
+      "firstSeen": 6.7168,
+      "lastSeen": 7.6764,
+      "observationCount": 7,
+      "medianConfidence": 0.4272,
+      "class": "person"
+    },
+    "57": {
+      "firstSeen": 8.3161,
+      "lastSeen": 8.3161,
+      "observationCount": 1,
+      "medianConfidence": 0.7886,
+      "class": "sports ball"
+    },
+    "32": {
+      "firstSeen": 8.6359,
+      "lastSeen": 8.9558,
+      "observationCount": 2,
+      "medianConfidence": 0.8801,
+      "class": "sports ball"
+    },
+    "70": {
+      "firstSeen": 9.5955,
+      "lastSeen": 11.9943,
+      "observationCount": 15,
+      "medianConfidence": 0.8461,
+      "class": "sports ball"
+    },
+    "person-010": {
+      "firstSeen": 9.7554,
+      "lastSeen": 10.0752,
+      "observationCount": 3,
+      "medianConfidence": 0.8042,
+      "class": "person"
+    },
+    "81": {
+      "firstSeen": 11.0348,
+      "lastSeen": 18.3913,
+      "observationCount": 36,
+      "medianConfidence": 0.5268999999999999,
+      "class": "sports ball"
+    },
+    "0": {
+      "firstSeen": 12.1543,
+      "lastSeen": 12.1543,
+      "observationCount": 1,
+      "medianConfidence": 0.8855,
+      "class": "sports ball"
+    },
+    "person-011": {
+      "firstSeen": 12.4741,
+      "lastSeen": 18.2314,
+      "observationCount": 35,
+      "medianConfidence": 0.9251,
+      "class": "person"
+    },
+    "person-012": {
+      "firstSeen": 12.4741,
+      "lastSeen": 16.7921,
+      "observationCount": 28,
+      "medianConfidence": 0.89445,
+      "class": "person"
+    },
+    "person-013": {
+      "firstSeen": 12.634,
+      "lastSeen": 15.0329,
+      "observationCount": 14,
+      "medianConfidence": 0.8129500000000001,
+      "class": "person"
+    },
+    "person-014": {
+      "firstSeen": 14.873,
+      "lastSeen": 16.952,
+      "observationCount": 7,
+      "medianConfidence": 0.9113,
+      "class": "person"
+    },
+    "person-015": {
+      "firstSeen": 18.5512,
+      "lastSeen": 20.6303,
+      "observationCount": 13,
+      "medianConfidence": 0.871,
+      "class": "person"
+    },
+    "person-016": {
+      "firstSeen": 18.5512,
+      "lastSeen": 25.2681,
+      "observationCount": 35,
+      "medianConfidence": 0.8749,
+      "class": "person"
+    },
+    "person-017": {
+      "firstSeen": 18.5512,
+      "lastSeen": 19.9906,
+      "observationCount": 9,
+      "medianConfidence": 0.8693,
+      "class": "person"
+    },
+    "person-018": {
+      "firstSeen": 18.5512,
+      "lastSeen": 25.2681,
+      "observationCount": 24,
+      "medianConfidence": 0.8976,
+      "class": "person"
+    },
+    "person-019": {
+      "firstSeen": 18.5512,
+      "lastSeen": 23.0291,
+      "observationCount": 10,
+      "medianConfidence": 0.7958000000000001,
+      "class": "person"
+    },
+    "person-020": {
+      "firstSeen": 18.5512,
+      "lastSeen": 18.7112,
+      "observationCount": 2,
+      "medianConfidence": 0.6816,
+      "class": "person"
+    },
+    "person-021": {
+      "firstSeen": 18.7112,
+      "lastSeen": 18.8711,
+      "observationCount": 2,
+      "medianConfidence": 0.8573500000000001,
+      "class": "person"
+    },
+    "139": {
+      "firstSeen": 18.7112,
+      "lastSeen": 19.8306,
+      "observationCount": 6,
+      "medianConfidence": 0.7814,
+      "class": "sports ball"
+    },
+    "144": {
+      "firstSeen": 19.031,
+      "lastSeen": 23.0291,
+      "observationCount": 7,
+      "medianConfidence": 0.8512,
+      "class": "sports ball"
+    },
+    "145": {
+      "firstSeen": 19.031,
+      "lastSeen": 19.6707,
+      "observationCount": 5,
+      "medianConfidence": 0.8737,
+      "class": "sports ball"
+    },
+    "156": {
+      "firstSeen": 19.8306,
+      "lastSeen": 21.27,
+      "observationCount": 8,
+      "medianConfidence": 0.8029999999999999,
+      "class": "sports ball"
+    },
+    "person-022": {
+      "firstSeen": 20.1505,
+      "lastSeen": 22.8692,
+      "observationCount": 13,
+      "medianConfidence": 0.848,
+      "class": "person"
+    },
+    "170": {
+      "firstSeen": 20.6303,
+      "lastSeen": 23.349,
+      "observationCount": 9,
+      "medianConfidence": 0.8797,
+      "class": "sports ball"
+    },
+    "172": {
+      "firstSeen": 20.7902,
+      "lastSeen": 22.5494,
+      "observationCount": 6,
+      "medianConfidence": 0.65585,
+      "class": "sports ball"
+    },
+    "173": {
+      "firstSeen": 20.9501,
+      "lastSeen": 22.8692,
+      "observationCount": 6,
+      "medianConfidence": 0.6693,
+      "class": "sports ball"
+    },
+    "person-023": {
+      "firstSeen": 22.0696,
+      "lastSeen": 24.9482,
+      "observationCount": 16,
+      "medianConfidence": 0.8081499999999999,
+      "class": "person"
+    },
+    "person-024": {
+      "firstSeen": 25.2681,
+      "lastSeen": 25.2681,
+      "observationCount": 1,
+      "medianConfidence": 0.933,
+      "class": "person"
+    },
+    "person-025": {
+      "firstSeen": 25.2681,
+      "lastSeen": 25.2681,
+      "observationCount": 1,
+      "medianConfidence": 0.8913,
+      "class": "person"
+    },
+    "person-026": {
+      "firstSeen": 25.2681,
+      "lastSeen": 25.2681,
+      "observationCount": 1,
+      "medianConfidence": 0.8943,
+      "class": "person"
+    },
+    "person-027": {
+      "firstSeen": 25.2681,
+      "lastSeen": 25.2681,
+      "observationCount": 1,
+      "medianConfidence": 0.8247,
+      "class": "person"
+    }
+  },
+  "conversationTopology": {
+    "clusters": [
+      {
+        "id": "cluster-0",
+        "tracks": [
+          "person-021",
+          "person-018",
+          "person-008",
+          "person-017",
+          "person-015",
+          "person-022",
+          "person-001",
+          "person-025",
+          "person-004",
+          "person-014",
+          "person-010",
+          "person-002",
+          "person-016",
+          "person-027",
+          "person-019",
+          "person-023",
+          "person-005",
+          "person-020",
+          "person-011",
+          "person-006",
+          "person-012",
+          "person-026",
+          "person-003",
+          "person-024",
+          "person-013",
+          "person-007",
+          "person-009"
+        ],
+        "xs": [
+          0.039785,
+          0.086385,
+          0.0872675,
+          0.0906,
+          0.15054499999999998,
+          0.19443,
+          0.210905,
+          0.28691500000000003,
+          0.32150500000000004,
+          0.34503,
+          0.40502499999999997,
+          0.40959,
+          0.4135,
+          0.47506,
+          0.476525,
+          0.48021499999999995,
+          0.5094575,
+          0.5421849999999999,
+          0.555055,
+          0.5709150000000001,
+          0.62702,
+          0.67723,
+          0.7226025,
+          0.847875,
+          0.8563975,
+          0.8978225,
+          0.98878
+        ],
+        "lastX": 0.98878,
+        "centerX": 0.4544
+      }
+    ],
+    "trackToCluster": {
+      "person-021": "cluster-0",
+      "person-018": "cluster-0",
+      "person-008": "cluster-0",
+      "person-017": "cluster-0",
+      "person-015": "cluster-0",
+      "person-022": "cluster-0",
+      "person-001": "cluster-0",
+      "person-025": "cluster-0",
+      "person-004": "cluster-0",
+      "person-014": "cluster-0",
+      "person-010": "cluster-0",
+      "person-002": "cluster-0",
+      "person-016": "cluster-0",
+      "person-027": "cluster-0",
+      "person-019": "cluster-0",
+      "person-023": "cluster-0",
+      "person-005": "cluster-0",
+      "person-020": "cluster-0",
+      "person-011": "cluster-0",
+      "person-006": "cluster-0",
+      "person-012": "cluster-0",
+      "person-026": "cluster-0",
+      "person-003": "cluster-0",
+      "person-024": "cluster-0",
+      "person-013": "cluster-0",
+      "person-007": "cluster-0",
+      "person-009": "cluster-0"
+    },
+    "clusterSpeech": {
+      "cluster-0": 40.97999999999996
+    },
+    "dominantClusterId": "cluster-0",
+    "speechByTrack": {
+      "person-003": 40.97999999999996
+    },
+    "turnsByTrack": {
+      "person-003": [
+        19.8306
+      ]
+    },
+    "medianTurnSeconds": 19.8306
+  },
+  "situations": [
+    {
+      "id": "situation-0",
+      "segmentId": "composition-0",
+      "start": 0.0,
+      "end": 4.048,
+      "confidence": 0.8827,
+      "confidenceLevel": "high",
+      "rawPolicy": "stable_wide",
+      "policy": "stable_wide",
+      "reason": "Acquire visible subjects conservatively without showing the complete horizontal source",
+      "physicalAction": false,
+      "requiredTrackIds": [
+        "person-003"
+      ],
+      "preferredTrackIds": [
+        "person-003"
+      ],
+      "conversationGroups": [],
+      "currentSpeakerTrackId": null,
+      "currentTurnSeconds": 0,
+      "currentClusterId": null,
+      "dominantClusterId": "cluster-0",
+      "visualAnchorTrackId": "person-003",
+      "rapidDialogue": false,
+      "hurriedBeat": false,
+      "balancedClusters": false,
+      "meaningfulReaction": false,
+      "evidenceVoid": false,
+      "compositionRequiredTrackIds": [
+        "person-003"
+      ],
+      "independentlyAddedTrackIds": [],
+      "missingTrackIds": [],
+      "weakTrackIds": [],
+      "reliableTrackIds": [
+        "person-001",
+        "person-002",
+        "person-003",
+        "person-004",
+        "person-005",
+        "person-006",
+        "7",
+        "15"
+      ],
+      "reliablePersonTrackIds": [
+        "person-001",
+        "person-002",
+        "person-003",
+        "person-004",
+        "person-005",
+        "person-006"
+      ],
+      "reliableRequiredTrackIds": [
+        "person-003"
+      ],
+      "reliablePreferredTrackIds": [
+        "person-003"
+      ],
+      "activeSpeakers": {},
+      "actionEpisodeIds": [],
+      "actionPhases": {},
+      "reactionIds": [
+        "r0"
+      ],
+      "importance": [
+        {
+          "trackId": "person-003",
+          "score": 0.52,
+          "reasons": [
+            "required by fused evidence"
+          ],
+          "class": "person",
+          "predicted": false
+        }
+      ],
+      "evidence": {
+        "mandatoryCoverage": 1.0,
+        "visibility": 1.0,
+        "detectionConfidence": 0.8937,
+        "continuityConfidence": 1,
+        "speakerConfidence": 0,
+        "actionConfidence": 0,
+        "storyConfidence": 0.7
+      }
+    },
+    {
+      "id": "situation-1",
+      "segmentId": "composition-1",
+      "start": 4.048,
+      "end": 5.588,
+      "confidence": 0.6921,
+      "confidenceLevel": "medium",
+      "rawPolicy": "widen_and_hold",
+      "policy": "widen_and_hold",
+      "reason": "Moderate confidence: reduce camera ambition",
+      "physicalAction": false,
+      "requiredTrackIds": [
+        "person-003"
+      ],
+      "preferredTrackIds": [
+        "person-003"
+      ],
+      "conversationGroups": [],
+      "currentSpeakerTrackId": "person-003",
+      "currentTurnSeconds": 19.831,
+      "currentClusterId": "cluster-0",
+      "dominantClusterId": "cluster-0",
+      "visualAnchorTrackId": "person-003",
+      "rapidDialogue": false,
+      "hurriedBeat": false,
+      "balancedClusters": false,
+      "meaningfulReaction": false,
+      "evidenceVoid": false,
+      "compositionRequiredTrackIds": [
+        "person-003"
+      ],
+      "independentlyAddedTrackIds": [],
+      "missingTrackIds": [],
+      "weakTrackIds": [],
+      "reliableTrackIds": [
+        "person-002",
+        "28",
+        "person-004",
+        "person-003"
+      ],
+      "reliablePersonTrackIds": [
+        "person-002",
+        "person-004",
+        "person-003"
+      ],
+      "reliableRequiredTrackIds": [
+        "person-003"
+      ],
+      "reliablePreferredTrackIds": [
+        "person-003"
+      ],
+      "activeSpeakers": {
+        "person-003": 0.42
+      },
+      "actionEpisodeIds": [],
+      "actionPhases": {},
+      "reactionIds": [
+        "r0"
+      ],
+      "importance": [
+        {
+          "trackId": "person-003",
+          "score": 0.6887,
+          "reasons": [
+            "required by fused evidence",
+            "audible active speaker"
+          ],
+          "class": "person",
+          "predicted": false
+        }
+      ],
+      "evidence": {
+        "mandatoryCoverage": 1.0,
+        "visibility": 0.4444,
+        "detectionConfidence": 0.9415,
+        "continuityConfidence": 1,
+        "speakerConfidence": 0.42,
+        "actionConfidence": 0,
+        "storyConfidence": 0.75
+      }
+    },
+    {
+      "id": "situation-2",
+      "segmentId": "composition-2",
+      "start": 5.588,
+      "end": 9.595,
+      "confidence": 0.5626,
+      "confidenceLevel": "low",
+      "rawPolicy": "stable_wide",
+      "policy": "stable_wide",
+      "reason": "Action evidence repaired the plan: hold one crop containing performer and object",
+      "physicalAction": true,
+      "requiredTrackIds": [
+        "person-003",
+        "person-006",
+        "70",
+        "32"
+      ],
+      "preferredTrackIds": [
+        "person-003",
+        "person-006",
+        "70",
+        "32"
+      ],
+      "conversationGroups": [],
+      "currentSpeakerTrackId": "person-003",
+      "currentTurnSeconds": 19.831,
+      "currentClusterId": "cluster-0",
+      "dominantClusterId": "cluster-0",
+      "visualAnchorTrackId": "person-003",
+      "rapidDialogue": false,
+      "hurriedBeat": false,
+      "balancedClusters": false,
+      "meaningfulReaction": false,
+      "evidenceVoid": false,
+      "compositionRequiredTrackIds": [
+        "person-003",
+        "person-006",
+        "70",
+        "32"
+      ],
+      "independentlyAddedTrackIds": [
+        "70"
+      ],
+      "missingTrackIds": [
+        "70"
+      ],
+      "weakTrackIds": [
+        "70",
+        "32"
+      ],
+      "reliableTrackIds": [
+        "person-004",
+        "person-003",
+        "person-006",
+        "person-007",
+        "person-008",
+        "person-009"
+      ],
+      "reliablePersonTrackIds": [
+        "person-004",
+        "person-003",
+        "person-006",
+        "person-007",
+        "person-008",
+        "person-009"
+      ],
+      "reliableRequiredTrackIds": [
+        "person-003",
+        "person-006"
+      ],
+      "reliablePreferredTrackIds": [
+        "person-003",
+        "person-006"
+      ],
+      "activeSpeakers": {
+        "person-003": 0.42
+      },
+      "actionEpisodeIds": [],
+      "actionPhases": {},
+      "reactionIds": [
+        "r0",
+        "r1"
+      ],
+      "importance": [
+        {
+          "trackId": "person-003",
+          "score": 0.805,
+          "reasons": [
+            "required by fused evidence",
+            "audible active speaker"
+          ],
+          "class": "person",
+          "predicted": false
+        },
+        {
+          "trackId": "person-006",
+          "score": 0.52,
+          "reasons": [
+            "required by fused evidence"
+          ],
+          "class": "person",
+          "predicted": false
+        },
+        {
+          "trackId": "32",
+          "score": 0.3956,
+          "reasons": [
+            "required by fused evidence"
+          ],
+          "class": "sports ball",
+          "predicted": false
+        },
+        {
+          "trackId": "70",
+          "score": 0.1456,
+          "reasons": [
+            "required by fused evidence",
+            "missing visual evidence"
+          ],
+          "class": null,
+          "predicted": false
+        }
+      ],
+      "evidence": {
+        "mandatoryCoverage": 0.5,
+        "visibility": 0.52,
+        "detectionConfidence": 0.6778,
+        "continuityConfidence": 0.75,
+        "speakerConfidence": 0.42,
+        "actionConfidence": 0,
+        "storyConfidence": 0.8
+      }
+    },
+    {
+      "id": "situation-3",
+      "segmentId": "composition-3",
+      "start": 9.595,
+      "end": 12.214,
+      "confidence": 0.743,
+      "confidenceLevel": "low",
+      "rawPolicy": "action_camera",
+      "policy": "action_camera",
+      "reason": "Keep the tracked performer and action object instead of falling back to the full source",
+      "physicalAction": true,
+      "requiredTrackIds": [
+        "person-006",
+        "70"
+      ],
+      "preferredTrackIds": [
+        "person-006",
+        "70"
+      ],
+      "conversationGroups": [],
+      "currentSpeakerTrackId": "person-003",
+      "currentTurnSeconds": 19.831,
+      "currentClusterId": "cluster-0",
+      "dominantClusterId": "cluster-0",
+      "visualAnchorTrackId": "person-007",
+      "rapidDialogue": false,
+      "hurriedBeat": false,
+      "balancedClusters": false,
+      "meaningfulReaction": false,
+      "evidenceVoid": false,
+      "compositionRequiredTrackIds": [
+        "person-006",
+        "70"
+      ],
+      "independentlyAddedTrackIds": [],
+      "missingTrackIds": [],
+      "weakTrackIds": [
+        "person-006"
+      ],
+      "reliableTrackIds": [
+        "person-007",
+        "70",
+        "81"
+      ],
+      "reliablePersonTrackIds": [
+        "person-007"
+      ],
+      "reliableRequiredTrackIds": [
+        "70"
+      ],
+      "reliablePreferredTrackIds": [
+        "70"
+      ],
+      "activeSpeakers": {
+        "person-003": 0.4581818181818182
+      },
+      "actionEpisodeIds": [
+        "a0"
+      ],
+      "actionPhases": {
+        "a0": "action"
+      },
+      "reactionIds": [
+        "r2"
+      ],
+      "importance": [
+        {
+          "trackId": "70",
+          "score": 0.9694,
+          "reasons": [
+            "required by fused evidence",
+            "moving object during action"
+          ],
+          "class": "sports ball",
+          "predicted": false
+        },
+        {
+          "trackId": "person-006",
+          "score": 0.7387,
+          "reasons": [
+            "required by fused evidence",
+            "action actor during action"
+          ],
+          "class": "person",
+          "predicted": false
+        },
+        {
+          "trackId": "person-003",
+          "score": 0.6401,
+          "reasons": [
+            "audible active speaker"
+          ],
+          "class": "person",
+          "predicted": false
+        }
+      ],
+      "evidence": {
+        "mandatoryCoverage": 0.5,
+        "visibility": 0.5294,
+        "detectionConfidence": 0.7685,
+        "continuityConfidence": 1,
+        "speakerConfidence": 0.4582,
+        "actionConfidence": 0.82,
+        "storyConfidence": 0.75
+      }
+    },
+    {
+      "id": "situation-4",
+      "segmentId": "composition-4",
+      "start": 12.268,
+      "end": 18.288,
+      "confidence": 0.3889,
+      "confidenceLevel": "low",
+      "rawPolicy": "stable_wide",
+      "policy": "stable_wide",
+      "reason": "Action evidence repaired the plan: hold one crop containing performer and object",
+      "physicalAction": true,
+      "requiredTrackIds": [
+        "person-003",
+        "81"
+      ],
+      "preferredTrackIds": [
+        "person-003",
+        "81"
+      ],
+      "conversationGroups": [],
+      "currentSpeakerTrackId": "person-003",
+      "currentTurnSeconds": 19.831,
+      "currentClusterId": "cluster-0",
+      "dominantClusterId": "cluster-0",
+      "visualAnchorTrackId": "person-011",
+      "rapidDialogue": false,
+      "hurriedBeat": false,
+      "balancedClusters": false,
+      "meaningfulReaction": false,
+      "evidenceVoid": false,
+      "compositionRequiredTrackIds": [
+        "person-003",
+        "81"
+      ],
+      "independentlyAddedTrackIds": [
+        "person-003"
+      ],
+      "missingTrackIds": [
+        "person-003"
+      ],
+      "weakTrackIds": [
+        "person-003"
+      ],
+      "reliableTrackIds": [
+        "person-011",
+        "person-012",
+        "person-013",
+        "81"
+      ],
+      "reliablePersonTrackIds": [
+        "person-011",
+        "person-012",
+        "person-013"
+      ],
+      "reliableRequiredTrackIds": [
+        "81"
+      ],
+      "reliablePreferredTrackIds": [
+        "81"
+      ],
+      "activeSpeakers": {
+        "person-003": 0.47307692307692306
+      },
+      "actionEpisodeIds": [],
+      "actionPhases": {},
+      "reactionIds": [
+        "r2",
+        "r3"
+      ],
+      "importance": [
+        {
+          "trackId": "81",
+          "score": 0.4951,
+          "reasons": [
+            "required by fused evidence"
+          ],
+          "class": "sports ball",
+          "predicted": false
+        },
+        {
+          "trackId": "person-003",
+          "score": 0.2291,
+          "reasons": [
+            "required by fused evidence",
+            "audible active speaker",
+            "missing visual evidence"
+          ],
+          "class": null,
+          "predicted": false
+        }
+      ],
+      "evidence": {
+        "mandatoryCoverage": 0.5,
+        "visibility": 0.4079,
+        "detectionConfidence": 0.2877,
+        "continuityConfidence": 0.5,
+        "speakerConfidence": 0.4731,
+        "actionConfidence": 0,
+        "storyConfidence": 0.7
+      }
+    },
+    {
+      "id": "situation-5",
+      "segmentId": "composition-5",
+      "start": 18.288,
+      "end": 19.011,
+      "confidence": 0.4685,
+      "confidenceLevel": "low",
+      "rawPolicy": "stable_wide",
+      "policy": "stable_wide",
+      "reason": "Sub-second story fragment uses one stable region instead of a new crop",
+      "physicalAction": true,
+      "requiredTrackIds": [
+        "person-003",
+        "person-016",
+        "139",
+        "person-019",
+        "156"
+      ],
+      "preferredTrackIds": [
+        "person-003",
+        "person-016",
+        "139",
+        "person-019",
+        "156"
+      ],
+      "conversationGroups": [],
+      "currentSpeakerTrackId": "person-003",
+      "currentTurnSeconds": 19.831,
+      "currentClusterId": "cluster-0",
+      "dominantClusterId": "cluster-0",
+      "visualAnchorTrackId": "person-016",
+      "rapidDialogue": false,
+      "hurriedBeat": true,
+      "balancedClusters": false,
+      "meaningfulReaction": false,
+      "evidenceVoid": false,
+      "compositionRequiredTrackIds": [
+        "person-003",
+        "person-016",
+        "139",
+        "person-019",
+        "156"
+      ],
+      "independentlyAddedTrackIds": [
+        "person-003",
+        "156"
+      ],
+      "missingTrackIds": [
+        "person-003",
+        "156"
+      ],
+      "weakTrackIds": [
+        "person-003",
+        "156"
+      ],
+      "reliableTrackIds": [
+        "81",
+        "person-015",
+        "person-016",
+        "person-017",
+        "person-018",
+        "person-019",
+        "person-020",
+        "person-021",
+        "139"
+      ],
+      "reliablePersonTrackIds": [
+        "person-015",
+        "person-016",
+        "person-017",
+        "person-018",
+        "person-019",
+        "person-020",
+        "person-021"
+      ],
+      "reliableRequiredTrackIds": [
+        "person-016",
+        "139",
+        "person-019"
+      ],
+      "reliablePreferredTrackIds": [
+        "person-016",
+        "139",
+        "person-019"
+      ],
+      "activeSpeakers": {
+        "person-003": 0.48
+      },
+      "actionEpisodeIds": [],
+      "actionPhases": {},
+      "reactionIds": [
+        "r3"
+      ],
+      "importance": [
+        {
+          "trackId": "person-016",
+          "score": 0.4862,
+          "reasons": [
+            "required by fused evidence"
+          ],
+          "class": "person",
+          "predicted": false
+        },
+        {
+          "trackId": "person-019",
+          "score": 0.4862,
+          "reasons": [
+            "required by fused evidence"
+          ],
+          "class": "person",
+          "predicted": false
+        },
+        {
+          "trackId": "139",
+          "score": 0.4524,
+          "reasons": [
+            "required by fused evidence"
+          ],
+          "class": "sports ball",
+          "predicted": false
+        },
+        {
+          "trackId": "person-003",
+          "score": 0.2296,
+          "reasons": [
+            "required by fused evidence",
+            "audible active speaker",
+            "missing visual evidence"
+          ],
+          "class": null,
+          "predicted": false
+        },
+        {
+          "trackId": "156",
+          "score": 0.1456,
+          "reasons": [
+            "required by fused evidence",
+            "missing visual evidence"
+          ],
+          "class": null,
+          "predicted": false
+        }
+      ],
+      "evidence": {
+        "mandatoryCoverage": 0.6,
+        "visibility": 0.4,
+        "detectionConfidence": 0.48,
+        "continuityConfidence": 0.6,
+        "speakerConfidence": 0.48,
+        "actionConfidence": 0,
+        "storyConfidence": 0.85
+      }
+    },
+    {
+      "id": "situation-6",
+      "segmentId": "composition-6",
+      "start": 19.011,
+      "end": 19.831,
+      "confidence": 0.8342,
+      "confidenceLevel": "high",
+      "rawPolicy": "action_camera",
+      "policy": "stable_subject",
+      "reason": "Sub-second story fragment inherits the established visible subject",
+      "physicalAction": true,
+      "requiredTrackIds": [
+        "person-016",
+        "139"
+      ],
+      "preferredTrackIds": [
+        "person-016"
+      ],
+      "conversationGroups": [],
+      "currentSpeakerTrackId": "person-003",
+      "currentTurnSeconds": 19.831,
+      "currentClusterId": "cluster-0",
+      "dominantClusterId": "cluster-0",
+      "visualAnchorTrackId": "person-016",
+      "rapidDialogue": false,
+      "hurriedBeat": true,
+      "balancedClusters": false,
+      "meaningfulReaction": false,
+      "evidenceVoid": false,
+      "compositionRequiredTrackIds": [
+        "person-016",
+        "139"
+      ],
+      "independentlyAddedTrackIds": [],
+      "missingTrackIds": [],
+      "weakTrackIds": [],
+      "reliableTrackIds": [
+        "person-015",
+        "person-016",
+        "person-017",
+        "person-018",
+        "person-019",
+        "139",
+        "144",
+        "145"
+      ],
+      "reliablePersonTrackIds": [
+        "person-015",
+        "person-016",
+        "person-017",
+        "person-018",
+        "person-019"
+      ],
+      "reliableRequiredTrackIds": [
+        "person-016",
+        "139"
+      ],
+      "reliablePreferredTrackIds": [
+        "person-016",
+        "139"
+      ],
+      "activeSpeakers": {
+        "person-003": 0.48
+      },
+      "actionEpisodeIds": [
+        "a1"
+      ],
+      "actionPhases": {
+        "a1": "action"
+      },
+      "reactionIds": [
+        "r4"
+      ],
+      "importance": [
+        {
+          "trackId": "person-016",
+          "score": 0.94,
+          "reasons": [
+            "required by fused evidence",
+            "action actor during action"
+          ],
+          "class": "person",
+          "predicted": false
+        },
+        {
+          "trackId": "139",
+          "score": 0.9133,
+          "reasons": [
+            "required by fused evidence",
+            "moving object during action"
+          ],
+          "class": "sports ball",
+          "predicted": false
+        },
+        {
+          "trackId": "person-003",
+          "score": 0.2296,
+          "reasons": [
+            "audible active speaker",
+            "missing visual evidence"
+          ],
+          "class": null,
+          "predicted": false
+        }
+      ],
+      "evidence": {
+        "mandatoryCoverage": 1.0,
+        "visibility": 0.8333,
+        "detectionConfidence": 0.7259,
+        "continuityConfidence": 1,
+        "speakerConfidence": 0.48,
+        "actionConfidence": 0.82,
+        "storyConfidence": 0.8
+      }
+    },
+    {
+      "id": "situation-7",
+      "segmentId": "composition-7",
+      "start": 19.831,
+      "end": 21.01,
+      "confidence": 0.6641,
+      "confidenceLevel": "medium",
+      "rawPolicy": "stable_wide",
+      "policy": "stable_wide",
+      "reason": "Action evidence repaired the plan: hold one crop containing performer and object",
+      "physicalAction": true,
+      "requiredTrackIds": [
+        "139",
+        "person-019",
+        "156",
+        "person-018",
+        "person-022"
+      ],
+      "preferredTrackIds": [
+        "139",
+        "person-019",
+        "156",
+        "person-018",
+        "person-022"
+      ],
+      "conversationGroups": [],
+      "currentSpeakerTrackId": "person-003",
+      "currentTurnSeconds": 19.831,
+      "currentClusterId": "cluster-0",
+      "dominantClusterId": "cluster-0",
+      "visualAnchorTrackId": "person-016",
+      "rapidDialogue": false,
+      "hurriedBeat": true,
+      "balancedClusters": false,
+      "meaningfulReaction": false,
+      "evidenceVoid": false,
+      "compositionRequiredTrackIds": [
+        "person-019",
+        "156",
+        "person-018",
+        "person-022"
+      ],
+      "independentlyAddedTrackIds": [
+        "139",
+        "person-019"
+      ],
+      "missingTrackIds": [],
+      "weakTrackIds": [],
+      "reliableTrackIds": [
+        "person-016",
+        "person-018",
+        "156",
+        "person-022",
+        "person-015",
+        "170",
+        "172",
+        "139"
+      ],
+      "reliablePersonTrackIds": [
+        "person-016",
+        "person-018",
+        "person-022",
+        "person-015"
+      ],
+      "reliableRequiredTrackIds": [
+        "139",
+        "156",
+        "person-018",
+        "person-022"
+      ],
+      "reliablePreferredTrackIds": [
+        "139",
+        "156",
+        "person-018",
+        "person-022"
+      ],
+      "activeSpeakers": {
+        "person-003": 0.48
+      },
+      "actionEpisodeIds": [
+        "a1",
+        "a2"
+      ],
+      "actionPhases": {
+        "a1": "outcome",
+        "a2": "action"
+      },
+      "reactionIds": [
+        "r4"
+      ],
+      "importance": [
+        {
+          "trackId": "156",
+          "score": 0.9629,
+          "reasons": [
+            "required by fused evidence",
+            "moving object during action"
+          ],
+          "class": "sports ball",
+          "predicted": false
+        },
+        {
+          "trackId": "person-022",
+          "score": 0.7895,
+          "reasons": [
+            "required by fused evidence",
+            "action target during action"
+          ],
+          "class": "person",
+          "predicted": false
+        },
+        {
+          "trackId": "139",
+          "score": 0.72,
+          "reasons": [
+            "required by fused evidence",
+            "moving object during outcome",
+            "short-term continuity prediction"
+          ],
+          "class": "sports ball",
+          "predicted": true
+        },
+        {
+          "trackId": "person-018",
+          "score": 0.6982,
+          "reasons": [
+            "required by fused evidence",
+            "action target during action"
+          ],
+          "class": "person",
+          "predicted": false
+        },
+        {
+          "trackId": "person-019",
+          "score": 0.6768,
+          "reasons": [
+            "required by fused evidence",
+            "action actor during action",
+            "short-term continuity prediction"
+          ],
+          "class": "person",
+          "predicted": true
+        },
+        {
+          "trackId": "person-016",
+          "score": 0.62,
+          "reasons": [
+            "action actor during outcome"
+          ],
+          "class": "person",
+          "predicted": false
+        },
+        {
+          "trackId": "person-003",
+          "score": 0.2296,
+          "reasons": [
+            "audible active speaker",
+            "missing visual evidence"
+          ],
+          "class": null,
+          "predicted": false
+        }
+      ],
+      "evidence": {
+        "mandatoryCoverage": 1.0,
+        "visibility": 0.4908,
+        "detectionConfidence": 0.6247,
+        "continuityConfidence": 0.7383,
+        "speakerConfidence": 0.48,
+        "actionConfidence": 0.82,
+        "storyConfidence": 0.8
+      }
+    },
+    {
+      "id": "situation-8",
+      "segmentId": "composition-8",
+      "start": 21.828,
+      "end": 25.108,
+      "confidence": 0.1995,
+      "confidenceLevel": "low",
+      "rawPolicy": "stable_wide",
+      "policy": "stable_wide",
+      "reason": "Evidence is uncertain but a reliable subject region exists",
+      "physicalAction": false,
+      "requiredTrackIds": [
+        "person-003"
+      ],
+      "preferredTrackIds": [
+        "person-003"
+      ],
+      "conversationGroups": [],
+      "currentSpeakerTrackId": "person-003",
+      "currentTurnSeconds": 19.831,
+      "currentClusterId": "cluster-0",
+      "dominantClusterId": "cluster-0",
+      "visualAnchorTrackId": "person-018",
+      "rapidDialogue": false,
+      "hurriedBeat": false,
+      "balancedClusters": false,
+      "meaningfulReaction": false,
+      "evidenceVoid": false,
+      "compositionRequiredTrackIds": [
+        "person-003"
+      ],
+      "independentlyAddedTrackIds": [],
+      "missingTrackIds": [
+        "person-003"
+      ],
+      "weakTrackIds": [
+        "person-003"
+      ],
+      "reliableTrackIds": [
+        "person-018",
+        "person-023",
+        "person-016"
+      ],
+      "reliablePersonTrackIds": [
+        "person-018",
+        "person-023",
+        "person-016"
+      ],
+      "reliableRequiredTrackIds": [],
+      "reliablePreferredTrackIds": [],
+      "activeSpeakers": {
+        "person-003": 0.48
+      },
+      "actionEpisodeIds": [],
+      "actionPhases": {},
+      "reactionIds": [
+        "r6",
+        "r7"
+      ],
+      "importance": [
+        {
+          "trackId": "person-003",
+          "score": 0.2296,
+          "reasons": [
+            "required by fused evidence",
+            "audible active speaker",
+            "missing visual evidence"
+          ],
+          "class": null,
+          "predicted": false
+        }
+      ],
+      "evidence": {
+        "mandatoryCoverage": 0.0,
+        "visibility": 0,
+        "detectionConfidence": 0,
+        "continuityConfidence": 0,
+        "speakerConfidence": 0.48,
+        "actionConfidence": 0,
+        "storyConfidence": 0.75
+      }
+    },
+    {
+      "id": "situation-9",
+      "segmentId": "composition-9",
+      "start": 25.108,
+      "end": 25.428,
+      "confidence": 0.8479,
+      "confidenceLevel": "high",
+      "rawPolicy": "execute_plan",
+      "policy": "stable_subject",
+      "reason": "Sub-second story fragment inherits the established visible subject",
+      "physicalAction": false,
+      "requiredTrackIds": [
+        "person-016",
+        "person-018"
+      ],
+      "preferredTrackIds": [
+        "person-018"
+      ],
+      "conversationGroups": [],
+      "currentSpeakerTrackId": null,
+      "currentTurnSeconds": 0,
+      "currentClusterId": null,
+      "dominantClusterId": "cluster-0",
+      "visualAnchorTrackId": "person-018",
+      "rapidDialogue": false,
+      "hurriedBeat": true,
+      "balancedClusters": false,
+      "meaningfulReaction": false,
+      "evidenceVoid": false,
+      "compositionRequiredTrackIds": [
+        "person-016",
+        "person-018"
+      ],
+      "independentlyAddedTrackIds": [],
+      "missingTrackIds": [],
+      "weakTrackIds": [],
+      "reliableTrackIds": [
+        "person-016",
+        "person-018",
+        "person-024",
+        "person-025",
+        "person-026",
+        "person-027"
+      ],
+      "reliablePersonTrackIds": [
+        "person-016",
+        "person-018",
+        "person-024",
+        "person-025",
+        "person-026",
+        "person-027"
+      ],
+      "reliableRequiredTrackIds": [
+        "person-016",
+        "person-018"
+      ],
+      "reliablePreferredTrackIds": [
+        "person-016",
+        "person-018"
+      ],
+      "activeSpeakers": {},
+      "actionEpisodeIds": [],
+      "actionPhases": {},
+      "reactionIds": [
+        "r7"
+      ],
+      "importance": [
+        {
+          "trackId": "person-016",
+          "score": 0.52,
+          "reasons": [
+            "required by fused evidence"
+          ],
+          "class": "person",
+          "predicted": false
+        },
+        {
+          "trackId": "person-018",
+          "score": 0.52,
+          "reasons": [
+            "required by fused evidence"
+          ],
+          "class": "person",
+          "predicted": false
+        }
+      ],
+      "evidence": {
+        "mandatoryCoverage": 1.0,
+        "visibility": 1.0,
+        "detectionConfidence": 0.8794,
+        "continuityConfidence": 1,
+        "speakerConfidence": 0,
+        "actionConfidence": 0,
+        "storyConfidence": 0.6
+      }
+    }
+  ],
+  "policy": {
+    "independentEvidenceFusion": true,
+    "phaseAwareActionRoles": true,
+    "shortOcclusionPredictionSeconds": 0.9,
+    "confidenceHysteresis": true,
+    "minimumPolicyHoldSeconds": 1.35,
+    "minimumDialogueShotSeconds": 2.2,
+    "minimumVisualShotSeconds": 2.6,
+    "visualNarrativeAnchorMemory": true,
+    "transcriptSpeakerGrounding": true,
+    "nonSpeakerActionAnchors": true,
+    "fullSourceFallbackRequiresEvidenceVoid": true,
+    "dominanceUsesNarrativeAndSpeechNotBodySize": true,
+    "silentBystandersAreNotPromoted": true,
+    "hurriedSpeakerReactionUsesTwoViews": true,
+    "apiMayOverrideSafety": false
+  }
+}

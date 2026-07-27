@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "1.0",
+  "status": "complete",
+  "runId": "run-2026-07-26T04-15-56-822Z",
+  "folder": "C:\\Users\\sayan\\Downloads\\clipperx-v4.8.0-capability-tested-speaker-grounding\\clipperx-ui\\runtime\\projects\\c2ed74f0\\logs\\run-2026-07-26T04-15-56-822Z",
+  "startedAt": "2026-07-26T04:16:00.085749+00:00",
+  "metadata": {
+    "input": "Test_2.mp4",
+    "profile": "Action",
+    "provider": null,
+    "model": null,
+    "semiAutomated": true
+  },
+  "events": 19,
+  "modelCalls": 0,
+  "finishedAt": "2026-07-26T04:19:32.964368+00:00",
+  "finalStage": "AwaitingExternalAI",
+  "manifest": "manifest.json"
+}

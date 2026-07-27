@@ -1,0 +1,678 @@
+{
+  "schemaVersion": "1.0",
+  "suite": "clipperx-50-take-reliability",
+  "releaseGateRequiresCases": 50,
+  "targets": {
+    "geometricDistortionCount": 0,
+    "strokeOrInsetCount": 0,
+    "blankOrRedundantSplitCount": 0,
+    "bodySafetyRate": 0.98,
+    "requiredActionCoverage": 0.95,
+    "openingFocusAccuracy": 0.9,
+    "splitDecisionAccuracy": 0.9,
+    "continuousActionAccuracy": 0.95,
+    "importantObjectCoverage": 0.95,
+    "cameraCorrectionsPerMinute": 1.0,
+    "humanPreferenceRate": 0.7,
+    "catastrophicFailures": 0,
+    "P0Failures": 0,
+    "P1Failures": 2
+  },
+  "severity": {
+    "P0": "Story is wrong, action/outcome is lost, geometry is distorted, or output is unusable.",
+    "P1": "Major framing, split, body-safety, opening-focus, or continuity failure.",
+    "P2": "Visible polish problem that does not change story comprehension."
+  },
+  "cases": [
+    {
+      "id": "dialogue-01",
+      "category": "dialogue",
+      "scenario": "single-speaker",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "dialogue-02",
+      "category": "dialogue",
+      "scenario": "nearby-pair",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "dialogue-03",
+      "category": "dialogue",
+      "scenario": "separated-pair",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "dialogue-04",
+      "category": "dialogue",
+      "scenario": "three-person-turns",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "dialogue-05",
+      "category": "dialogue",
+      "scenario": "six-person-conversation",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "dialogue-06",
+      "category": "dialogue",
+      "scenario": "overlap",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "dialogue-07",
+      "category": "dialogue",
+      "scenario": "silent-reaction",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "dialogue-08",
+      "category": "dialogue",
+      "scenario": "speaker-exits",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "dialogue-09",
+      "category": "dialogue",
+      "scenario": "occluded-speaker",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "dialogue-10",
+      "category": "dialogue",
+      "scenario": "rapid-turns",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "sports-action-01",
+      "category": "sports-action",
+      "scenario": "penalty-goal",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "sports-action-02",
+      "category": "sports-action",
+      "scenario": "goalkeeper-save",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "sports-action-03",
+      "category": "sports-action",
+      "scenario": "shot-miss",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "sports-action-04",
+      "category": "sports-action",
+      "scenario": "passing-sequence",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "sports-action-05",
+      "category": "sports-action",
+      "scenario": "fast-ball",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "sports-action-06",
+      "category": "sports-action",
+      "scenario": "hidden-ball",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "sports-action-07",
+      "category": "sports-action",
+      "scenario": "camera-shake",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "sports-action-08",
+      "category": "sports-action",
+      "scenario": "wide-field-action",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "sports-action-09",
+      "category": "sports-action",
+      "scenario": "celebration",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "sports-action-10",
+      "category": "sports-action",
+      "scenario": "action-replay",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "games-objects-01",
+      "category": "games-objects",
+      "scenario": "cube-toss",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "games-objects-02",
+      "category": "games-objects",
+      "scenario": "dice-roll",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "games-objects-03",
+      "category": "games-objects",
+      "scenario": "card-reveal",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "games-objects-04",
+      "category": "games-objects",
+      "scenario": "tabletop-token",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "games-objects-05",
+      "category": "games-objects",
+      "scenario": "object-pass",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "games-objects-06",
+      "category": "games-objects",
+      "scenario": "small-object-hands",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "games-objects-07",
+      "category": "games-objects",
+      "scenario": "occluded-object",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "games-objects-08",
+      "category": "games-objects",
+      "scenario": "multiple-moving-objects",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "games-objects-09",
+      "category": "games-objects",
+      "scenario": "result-reveal",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "games-objects-10",
+      "category": "games-objects",
+      "scenario": "game-reaction",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "group-reactions-01",
+      "category": "group-reactions",
+      "scenario": "pair-laughter",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "group-reactions-02",
+      "category": "group-reactions",
+      "scenario": "group-laughter",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "group-reactions-03",
+      "category": "group-reactions",
+      "scenario": "single-reactor",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "group-reactions-04",
+      "category": "group-reactions",
+      "scenario": "simultaneous-reactors",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "group-reactions-05",
+      "category": "group-reactions",
+      "scenario": "irrelevant-background-motion",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "group-reactions-06",
+      "category": "group-reactions",
+      "scenario": "joke-payoff",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "group-reactions-07",
+      "category": "group-reactions",
+      "scenario": "surprise",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "group-reactions-08",
+      "category": "group-reactions",
+      "scenario": "argument",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "group-reactions-09",
+      "category": "group-reactions",
+      "scenario": "agreement",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "group-reactions-10",
+      "category": "group-reactions",
+      "scenario": "silent-expression",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "adversarial-01",
+      "category": "adversarial",
+      "scenario": "poor-light",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "adversarial-02",
+      "category": "adversarial",
+      "scenario": "motion-blur",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "adversarial-03",
+      "category": "adversarial",
+      "scenario": "low-resolution",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "adversarial-04",
+      "category": "adversarial",
+      "scenario": "similar-people",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "adversarial-05",
+      "category": "adversarial",
+      "scenario": "edge-subject",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "adversarial-06",
+      "category": "adversarial",
+      "scenario": "fast-cuts",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "adversarial-07",
+      "category": "adversarial",
+      "scenario": "existing-graphics",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "adversarial-08",
+      "category": "adversarial",
+      "scenario": "unusual-aspect",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "adversarial-09",
+      "category": "adversarial",
+      "scenario": "tracker-loss",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    },
+    {
+      "id": "adversarial-10",
+      "category": "adversarial",
+      "scenario": "bad-api-advice",
+      "source": "input.mp4",
+      "candidate": "candidate/output.mp4",
+      "baselines": {
+        "center": "baselines/center.mp4",
+        "general": "baselines/general.mp4"
+      },
+      "scorecard": "scorecard.json",
+      "status": "missing_media"
+    }
+  ]
+}

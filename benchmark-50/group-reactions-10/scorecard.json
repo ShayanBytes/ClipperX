@@ -1,0 +1,19 @@
+{
+  "caseId": "group-reactions-10",
+  "reviewStatus": "pending",
+  "reviewer": "",
+  "observations": {
+    "geometricDistortionCount": null,
+    "strokeOrInsetCount": null,
+    "blankOrRedundantSplitCount": null,
+    "openingFocusCorrect": null,
+    "splitDecisionCorrect": null,
+    "continuousActionPreserved": null,
+    "importantObjectCoverage": null,
+    "cameraCorrectionsPerMinute": null,
+    "humanPreference": "unreviewed",
+    "catastrophicFailures": [],
+    "issues": []
+  },
+  "notes": "Compare candidate against source, center baseline and GENERAL baseline before scoring."
+}

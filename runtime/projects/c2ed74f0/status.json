@@ -1,0 +1,7 @@
+{
+  "stage": "Failed during Adaptive intelligence \u00b7 calibrating to this video",
+  "progress": 66,
+  "updatedAt": "2026-07-26T04:49:29.270336+00:00",
+  "error": "max() iterable argument is empty",
+  "crashReport": "crash-report.json"
+}

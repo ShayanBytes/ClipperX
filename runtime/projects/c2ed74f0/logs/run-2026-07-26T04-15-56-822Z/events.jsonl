@@ -1,0 +1,19 @@
+{"time": "2026-07-26T04:16:00.334028+00:00", "type": "status", "stage": "Stage 9 · balanced hardware profile", "progress": 2, "updatedAt": "2026-07-26T04:16:00.322135+00:00", "runtimeProfile": {"name": "balanced", "analysisFps": 6.0, "maxPeople": 8, "whisperModel": "base", "yoloModel": "yolo11n.pt", "openVocabulary": false, "workerThreads": 4, "estimatedMemoryGb": 4.5, "effectiveAnalysisFps": 6.0, "effectiveMaxPeople": 8, "effectiveWhisperModel": "base", "effectiveYoloModel": "yolo11n.pt"}}
+{"time": "2026-07-26T04:16:00.606621+00:00", "type": "status", "stage": "Scene detection", "progress": 5, "updatedAt": "2026-07-26T04:16:00.599386+00:00"}
+{"time": "2026-07-26T04:16:57.157622+00:00", "type": "status", "stage": "YOLO + ByteTrack + face tracking", "progress": 12, "updatedAt": "2026-07-26T04:16:57.152076+00:00"}
+{"time": "2026-07-26T04:18:07.879003+00:00", "type": "status", "stage": "Stage 4 · estimating global camera motion", "progress": 18, "updatedAt": "2026-07-26T04:18:07.867058+00:00"}
+{"time": "2026-07-26T04:19:01.804466+00:00", "type": "status", "stage": "Stage 4 · open-vocabulary small-object grounding", "progress": 24, "updatedAt": "2026-07-26T04:19:01.795601+00:00"}
+{"time": "2026-07-26T04:19:01.812353+00:00", "type": "status", "stage": "Stage 4 · persistent identity stitching", "progress": 29, "updatedAt": "2026-07-26T04:19:01.805121+00:00"}
+{"time": "2026-07-26T04:19:01.826704+00:00", "type": "status", "stage": "Stage 4 · interaction and gaze grounding", "progress": 32, "updatedAt": "2026-07-26T04:19:01.819536+00:00"}
+{"time": "2026-07-26T04:19:02.009633+00:00", "type": "status", "stage": "Whisper + VAD + diarization", "progress": 35, "updatedAt": "2026-07-26T04:19:02.003540+00:00"}
+{"time": "2026-07-26T04:19:32.451926+00:00", "type": "status", "stage": "Stage 6 · reconstructing object trajectories", "progress": 36, "updatedAt": "2026-07-26T04:19:32.446250+00:00"}
+{"time": "2026-07-26T04:19:32.459233+00:00", "type": "status", "stage": "Stage 6 · identifying actors, releases and targets", "progress": 37, "updatedAt": "2026-07-26T04:19:32.453951+00:00"}
+{"time": "2026-07-26T04:19:32.465312+00:00", "type": "status", "stage": "Stage 6 · verifying action outcomes", "progress": 38, "updatedAt": "2026-07-26T04:19:32.460607+00:00"}
+{"time": "2026-07-26T04:19:32.476913+00:00", "type": "status", "stage": "Stage 5 · extracting pitch, energy and rhythm", "progress": 39, "updatedAt": "2026-07-26T04:19:32.471154+00:00"}
+{"time": "2026-07-26T04:19:32.634387+00:00", "type": "status", "stage": "Stage 5 · reconstructing conversational turns", "progress": 42, "updatedAt": "2026-07-26T04:19:32.628252+00:00"}
+{"time": "2026-07-26T04:19:32.645642+00:00", "type": "status", "stage": "Stage 5 · detecting laughter and group reactions", "progress": 46, "updatedAt": "2026-07-26T04:19:32.639612+00:00"}
+{"time": "2026-07-26T04:19:32.669251+00:00", "type": "status", "stage": "Stage 6 · connecting outcomes to reactions", "progress": 47, "updatedAt": "2026-07-26T04:19:32.662854+00:00"}
+{"time": "2026-07-26T04:19:32.680059+00:00", "type": "status", "stage": "Mouth-motion active speaker mapping", "progress": 48, "updatedAt": "2026-07-26T04:19:32.674794+00:00"}
+{"time": "2026-07-26T04:19:32.693032+00:00", "type": "status", "stage": "Stage 5 · attaching voices and visible people", "progress": 49, "updatedAt": "2026-07-26T04:19:32.687699+00:00"}
+{"time": "2026-07-26T04:19:32.790819+00:00", "type": "status", "stage": "Stage 1 · building multimodal story evidence", "progress": 50, "updatedAt": "2026-07-26T04:19:32.784940+00:00"}
+{"time": "2026-07-26T04:19:32.933247+00:00", "type": "status", "stage": "Waiting for pasted external AI JSON", "progress": 58, "updatedAt": "2026-07-26T04:19:32.927845+00:00", "manifest": {"status": "AwaitingExternalAI", "progress": 58, "stage": "Waiting for pasted external AI JSON", "outputs": {"semiAutomatedRequest": "semi-automated-request.json"}}}

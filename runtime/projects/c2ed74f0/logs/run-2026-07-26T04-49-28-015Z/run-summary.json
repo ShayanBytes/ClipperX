@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0",
+  "status": "failed",
+  "runId": "run-2026-07-26T04-49-28-015Z",
+  "folder": "C:\\Users\\sayan\\Downloads\\clipperx-v4.8.0-capability-tested-speaker-grounding\\clipperx-ui\\runtime\\projects\\c2ed74f0\\logs\\run-2026-07-26T04-49-28-015Z",
+  "startedAt": "2026-07-26T04:49:28.758400+00:00",
+  "metadata": {
+    "input": "Test_2.mp4",
+    "profile": "Action",
+    "provider": null,
+    "model": null,
+    "semiAutomated": true
+  },
+  "events": 16,
+  "modelCalls": 2,
+  "finishedAt": "2026-07-26T04:49:29.316190+00:00",
+  "finalStage": "Adaptive intelligence \u00b7 calibrating to this video",
+  "error": "max() iterable argument is empty",
+  "crashReport": "crash-report.json"
+}

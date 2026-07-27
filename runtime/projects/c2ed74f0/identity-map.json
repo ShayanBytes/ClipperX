@@ -1,0 +1,310 @@
+{
+  "identities": [
+    {
+      "canonicalId": "person-001",
+      "sourceTrackIds": [
+        "1"
+      ],
+      "start": 0.0,
+      "end": 12.3142,
+      "confidence": 0.7
+    },
+    {
+      "canonicalId": "person-002",
+      "sourceTrackIds": [
+        "2"
+      ],
+      "start": 0.0,
+      "end": 4.4779,
+      "confidence": 0.7
+    },
+    {
+      "canonicalId": "person-003",
+      "sourceTrackIds": [
+        "3"
+      ],
+      "start": 0.0,
+      "end": 9.9153,
+      "confidence": 0.7
+    },
+    {
+      "canonicalId": "person-004",
+      "sourceTrackIds": [
+        "4",
+        "29"
+      ],
+      "start": 0.0,
+      "end": 9.9153,
+      "confidence": 0.972
+    },
+    {
+      "canonicalId": "person-005",
+      "sourceTrackIds": [
+        "5"
+      ],
+      "start": 0.0,
+      "end": 3.9981,
+      "confidence": 0.7
+    },
+    {
+      "canonicalId": "person-006",
+      "sourceTrackIds": [
+        "6",
+        "71",
+        "0"
+      ],
+      "start": 0.0,
+      "end": 12.3142,
+      "confidence": 0.95
+    },
+    {
+      "canonicalId": "person-007",
+      "sourceTrackIds": [
+        "30"
+      ],
+      "start": 5.7573,
+      "end": 10.0752,
+      "confidence": 0.7
+    },
+    {
+      "canonicalId": "person-008",
+      "sourceTrackIds": [
+        "31"
+      ],
+      "start": 5.7573,
+      "end": 9.5955,
+      "confidence": 0.7
+    },
+    {
+      "canonicalId": "person-009",
+      "sourceTrackIds": [
+        "47"
+      ],
+      "start": 6.7168,
+      "end": 7.6764,
+      "confidence": 0.7
+    },
+    {
+      "canonicalId": "person-010",
+      "sourceTrackIds": [
+        "57"
+      ],
+      "start": 9.7554,
+      "end": 10.0752,
+      "confidence": 0.7
+    },
+    {
+      "canonicalId": "person-011",
+      "sourceTrackIds": [
+        "84"
+      ],
+      "start": 12.4741,
+      "end": 18.2314,
+      "confidence": 0.7
+    },
+    {
+      "canonicalId": "person-012",
+      "sourceTrackIds": [
+        "70"
+      ],
+      "start": 12.4741,
+      "end": 16.7921,
+      "confidence": 0.7
+    },
+    {
+      "canonicalId": "person-013",
+      "sourceTrackIds": [
+        "86"
+      ],
+      "start": 12.634,
+      "end": 15.0329,
+      "confidence": 0.7
+    },
+    {
+      "canonicalId": "person-014",
+      "sourceTrackIds": [
+        "92"
+      ],
+      "start": 14.873,
+      "end": 16.952,
+      "confidence": 0.7
+    },
+    {
+      "canonicalId": "person-015",
+      "sourceTrackIds": [
+        "122"
+      ],
+      "start": 18.5512,
+      "end": 20.6303,
+      "confidence": 0.7
+    },
+    {
+      "canonicalId": "person-016",
+      "sourceTrackIds": [
+        "125"
+      ],
+      "start": 18.5512,
+      "end": 25.2681,
+      "confidence": 0.7
+    },
+    {
+      "canonicalId": "person-017",
+      "sourceTrackIds": [
+        "126"
+      ],
+      "start": 18.5512,
+      "end": 19.9906,
+      "confidence": 0.7
+    },
+    {
+      "canonicalId": "person-018",
+      "sourceTrackIds": [
+        "127"
+      ],
+      "start": 18.5512,
+      "end": 25.2681,
+      "confidence": 0.7
+    },
+    {
+      "canonicalId": "person-019",
+      "sourceTrackIds": [
+        "128"
+      ],
+      "start": 18.5512,
+      "end": 23.0291,
+      "confidence": 0.7
+    },
+    {
+      "canonicalId": "person-020",
+      "sourceTrackIds": [
+        "130"
+      ],
+      "start": 18.5512,
+      "end": 18.7112,
+      "confidence": 0.7
+    },
+    {
+      "canonicalId": "person-021",
+      "sourceTrackIds": [
+        "136"
+      ],
+      "start": 18.7112,
+      "end": 18.8711,
+      "confidence": 0.7
+    },
+    {
+      "canonicalId": "person-022",
+      "sourceTrackIds": [
+        "162"
+      ],
+      "start": 20.1505,
+      "end": 22.8692,
+      "confidence": 0.7
+    },
+    {
+      "canonicalId": "person-023",
+      "sourceTrackIds": [
+        "179",
+        "189"
+      ],
+      "start": 22.0696,
+      "end": 24.9482,
+      "confidence": 0.921
+    },
+    {
+      "canonicalId": "person-024",
+      "sourceTrackIds": [
+        "190"
+      ],
+      "start": 25.2681,
+      "end": 25.2681,
+      "confidence": 0.7
+    },
+    {
+      "canonicalId": "person-025",
+      "sourceTrackIds": [
+        "191"
+      ],
+      "start": 25.2681,
+      "end": 25.2681,
+      "confidence": 0.7
+    },
+    {
+      "canonicalId": "person-026",
+      "sourceTrackIds": [
+        "192"
+      ],
+      "start": 25.2681,
+      "end": 25.2681,
+      "confidence": 0.7
+    },
+    {
+      "canonicalId": "person-027",
+      "sourceTrackIds": [
+        "193"
+      ],
+      "start": 25.2681,
+      "end": 25.2681,
+      "confidence": 0.7
+    }
+  ],
+  "sourceToCanonical": {
+    "1": "person-001",
+    "2": "person-002",
+    "3": "person-003",
+    "4": "person-004",
+    "29": "person-004",
+    "5": "person-005",
+    "6": "person-006",
+    "71": "person-006",
+    "0": "person-006",
+    "30": "person-007",
+    "31": "person-008",
+    "47": "person-009",
+    "57": "person-010",
+    "84": "person-011",
+    "70": "person-012",
+    "86": "person-013",
+    "92": "person-014",
+    "122": "person-015",
+    "125": "person-016",
+    "126": "person-017",
+    "127": "person-018",
+    "128": "person-019",
+    "130": "person-020",
+    "136": "person-021",
+    "162": "person-022",
+    "179": "person-023",
+    "189": "person-023",
+    "190": "person-024",
+    "191": "person-025",
+    "192": "person-026",
+    "193": "person-027"
+  },
+  "matches": [
+    {
+      "from": "4",
+      "to": "29",
+      "similarity": 0.9716,
+      "gap": 0.32
+    },
+    {
+      "from": "6",
+      "to": "71",
+      "similarity": 0.9059,
+      "gap": 0.48
+    },
+    {
+      "from": "6",
+      "to": "0",
+      "similarity": 0.9502,
+      "gap": 2.719
+    },
+    {
+      "from": "179",
+      "to": "189",
+      "similarity": 0.9214,
+      "gap": 0.64
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+ClipperX diagnostic summary
+Run: run-2026-07-26T04-49-28-015Z
+Status: failed
+Started: 2026-07-26T04:49:28.758400+00:00
+Finished: 2026-07-26T04:49:29.316190+00:00
+Recorded events: 16
+AI model calls: 2
+Final stage: Adaptive intelligence · calibrating to this video
+Error: max() iterable argument is empty
+
+Share run-summary.json, model-usage.jsonl, events.jsonl, orchestrator-report.json, and the end of engine-console.log for diagnosis.
+API keys and credentials are never written to these files.

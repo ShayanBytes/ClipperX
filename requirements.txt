@@ -1,0 +1,9 @@
+numpy>=1.26,<3
+opencv-python>=4.9
+ultralytics>=8.3
+faster-whisper>=1.1
+scenedetect[opencv]>=0.6.5
+mediapipe>=0.10.14
+scipy>=1.12
+soundfile>=0.12
+requests>=2.32

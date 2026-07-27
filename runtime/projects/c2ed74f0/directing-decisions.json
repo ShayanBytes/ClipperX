@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "1.2",
+  "stage": "confidence-temporal-director",
+  "decisions": [
+    {
+      "segmentId": "composition-0",
+      "before": "single_focus",
+      "after": "stable_wide",
+      "rawPolicy": "stable_wide",
+      "policy": "stable_wide",
+      "confidence": 0.8827,
+      "reason": "Acquire visible subjects conservatively without showing the complete horizontal source"
+    },
+    {
+      "segmentId": "composition-1",
+      "before": "single_focus",
+      "after": "single_focus",
+      "rawPolicy": "widen_and_hold",
+      "policy": "widen_and_hold",
+      "confidence": 0.6921,
+      "reason": "Moderate confidence: reduce camera ambition"
+    },
+    {
+      "segmentId": "composition-2",
+      "before": "action_pan",
+      "after": "stable_wide",
+      "rawPolicy": "stable_wide",
+      "policy": "stable_wide",
+      "confidence": 0.5626,
+      "reason": "Action evidence repaired the plan: hold one crop containing performer and object"
+    },
+    {
+      "segmentId": "composition-3",
+      "before": "action_pan",
+      "after": "action_pan",
+      "rawPolicy": "action_camera",
+      "policy": "action_camera",
+      "confidence": 0.743,
+      "reason": "Keep the tracked performer and action object instead of falling back to the full source"
+    },
+    {
+      "segmentId": "composition-4",
+      "before": "action_wide",
+      "after": "stable_wide",
+      "rawPolicy": "stable_wide",
+      "policy": "stable_wide",
+      "confidence": 0.3889,
+      "reason": "Action evidence repaired the plan: hold one crop containing performer and object"
+    },
+    {
+      "segmentId": "composition-5",
+      "before": "action_wide",
+      "after": "stable_wide",
+      "rawPolicy": "stable_wide",
+      "policy": "stable_wide",
+      "confidence": 0.4685,
+      "reason": "Sub-second story fragment uses one stable region instead of a new crop"
+    },
+    {
+      "segmentId": "composition-6",
+      "before": "action_wide",
+      "after": "stable_subject",
+      "rawPolicy": "action_camera",
+      "policy": "stable_subject",
+      "confidence": 0.8342,
+      "reason": "Sub-second story fragment inherits the established visible subject"
+    },
+    {
+      "segmentId": "composition-7",
+      "before": "action_pan",
+      "after": "stable_wide",
+      "rawPolicy": "stable_wide",
+      "policy": "stable_wide",
+      "confidence": 0.6641,
+      "reason": "Action evidence repaired the plan: hold one crop containing performer and object"
+    },
+    {
+      "segmentId": "composition-8",
+      "before": "single_focus",
+      "after": "stable_wide",
+      "rawPolicy": "stable_wide",
+      "policy": "stable_wide",
+      "confidence": 0.1995,
+      "reason": "Evidence is uncertain but a reliable subject region exists"
+    },
+    {
+      "segmentId": "composition-9",
+      "before": "split_2_stack",
+      "after": "stable_subject",
+      "rawPolicy": "execute_plan",
+      "policy": "stable_subject",
+      "confidence": 0.8479,
+      "reason": "Sub-second story fragment inherits the established visible subject"
+    }
+  ],
+  "summary": {
+    "segments": 10,
+    "advanced": 1,
+    "stableSubjects": 2,
+    "groupHolds": 0,
+    "conversationSplits": 0,
+    "speakerReactionSplits": 0,
+    "stableWide": 6,
+    "widened": 1,
+    "safeFallbacks": 0,
+    "hysteresisOverrides": 2,
+    "sequenceHoldOverrides": 3
+  }
+}

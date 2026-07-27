@@ -1,0 +1,1350 @@
+{
+  "schemaVersion": "1.1",
+  "stage": "stage-1-story-intelligence",
+  "globalSummary": "A cricket commentary sequence spanning 25.4 seconds where a single commentator (SPEAKER_00) narrates a batsman's scoring play. The video opens with casual approval (0-4s), transitions to rhythmic counting of runs (5-12s), builds tension as the batsman attempts a shot (12-18s), culminates in two verified projectile actions with settled trajectories (19-21s), and closes with comedic payoff (22-25s). Six people tracks appear in the opening group; later scenes introduce additional fielders and batters. Two sports-ball projectile episodes (a0, a1, a2) are verified with settled outcomes. Acoustic reactions (r0-r7) punctuate key moments but lack visual reactor tracks. The commentator is mapped to person-003 in scenes 2-5 via activeSpeakerVotes.",
+  "entities": [
+    {
+      "trackId": "0",
+      "type": "object",
+      "storyRole": "ball",
+      "importance": 0.1
+    },
+    {
+      "trackId": "139",
+      "type": "object",
+      "storyRole": "ball",
+      "importance": 0.7
+    },
+    {
+      "trackId": "144",
+      "type": "object",
+      "storyRole": "ball",
+      "importance": 0.3
+    },
+    {
+      "trackId": "145",
+      "type": "object",
+      "storyRole": "ball",
+      "importance": 0.2
+    },
+    {
+      "trackId": "15",
+      "type": "object",
+      "storyRole": "ball",
+      "importance": 0.05
+    },
+    {
+      "trackId": "156",
+      "type": "object",
+      "storyRole": "ball",
+      "importance": 0.7
+    },
+    {
+      "trackId": "170",
+      "type": "object",
+      "storyRole": "ball",
+      "importance": 0.3
+    },
+    {
+      "trackId": "172",
+      "type": "object",
+      "storyRole": "ball",
+      "importance": 0.1
+    },
+    {
+      "trackId": "173",
+      "type": "object",
+      "storyRole": "ball",
+      "importance": 0.1
+    },
+    {
+      "trackId": "23",
+      "type": "object",
+      "storyRole": "ball",
+      "importance": 0.05
+    },
+    {
+      "trackId": "28",
+      "type": "object",
+      "storyRole": "ball",
+      "importance": 0.1
+    },
+    {
+      "trackId": "32",
+      "type": "object",
+      "storyRole": "ball",
+      "importance": 0.05
+    },
+    {
+      "trackId": "57",
+      "type": "object",
+      "storyRole": "ball",
+      "importance": 0.05
+    },
+    {
+      "trackId": "7",
+      "type": "object",
+      "storyRole": "ball",
+      "importance": 0.1
+    },
+    {
+      "trackId": "70",
+      "type": "object",
+      "storyRole": "ball",
+      "importance": 0.6
+    },
+    {
+      "trackId": "8",
+      "type": "object",
+      "storyRole": "ball",
+      "importance": 0.05
+    },
+    {
+      "trackId": "81",
+      "type": "object",
+      "storyRole": "ball",
+      "importance": 0.3
+    },
+    {
+      "trackId": "person-001",
+      "type": "person",
+      "storyRole": "bystander",
+      "importance": 0.2
+    },
+    {
+      "trackId": "person-002",
+      "type": "person",
+      "storyRole": "bystander",
+      "importance": 0.2
+    },
+    {
+      "trackId": "person-003",
+      "type": "person",
+      "storyRole": "commentator",
+      "importance": 0.9
+    },
+    {
+      "trackId": "person-004",
+      "type": "person",
+      "storyRole": "bystander",
+      "importance": 0.2
+    },
+    {
+      "trackId": "person-005",
+      "type": "person",
+      "storyRole": "bystander",
+      "importance": 0.1
+    },
+    {
+      "trackId": "person-006",
+      "type": "person",
+      "storyRole": "performer",
+      "importance": 0.7
+    },
+    {
+      "trackId": "person-007",
+      "type": "person",
+      "storyRole": "bystander",
+      "importance": 0.1
+    },
+    {
+      "trackId": "person-008",
+      "type": "person",
+      "storyRole": "bystander",
+      "importance": 0.1
+    },
+    {
+      "trackId": "person-009",
+      "type": "person",
+      "storyRole": "bystander",
+      "importance": 0.05
+    },
+    {
+      "trackId": "person-010",
+      "type": "person",
+      "storyRole": "bystander",
+      "importance": 0.05
+    },
+    {
+      "trackId": "person-011",
+      "type": "person",
+      "storyRole": "bystander",
+      "importance": 0.2
+    },
+    {
+      "trackId": "person-012",
+      "type": "person",
+      "storyRole": "bystander",
+      "importance": 0.2
+    },
+    {
+      "trackId": "person-013",
+      "type": "person",
+      "storyRole": "bystander",
+      "importance": 0.1
+    },
+    {
+      "trackId": "person-014",
+      "type": "person",
+      "storyRole": "bystander",
+      "importance": 0.1
+    },
+    {
+      "trackId": "person-015",
+      "type": "person",
+      "storyRole": "fielder",
+      "importance": 0.3
+    },
+    {
+      "trackId": "person-016",
+      "type": "person",
+      "storyRole": "performer",
+      "importance": 0.8
+    },
+    {
+      "trackId": "person-017",
+      "type": "person",
+      "storyRole": "fielder",
+      "importance": 0.2
+    },
+    {
+      "trackId": "person-018",
+      "type": "person",
+      "storyRole": "fielder",
+      "importance": 0.4
+    },
+    {
+      "trackId": "person-019",
+      "type": "person",
+      "storyRole": "performer",
+      "importance": 0.6
+    },
+    {
+      "trackId": "person-020",
+      "type": "person",
+      "storyRole": "bystander",
+      "importance": 0.1
+    },
+    {
+      "trackId": "person-021",
+      "type": "person",
+      "storyRole": "bystander",
+      "importance": 0.05
+    },
+    {
+      "trackId": "person-022",
+      "type": "person",
+      "storyRole": "fielder",
+      "importance": 0.3
+    },
+    {
+      "trackId": "person-023",
+      "type": "person",
+      "storyRole": "bystander",
+      "importance": 0.2
+    },
+    {
+      "trackId": "person-024",
+      "type": "person",
+      "storyRole": "bystander",
+      "importance": 0.1
+    },
+    {
+      "trackId": "person-025",
+      "type": "person",
+      "storyRole": "bystander",
+      "importance": 0.1
+    },
+    {
+      "trackId": "person-026",
+      "type": "person",
+      "storyRole": "bystander",
+      "importance": 0.1
+    },
+    {
+      "trackId": "person-027",
+      "type": "person",
+      "storyRole": "bystander",
+      "importance": 0.1
+    }
+  ],
+  "events": [
+    {
+      "id": "e0",
+      "start": 0,
+      "end": 4.048,
+      "type": "dialogue",
+      "narrativeRole": "setup",
+      "summary": "Commentator observes the opening moment, approving the batsman's dismissal with repeated agreement.",
+      "actors": [
+        "person-003"
+      ],
+      "reactors": [],
+      "objects": [],
+      "targets": [],
+      "mustShowTrackIds": [
+        "person-003"
+      ],
+      "optionalTrackIds": [
+        "person-001",
+        "person-002",
+        "person-004",
+        "person-005",
+        "person-006"
+      ],
+      "importance": 0.6,
+      "confidence": 0.7,
+      "simultaneityGroupId": null,
+      "anticipationSeconds": 0,
+      "keepContinuousAction": false,
+      "evidence": {},
+      "coverageRequirements": {
+        "simultaneousSubjectCount": 1,
+        "personCount": 1,
+        "objectCount": 0,
+        "horizontalSpread": 0,
+        "importantRegionCount": 1,
+        "regions": [
+          {
+            "trackIds": [
+              "person-003"
+            ]
+          }
+        ],
+        "singleVerticalCropFeasible": true,
+        "requiresContinuousMotion": false,
+        "anticipationSeconds": 0.0,
+        "evidenceCoverage": 1.0
+      },
+      "directingHint": {
+        "eventId": "e0",
+        "primaryTrackIds": [
+          "person-003"
+        ],
+        "supportingTrackIds": [
+          "person-001",
+          "person-002",
+          "person-004",
+          "person-005",
+          "person-006"
+        ],
+        "excludeTrackIds": [],
+        "preserveTogether": [],
+        "spatialIntent": "shared_region",
+        "holdReason": "",
+        "coordinateReason": "Six people co-visible (coVisibleRate=1.0); meanUnionWidth ranges 0.206-0.666; vertical overlap 0.417-0.558. person-003 at center-right (0.71,0.53) and person-001 at left (0.21,0.48) cannot fit single safe crop (singleVerticalCropLikely=false for distant pairs). Shared region crop covering middle-left to middle-right preserves all with bodySafeBox margins."
+      }
+    },
+    {
+      "id": "e1",
+      "start": 4.048,
+      "end": 5.588,
+      "type": "dialogue",
+      "narrativeRole": "trigger",
+      "summary": "Commentator confirms the positive outcome and shifts focus to the next batsman Harry, beginning a rhythmic count.",
+      "actors": [
+        "person-003"
+      ],
+      "reactors": [],
+      "objects": [],
+      "targets": [],
+      "mustShowTrackIds": [
+        "person-003"
+      ],
+      "optionalTrackIds": [
+        "person-002",
+        "person-004"
+      ],
+      "importance": 0.7,
+      "confidence": 0.75,
+      "simultaneityGroupId": null,
+      "anticipationSeconds": 0,
+      "keepContinuousAction": false,
+      "evidence": {},
+      "coverageRequirements": {
+        "simultaneousSubjectCount": 1,
+        "personCount": 1,
+        "objectCount": 0,
+        "horizontalSpread": 0,
+        "importantRegionCount": 1,
+        "regions": [
+          {
+            "trackIds": [
+              "person-003"
+            ]
+          }
+        ],
+        "singleVerticalCropFeasible": true,
+        "requiresContinuousMotion": false,
+        "anticipationSeconds": 0.0,
+        "evidenceCoverage": 1.0
+      },
+      "directingHint": {
+        "eventId": "e1",
+        "primaryTrackIds": [
+          "person-003"
+        ],
+        "supportingTrackIds": [
+          "person-002",
+          "person-004"
+        ],
+        "excludeTrackIds": [],
+        "preserveTogether": [],
+        "spatialIntent": "shared_region",
+        "holdReason": "",
+        "coordinateReason": "person-003 (0.675,0.514) and person-004 (0.247,0.54) co-visible at 0.75 rate; meanCenterDistance=0.427, meanUnionWidth=0.807. Vertical overlap 0.873 allows shared vertical crop. person-002 absent this window."
+      }
+    },
+    {
+      "id": "e2",
+      "start": 5.588,
+      "end": 12.268,
+      "type": "dialogue",
+      "narrativeRole": "action",
+      "summary": "Commentator counts sixes rhythmically (\"Six. Six. Six, six, six, six\") then calls \"Two,\" building anticipation for the next delivery.",
+      "actors": [
+        "person-003"
+      ],
+      "reactors": [],
+      "objects": [
+        "70"
+      ],
+      "targets": [],
+      "mustShowTrackIds": [
+        "person-003",
+        "person-006",
+        "70"
+      ],
+      "optionalTrackIds": [
+        "person-004",
+        "person-003"
+      ],
+      "importance": 0.9,
+      "confidence": 0.8,
+      "simultaneityGroupId": null,
+      "anticipationSeconds": 0,
+      "keepContinuousAction": true,
+      "evidence": {},
+      "coverageRequirements": {
+        "simultaneousSubjectCount": 3,
+        "personCount": 2,
+        "objectCount": 1,
+        "horizontalSpread": 0.249,
+        "importantRegionCount": 1,
+        "regions": [
+          {
+            "trackIds": [
+              "70",
+              "person-006",
+              "person-003"
+            ]
+          }
+        ],
+        "singleVerticalCropFeasible": true,
+        "requiresContinuousMotion": true,
+        "anticipationSeconds": 0.0,
+        "evidenceCoverage": 1.0
+      },
+      "directingHint": {
+        "eventId": "e2",
+        "primaryTrackIds": [
+          "person-003",
+          "person-006",
+          "70"
+        ],
+        "supportingTrackIds": [
+          "person-004"
+        ],
+        "excludeTrackIds": [
+          "person-007",
+          "person-008",
+          "person-009",
+          "person-010"
+        ],
+        "preserveTogether": [],
+        "spatialIntent": "continuous_action",
+        "holdReason": "",
+        "coordinateReason": "Verified projectile action a0 (9.595-12.214) requires continuous view of performer person-006 and ball-70. person-006 moves up-right (displacement 0.513, edgeRisk 0.786); ball-70 moves up-left (displacement 0.121). Continuous action framing keeps performer primary. Bystanders person-007-010 excluded to avoid split-screen dilution."
+      }
+    },
+    {
+      "id": "e3",
+      "start": 9.595,
+      "end": 12.214,
+      "type": "sports_action",
+      "narrativeRole": "action",
+      "summary": "person-006 executes a projectile action with ball-70; trajectory settles with 0.12m displacement and 0.37 peak speed.",
+      "actors": [
+        "person-006"
+      ],
+      "reactors": [],
+      "objects": [
+        "70"
+      ],
+      "targets": [],
+      "mustShowTrackIds": [
+        "person-006",
+        "70"
+      ],
+      "optionalTrackIds": [],
+      "importance": 0.85,
+      "confidence": 0.75,
+      "simultaneityGroupId": null,
+      "anticipationSeconds": 0,
+      "keepContinuousAction": true,
+      "evidence": {},
+      "coverageRequirements": {
+        "simultaneousSubjectCount": 2,
+        "personCount": 1,
+        "objectCount": 1,
+        "horizontalSpread": 0.237,
+        "importantRegionCount": 1,
+        "regions": [
+          {
+            "trackIds": [
+              "70",
+              "person-006"
+            ]
+          }
+        ],
+        "singleVerticalCropFeasible": true,
+        "requiresContinuousMotion": true,
+        "anticipationSeconds": 0.0,
+        "evidenceCoverage": 1.0
+      },
+      "directingHint": {
+        "eventId": "e3",
+        "primaryTrackIds": [
+          "person-006",
+          "70"
+        ],
+        "supportingTrackIds": [],
+        "excludeTrackIds": [
+          "person-004",
+          "person-003",
+          "person-007",
+          "person-008"
+        ],
+        "preserveTogether": [],
+        "spatialIntent": "continuous_action",
+        "holdReason": "",
+        "coordinateReason": "Action episode a0 verified; performer person-006 must remain continuously visible. BodySafeBox at peak: person-006 [0.427,0.182,0.602,0.994], ball-70 [0.421,0.305,0.601,0.649]. Vertical crop covering middle-center to middle-right preserves both. Bystanders excluded."
+      }
+    },
+    {
+      "id": "e4",
+      "start": 12.268,
+      "end": 18.288,
+      "type": "dialogue",
+      "narrativeRole": "action",
+      "summary": "Commentary intensifies: \"Oh, he's going to do it. No, excuse me. Yes, I'm going through. Oh, he's going straightaway. Come on.\"",
+      "actors": [
+        "person-003"
+      ],
+      "reactors": [],
+      "objects": [],
+      "targets": [],
+      "mustShowTrackIds": [
+        "person-003"
+      ],
+      "optionalTrackIds": [
+        "person-011",
+        "person-012",
+        "person-013",
+        "person-014"
+      ],
+      "importance": 0.8,
+      "confidence": 0.7,
+      "simultaneityGroupId": null,
+      "anticipationSeconds": 0,
+      "keepContinuousAction": false,
+      "evidence": {},
+      "coverageRequirements": {
+        "simultaneousSubjectCount": 1,
+        "personCount": 0,
+        "objectCount": 1,
+        "horizontalSpread": 0,
+        "importantRegionCount": 0,
+        "regions": [],
+        "singleVerticalCropFeasible": true,
+        "requiresContinuousMotion": false,
+        "anticipationSeconds": 0.0,
+        "evidenceCoverage": 0.0
+      },
+      "directingHint": {
+        "eventId": "e4",
+        "primaryTrackIds": [
+          "person-003"
+        ],
+        "supportingTrackIds": [
+          "person-011",
+          "person-012",
+          "person-013",
+          "person-014"
+        ],
+        "excludeTrackIds": [],
+        "preserveTogether": [],
+        "spatialIntent": "shared_region",
+        "holdReason": "",
+        "coordinateReason": "Commentary continues; person-003 (0.763,0.519) co-visible with person-011 (0.531,0.568) at 0.694 rate, distance 0.188, vertical overlap 0.753. Shared region feasible. person-013-014 at right edge (edgeRisk 0.786-1.0) included as supporting context."
+      }
+    },
+    {
+      "id": "e5",
+      "start": 18.288,
+      "end": 21.828,
+      "type": "dialogue",
+      "narrativeRole": "outcome",
+      "summary": "Commentator declares success: \"Oh, he's through on gold. Oh, he's going. He's dancing on gold. He's rolled what he needs to do. He's gone from there.\"",
+      "actors": [
+        "person-003"
+      ],
+      "reactors": [],
+      "objects": [
+        "139",
+        "156"
+      ],
+      "targets": [],
+      "mustShowTrackIds": [
+        "person-003",
+        "person-016",
+        "139",
+        "person-019",
+        "156"
+      ],
+      "optionalTrackIds": [
+        "person-018",
+        "person-022"
+      ],
+      "importance": 0.95,
+      "confidence": 0.85,
+      "simultaneityGroupId": null,
+      "anticipationSeconds": 0,
+      "keepContinuousAction": true,
+      "evidence": {},
+      "coverageRequirements": {
+        "simultaneousSubjectCount": 5,
+        "personCount": 2,
+        "objectCount": 3,
+        "horizontalSpread": 0.112,
+        "importantRegionCount": 1,
+        "regions": [
+          {
+            "trackIds": [
+              "person-016",
+              "156",
+              "139",
+              "person-019"
+            ]
+          }
+        ],
+        "singleVerticalCropFeasible": true,
+        "requiresContinuousMotion": true,
+        "anticipationSeconds": 0.0,
+        "evidenceCoverage": 0.8
+      },
+      "directingHint": {
+        "eventId": "e5",
+        "primaryTrackIds": [
+          "person-003",
+          "person-016",
+          "139",
+          "person-019",
+          "156"
+        ],
+        "supportingTrackIds": [
+          "person-018",
+          "person-022"
+        ],
+        "excludeTrackIds": [],
+        "preserveTogether": [],
+        "spatialIntent": "continuous_action",
+        "holdReason": "",
+        "coordinateReason": "Two verified simultaneous actions (a1, a2) with settled outcomes. person-016 (0.364,0.511) and ball-139 (0.471,0.754) for a1; person-019 (0.476,0.502) and ball-156 (0.382,0.766) for a2. All in middle-left to middle-center zones. Continuous framing captures both performers and balls. Fielders person-018, person-022 as targets in a2 included."
+      }
+    },
+    {
+      "id": "e6",
+      "start": 19.011,
+      "end": 20.051,
+      "type": "sports_action",
+      "narrativeRole": "action",
+      "summary": "person-016 performs projectile action with ball-139; trajectory settles (0.026m displacement, 0.12 peak speed).",
+      "actors": [
+        "person-016"
+      ],
+      "reactors": [],
+      "objects": [
+        "139"
+      ],
+      "targets": [],
+      "mustShowTrackIds": [
+        "person-016",
+        "139"
+      ],
+      "optionalTrackIds": [
+        "person-018",
+        "person-022"
+      ],
+      "importance": 0.9,
+      "confidence": 0.8,
+      "simultaneityGroupId": null,
+      "anticipationSeconds": 0,
+      "keepContinuousAction": true,
+      "evidence": {},
+      "coverageRequirements": {
+        "simultaneousSubjectCount": 2,
+        "personCount": 1,
+        "objectCount": 1,
+        "horizontalSpread": 0.065,
+        "importantRegionCount": 1,
+        "regions": [
+          {
+            "trackIds": [
+              "person-016",
+              "139"
+            ]
+          }
+        ],
+        "singleVerticalCropFeasible": true,
+        "requiresContinuousMotion": true,
+        "anticipationSeconds": 0.0,
+        "evidenceCoverage": 1.0
+      },
+      "directingHint": {
+        "eventId": "e6",
+        "primaryTrackIds": [
+          "person-016",
+          "139"
+        ],
+        "supportingTrackIds": [
+          "person-018",
+          "person-022"
+        ],
+        "excludeTrackIds": [],
+        "preserveTogether": [],
+        "spatialIntent": "continuous_action",
+        "holdReason": "",
+        "coordinateReason": "Action a1 anticipation 18.311-19.011, action 19.011-20.051. person-016 moves left (displacement 0.104); ball-139 moves up-right (displacement 0.062). Continuous performer-focused crop. person-018 and person-022 are nearby fielders (coVisibleRate 0.318-0.409, vertical overlap ~0.5)."
+      }
+    },
+    {
+      "id": "e7",
+      "start": 19.831,
+      "end": 21.01,
+      "type": "sports_action",
+      "narrativeRole": "action",
+      "summary": "person-019 performs projectile action with ball-156 toward person-018 and person-022; trajectory settles (0.046m displacement, 0.076 peak speed).",
+      "actors": [
+        "person-019"
+      ],
+      "reactors": [],
+      "objects": [
+        "156"
+      ],
+      "targets": [
+        "person-018",
+        "person-022"
+      ],
+      "mustShowTrackIds": [
+        "person-019",
+        "156",
+        "person-018",
+        "person-022"
+      ],
+      "optionalTrackIds": [
+        "person-016"
+      ],
+      "importance": 0.9,
+      "confidence": 0.8,
+      "simultaneityGroupId": null,
+      "anticipationSeconds": 0,
+      "keepContinuousAction": true,
+      "evidence": {},
+      "coverageRequirements": {
+        "simultaneousSubjectCount": 4,
+        "personCount": 2,
+        "objectCount": 2,
+        "horizontalSpread": 0.296,
+        "importantRegionCount": 1,
+        "regions": [
+          {
+            "trackIds": [
+              "person-018",
+              "person-022",
+              "156"
+            ]
+          }
+        ],
+        "singleVerticalCropFeasible": true,
+        "requiresContinuousMotion": true,
+        "anticipationSeconds": 0.0,
+        "evidenceCoverage": 0.75
+      },
+      "directingHint": {
+        "eventId": "e7",
+        "primaryTrackIds": [
+          "person-019",
+          "156",
+          "person-018",
+          "person-022"
+        ],
+        "supportingTrackIds": [
+          "person-016"
+        ],
+        "excludeTrackIds": [],
+        "preserveTogether": [],
+        "spatialIntent": "continuous_action",
+        "holdReason": "",
+        "coordinateReason": "Action a2: person-019 throws ball-156 toward person-018 and person-022. All four tracks in middle-left to middle-center. person-019 displacement 0.046, ball-156 displacement 0.060. person-018 and person-022 are verified targets. Continuous action framing preserves causal chain."
+      }
+    },
+    {
+      "id": "e8",
+      "start": 21.828,
+      "end": 25.108,
+      "type": "dialogue",
+      "narrativeRole": "reaction",
+      "summary": "Commentator delivers comedic payoff: \"Oh, he's got tricks on the bastard. Oh, she's real.\" Acoustic reaction r7 detected.",
+      "actors": [
+        "person-003"
+      ],
+      "reactors": [],
+      "objects": [],
+      "targets": [],
+      "mustShowTrackIds": [
+        "person-003"
+      ],
+      "optionalTrackIds": [
+        "person-016",
+        "person-023"
+      ],
+      "importance": 0.8,
+      "confidence": 0.75,
+      "simultaneityGroupId": null,
+      "anticipationSeconds": 0,
+      "keepContinuousAction": false,
+      "evidence": {},
+      "coverageRequirements": {
+        "simultaneousSubjectCount": 1,
+        "personCount": 0,
+        "objectCount": 1,
+        "horizontalSpread": 0,
+        "importantRegionCount": 0,
+        "regions": [],
+        "singleVerticalCropFeasible": true,
+        "requiresContinuousMotion": false,
+        "anticipationSeconds": 0.0,
+        "evidenceCoverage": 0.0
+      },
+      "directingHint": {
+        "eventId": "e8",
+        "primaryTrackIds": [
+          "person-003"
+        ],
+        "supportingTrackIds": [
+          "person-016",
+          "person-023"
+        ],
+        "excludeTrackIds": [],
+        "preserveTogether": [],
+        "spatialIntent": "shared_region",
+        "holdReason": "",
+        "coordinateReason": "Commentator person-003 (0.504,0.433) and person-016 (0.427,0.535) co-visible at 0.45 rate, distance 0.146, vertical overlap 0.188. Same natural region true, singleVerticalCropLikely true. person-023 enters at right. Shared region crop sufficient."
+      }
+    },
+    {
+      "id": "e9",
+      "start": 25.108,
+      "end": 25.428,
+      "type": "context",
+      "narrativeRole": "payoff",
+      "summary": "Final frame shows person-016 and person-018 with new bystanders entering; sequence concludes.",
+      "actors": [],
+      "reactors": [],
+      "objects": [],
+      "targets": [],
+      "mustShowTrackIds": [
+        "person-016",
+        "person-018"
+      ],
+      "optionalTrackIds": [
+        "person-024",
+        "person-025",
+        "person-026",
+        "person-027"
+      ],
+      "importance": 0.4,
+      "confidence": 0.6,
+      "simultaneityGroupId": null,
+      "anticipationSeconds": 0,
+      "keepContinuousAction": false,
+      "evidence": {},
+      "coverageRequirements": {
+        "simultaneousSubjectCount": 2,
+        "personCount": 2,
+        "objectCount": 0,
+        "horizontalSpread": 0.44,
+        "importantRegionCount": 2,
+        "regions": [
+          {
+            "trackIds": [
+              "person-018"
+            ]
+          },
+          {
+            "trackIds": [
+              "person-016"
+            ]
+          }
+        ],
+        "singleVerticalCropFeasible": false,
+        "requiresContinuousMotion": false,
+        "anticipationSeconds": 0.0,
+        "evidenceCoverage": 1.0
+      },
+      "directingHint": {
+        "eventId": "e9",
+        "primaryTrackIds": [
+          "person-016",
+          "person-018"
+        ],
+        "supportingTrackIds": [
+          "person-024",
+          "person-025",
+          "person-026",
+          "person-027"
+        ],
+        "excludeTrackIds": [],
+        "preserveTogether": [],
+        "spatialIntent": "shared_region",
+        "holdReason": "",
+        "coordinateReason": "Final scene: person-016 (0.531,0.569) and person-018 (0.091,0.594) co-visible at 1.0, distance 0.441, vertical overlap 0.501. New bystanders person-024-027 appear at right and left. Shared region spans middle-left to middle-right; singleVerticalCropLikely false but wide crop accommodates all with bodySafeBox margins."
+      }
+    }
+  ],
+  "relations": [
+    {
+      "from": "e0",
+      "to": "e1",
+      "type": "continues",
+      "confidence": 0.8
+    },
+    {
+      "from": "e1",
+      "to": "e2",
+      "type": "causes",
+      "confidence": 0.85
+    },
+    {
+      "from": "e2",
+      "to": "e3",
+      "type": "simultaneous_with",
+      "confidence": 0.9
+    },
+    {
+      "from": "e2",
+      "to": "e4",
+      "type": "continues",
+      "confidence": 0.8
+    },
+    {
+      "from": "e4",
+      "to": "e5",
+      "type": "causes",
+      "confidence": 0.85
+    },
+    {
+      "from": "e5",
+      "to": "e6",
+      "type": "simultaneous_with",
+      "confidence": 0.9
+    },
+    {
+      "from": "e5",
+      "to": "e7",
+      "type": "simultaneous_with",
+      "confidence": 0.9
+    },
+    {
+      "from": "e6",
+      "to": "e8",
+      "type": "reacts_to",
+      "confidence": 0.7
+    },
+    {
+      "from": "e7",
+      "to": "e8",
+      "type": "reacts_to",
+      "confidence": 0.7
+    },
+    {
+      "from": "e8",
+      "to": "e9",
+      "type": "continues",
+      "confidence": 0.75
+    },
+    {
+      "from": "e8",
+      "to": "e7",
+      "type": "reacts_to",
+      "confidence": 0.58
+    },
+    {
+      "from": "e9",
+      "to": "e7",
+      "type": "reacts_to",
+      "confidence": 0.58
+    }
+  ],
+  "storyArcs": [
+    {
+      "id": "arc0",
+      "summary": "Commentator observes the opening moment, approving the batsman's dismissal with  -> Commentator confirms the positive outcome and shifts focus to the next batsman H -> Commentator counts sixes rhythmically (\"Six. Six. Six, six, six, six\") then call -> person-006 executes a projectile action with ball-70; trajectory settles with 0.",
+      "setupEventIds": [
+        "e0",
+        "e1"
+      ],
+      "actionEventIds": [
+        "e2",
+        "e3",
+        "e4",
+        "e6",
+        "e7"
+      ],
+      "payoffEventIds": [
+        "e5",
+        "e8",
+        "e9"
+      ],
+      "importance": 0.95
+    }
+  ],
+  "timeline": [
+    {
+      "start": 0,
+      "end": 4.048,
+      "dominantEventIds": [
+        "e0"
+      ],
+      "storyFocusTrackIds": [
+        "person-003"
+      ],
+      "narrativeRole": "setup",
+      "importance": 0.6
+    },
+    {
+      "start": 4.048,
+      "end": 5.588,
+      "dominantEventIds": [
+        "e1"
+      ],
+      "storyFocusTrackIds": [
+        "person-003"
+      ],
+      "narrativeRole": "trigger",
+      "importance": 0.7
+    },
+    {
+      "start": 5.588,
+      "end": 12.268,
+      "dominantEventIds": [
+        "e2"
+      ],
+      "storyFocusTrackIds": [
+        "person-003",
+        "person-006",
+        "70"
+      ],
+      "narrativeRole": "action",
+      "importance": 0.9
+    },
+    {
+      "start": 9.595,
+      "end": 12.214,
+      "dominantEventIds": [
+        "e3"
+      ],
+      "storyFocusTrackIds": [
+        "person-006",
+        "70"
+      ],
+      "narrativeRole": "action",
+      "importance": 0.85
+    },
+    {
+      "start": 12.268,
+      "end": 18.288,
+      "dominantEventIds": [
+        "e4"
+      ],
+      "storyFocusTrackIds": [
+        "person-003"
+      ],
+      "narrativeRole": "action",
+      "importance": 0.8
+    },
+    {
+      "start": 18.288,
+      "end": 21.828,
+      "dominantEventIds": [
+        "e5"
+      ],
+      "storyFocusTrackIds": [
+        "person-003",
+        "person-016",
+        "139",
+        "person-019",
+        "156"
+      ],
+      "narrativeRole": "outcome",
+      "importance": 0.95
+    },
+    {
+      "start": 19.011,
+      "end": 20.051,
+      "dominantEventIds": [
+        "e6"
+      ],
+      "storyFocusTrackIds": [
+        "person-016",
+        "139"
+      ],
+      "narrativeRole": "action",
+      "importance": 0.9
+    },
+    {
+      "start": 19.831,
+      "end": 21.01,
+      "dominantEventIds": [
+        "e7"
+      ],
+      "storyFocusTrackIds": [
+        "person-019",
+        "156",
+        "person-018",
+        "person-022"
+      ],
+      "narrativeRole": "action",
+      "importance": 0.9
+    },
+    {
+      "start": 21.828,
+      "end": 25.108,
+      "dominantEventIds": [
+        "e8"
+      ],
+      "storyFocusTrackIds": [
+        "person-003"
+      ],
+      "narrativeRole": "reaction",
+      "importance": 0.8
+    },
+    {
+      "start": 25.108,
+      "end": 25.428,
+      "dominantEventIds": [
+        "e9"
+      ],
+      "storyFocusTrackIds": [
+        "person-016",
+        "person-018"
+      ],
+      "narrativeRole": "payoff",
+      "importance": 0.4
+    }
+  ],
+  "directingHints": [
+    {
+      "eventId": "e0",
+      "primaryTrackIds": [
+        "person-003"
+      ],
+      "supportingTrackIds": [
+        "person-001",
+        "person-002",
+        "person-004",
+        "person-005",
+        "person-006"
+      ],
+      "excludeTrackIds": [],
+      "preserveTogether": [],
+      "spatialIntent": "shared_region",
+      "holdReason": "",
+      "coordinateReason": "Six people co-visible (coVisibleRate=1.0); meanUnionWidth ranges 0.206-0.666; vertical overlap 0.417-0.558. person-003 at center-right (0.71,0.53) and person-001 at left (0.21,0.48) cannot fit single safe crop (singleVerticalCropLikely=false for distant pairs). Shared region crop covering middle-left to middle-right preserves all with bodySafeBox margins."
+    },
+    {
+      "eventId": "e1",
+      "primaryTrackIds": [
+        "person-003"
+      ],
+      "supportingTrackIds": [
+        "person-002",
+        "person-004"
+      ],
+      "excludeTrackIds": [],
+      "preserveTogether": [],
+      "spatialIntent": "shared_region",
+      "holdReason": "",
+      "coordinateReason": "person-003 (0.675,0.514) and person-004 (0.247,0.54) co-visible at 0.75 rate; meanCenterDistance=0.427, meanUnionWidth=0.807. Vertical overlap 0.873 allows shared vertical crop. person-002 absent this window."
+    },
+    {
+      "eventId": "e2",
+      "primaryTrackIds": [
+        "person-003",
+        "person-006",
+        "70"
+      ],
+      "supportingTrackIds": [
+        "person-004"
+      ],
+      "excludeTrackIds": [
+        "person-007",
+        "person-008",
+        "person-009",
+        "person-010"
+      ],
+      "preserveTogether": [],
+      "spatialIntent": "continuous_action",
+      "holdReason": "",
+      "coordinateReason": "Verified projectile action a0 (9.595-12.214) requires continuous view of performer person-006 and ball-70. person-006 moves up-right (displacement 0.513, edgeRisk 0.786); ball-70 moves up-left (displacement 0.121). Continuous action framing keeps performer primary. Bystanders person-007-010 excluded to avoid split-screen dilution."
+    },
+    {
+      "eventId": "e3",
+      "primaryTrackIds": [
+        "person-006",
+        "70"
+      ],
+      "supportingTrackIds": [],
+      "excludeTrackIds": [
+        "person-004",
+        "person-003",
+        "person-007",
+        "person-008"
+      ],
+      "preserveTogether": [],
+      "spatialIntent": "continuous_action",
+      "holdReason": "",
+      "coordinateReason": "Action episode a0 verified; performer person-006 must remain continuously visible. BodySafeBox at peak: person-006 [0.427,0.182,0.602,0.994], ball-70 [0.421,0.305,0.601,0.649]. Vertical crop covering middle-center to middle-right preserves both. Bystanders excluded."
+    },
+    {
+      "eventId": "e4",
+      "primaryTrackIds": [
+        "person-003"
+      ],
+      "supportingTrackIds": [
+        "person-011",
+        "person-012",
+        "person-013",
+        "person-014"
+      ],
+      "excludeTrackIds": [],
+      "preserveTogether": [],
+      "spatialIntent": "shared_region",
+      "holdReason": "",
+      "coordinateReason": "Commentary continues; person-003 (0.763,0.519) co-visible with person-011 (0.531,0.568) at 0.694 rate, distance 0.188, vertical overlap 0.753. Shared region feasible. person-013-014 at right edge (edgeRisk 0.786-1.0) included as supporting context."
+    },
+    {
+      "eventId": "e5",
+      "primaryTrackIds": [
+        "person-003",
+        "person-016",
+        "139",
+        "person-019",
+        "156"
+      ],
+      "supportingTrackIds": [
+        "person-018",
+        "person-022"
+      ],
+      "excludeTrackIds": [],
+      "preserveTogether": [],
+      "spatialIntent": "continuous_action",
+      "holdReason": "",
+      "coordinateReason": "Two verified simultaneous actions (a1, a2) with settled outcomes. person-016 (0.364,0.511) and ball-139 (0.471,0.754) for a1; person-019 (0.476,0.502) and ball-156 (0.382,0.766) for a2. All in middle-left to middle-center zones. Continuous framing captures both performers and balls. Fielders person-018, person-022 as targets in a2 included."
+    },
+    {
+      "eventId": "e6",
+      "primaryTrackIds": [
+        "person-016",
+        "139"
+      ],
+      "supportingTrackIds": [
+        "person-018",
+        "person-022"
+      ],
+      "excludeTrackIds": [],
+      "preserveTogether": [],
+      "spatialIntent": "continuous_action",
+      "holdReason": "",
+      "coordinateReason": "Action a1 anticipation 18.311-19.011, action 19.011-20.051. person-016 moves left (displacement 0.104); ball-139 moves up-right (displacement 0.062). Continuous performer-focused crop. person-018 and person-022 are nearby fielders (coVisibleRate 0.318-0.409, vertical overlap ~0.5)."
+    },
+    {
+      "eventId": "e7",
+      "primaryTrackIds": [
+        "person-019",
+        "156",
+        "person-018",
+        "person-022"
+      ],
+      "supportingTrackIds": [
+        "person-016"
+      ],
+      "excludeTrackIds": [],
+      "preserveTogether": [],
+      "spatialIntent": "continuous_action",
+      "holdReason": "",
+      "coordinateReason": "Action a2: person-019 throws ball-156 toward person-018 and person-022. All four tracks in middle-left to middle-center. person-019 displacement 0.046, ball-156 displacement 0.060. person-018 and person-022 are verified targets. Continuous action framing preserves causal chain."
+    },
+    {
+      "eventId": "e8",
+      "primaryTrackIds": [
+        "person-003"
+      ],
+      "supportingTrackIds": [
+        "person-016",
+        "person-023"
+      ],
+      "excludeTrackIds": [],
+      "preserveTogether": [],
+      "spatialIntent": "shared_region",
+      "holdReason": "",
+      "coordinateReason": "Commentator person-003 (0.504,0.433) and person-016 (0.427,0.535) co-visible at 0.45 rate, distance 0.146, vertical overlap 0.188. Same natural region true, singleVerticalCropLikely true. person-023 enters at right. Shared region crop sufficient."
+    },
+    {
+      "eventId": "e9",
+      "primaryTrackIds": [
+        "person-016",
+        "person-018"
+      ],
+      "supportingTrackIds": [
+        "person-024",
+        "person-025",
+        "person-026",
+        "person-027"
+      ],
+      "excludeTrackIds": [],
+      "preserveTogether": [],
+      "spatialIntent": "shared_region",
+      "holdReason": "",
+      "coordinateReason": "Final scene: person-016 (0.531,0.569) and person-018 (0.091,0.594) co-visible at 1.0, distance 0.441, vertical overlap 0.501. New bystanders person-024-027 appear at right and left. Shared region spans middle-left to middle-right; singleVerticalCropLikely false but wide crop accommodates all with bodySafeBox margins."
+    }
+  ],
+  "uncertainties": [
+    "Speaker-to-track mapping for SPEAKER_00 relies on activeSpeakerVotes (person-003) in scenes 2-5; scenes 0-1 and 6-8 lack votes.",
+    "Reaction participants arrays empty for all acoustic reactions (r0-r7); no visual reactor tracks grounded.",
+    "Ball track identities (7, 8, 15, 23, 28, 32, 57, 70, 81, 0, 139, 144, 145, 156, 170, 172, 173) have low visibility (<0.4) and intermittent detection; trajectory verification confidence 0.62.",
+    "person-003 (commentator) not visually confirmed speaking; mouthMotion=0 across all tracks.",
+    "Action outcome success=null for all episodes; only trajectory_settled evidence.",
+    "Joke chain j0 causal hypothesis inferred from temporal proximity, not verified.",
+    "person-006 identity as performer in e3 based on actionEpisodes actorTrackIds; no independent visual verification of batting action.",
+    "Scene 4 (12.268-12.568) has minimal evidence (single word \"he's\") and high camera motion (RMS 0.159)."
+  ],
+  "provenance": {
+    "apiDraft": true,
+    "evidenceWindows": 9,
+    "fullVideoAnalyzed": false,
+    "renderDecisionsIncluded": false,
+    "manualExternalAI": true
+  }
+}

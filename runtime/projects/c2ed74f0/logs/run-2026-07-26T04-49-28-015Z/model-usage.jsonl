@@ -1,0 +1,2 @@
+{"time": "2026-07-26T04:49:29.143340+00:00", "stage": "story_intelligence", "provider": "manual-external", "model": "user-supplied", "used": true, "adapter": "semi-automated-json"}
+{"time": "2026-07-26T04:49:29.186118+00:00", "stage": "composition_director", "provider": null, "model": null, "used": false, "error": null}

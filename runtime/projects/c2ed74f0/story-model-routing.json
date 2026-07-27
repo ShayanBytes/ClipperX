@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "1.1",
+  "provider": null,
+  "model": null,
+  "capabilities": {
+    "mode": "text",
+    "text": true,
+    "image": false,
+    "video": false,
+    "source": "safe automatic capability inference"
+  },
+  "adapter": "local",
+  "called": false,
+  "used": false,
+  "error": null,
+  "textBatches": {
+    "attempted": 0,
+    "succeeded": 0,
+    "failed": 0
+  }
+}

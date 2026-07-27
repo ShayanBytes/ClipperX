@@ -1,0 +1,997 @@
+{
+  "schemaVersion": "1.0",
+  "stage": "stage-5-social-audio-intelligence",
+  "utterances": [
+    {
+      "id": "u0",
+      "start": 0.0,
+      "end": 4.08,
+      "speaker": "SPEAKER_00",
+      "text": "Oh, you're out, OK? Yeah, that's good. That's good, that's good. Yeah, you're like that. I like that.",
+      "wordCount": 18,
+      "speechAct": "agreement",
+      "personTrackId": null,
+      "prosody": {
+        "meanEnergy": 0.7108,
+        "peakEnergy": 1,
+        "medianPitch": 211.93,
+        "pitchRange": 273.48,
+        "pitchVariation": 54.69,
+        "meanCentroid": 1753.1,
+        "meanZcr": 0.1351,
+        "wordsPerSecond": 4.41,
+        "emphasis": 1,
+        "arousal": 0.786
+      }
+    },
+    {
+      "id": "u1",
+      "start": 4.88,
+      "end": 10.56,
+      "speaker": "SPEAKER_00",
+      "text": "I like that. He likes that. Back to Harry. I'm not brushin' on it now. I'm on my... Six. Six. Six, six, six, six.",
+      "wordCount": 24,
+      "speechAct": "statement",
+      "personTrackId": "person-003",
+      "prosody": {
+        "meanEnergy": 0.2564,
+        "peakEnergy": 1,
+        "medianPitch": 172.97,
+        "pitchRange": 334.16,
+        "pitchVariation": 75.07,
+        "meanCentroid": 1769.0,
+        "meanZcr": 0.1339,
+        "wordsPerSecond": 4.23,
+        "emphasis": 1,
+        "arousal": 0.591
+      }
+    },
+    {
+      "id": "u2",
+      "start": 11.44,
+      "end": 19.14,
+      "speaker": "SPEAKER_00",
+      "text": "Two. Oh, he's going to do it. No, excuse me. No, excuse me. Yes, I'm going through. Oh, he's going straightaway. Come on. Oh, he's through on gold. Oh,",
+      "wordCount": 29,
+      "speechAct": "agreement",
+      "personTrackId": "person-003",
+      "prosody": {
+        "meanEnergy": 0.4762,
+        "peakEnergy": 1,
+        "medianPitch": 179.78,
+        "pitchRange": 298.36,
+        "pitchVariation": 78.6,
+        "meanCentroid": 1915.5,
+        "meanZcr": 0.1441,
+        "wordsPerSecond": 3.77,
+        "emphasis": 1,
+        "arousal": 0.7
+      }
+    },
+    {
+      "id": "u3",
+      "start": 19.28,
+      "end": 23.26,
+      "speaker": "SPEAKER_00",
+      "text": "he's going. He's dancing on gold. He's rolled what he needs to do. He's gone from there. Oh, he's got tricks on the bastard.",
+      "wordCount": 24,
+      "speechAct": "question",
+      "personTrackId": "person-003",
+      "prosody": {
+        "meanEnergy": 0.4748,
+        "peakEnergy": 1,
+        "medianPitch": 145.45,
+        "pitchRange": 287.18,
+        "pitchVariation": 79.35,
+        "meanCentroid": 1608.3,
+        "meanZcr": 0.1059,
+        "wordsPerSecond": 6.03,
+        "emphasis": 1,
+        "arousal": 0.711
+      }
+    },
+    {
+      "id": "u4",
+      "start": 24.42,
+      "end": 24.92,
+      "speaker": "SPEAKER_00",
+      "text": "Oh, she's real.",
+      "wordCount": 3,
+      "speechAct": "statement",
+      "personTrackId": "person-003",
+      "prosody": {
+        "meanEnergy": 0.5135,
+        "peakEnergy": 0.8346,
+        "medianPitch": 141.61,
+        "pitchRange": 91.93,
+        "pitchVariation": 33.05,
+        "meanCentroid": 1466.9,
+        "meanZcr": 0.098,
+        "wordsPerSecond": 6.0,
+        "emphasis": 0.772,
+        "arousal": 0.6
+      }
+    }
+  ],
+  "conversationEdges": [],
+  "overlapRegions": [],
+  "reactions": [
+    {
+      "start": 0.02,
+      "end": 6.64,
+      "sources": [
+        "acoustic"
+      ],
+      "participants": [],
+      "confidence": 0.58,
+      "id": "r0",
+      "groupReaction": false
+    },
+    {
+      "start": 7.62,
+      "end": 8.84,
+      "sources": [
+        "acoustic"
+      ],
+      "participants": [],
+      "confidence": 0.58,
+      "id": "r1",
+      "groupReaction": false
+    },
+    {
+      "start": 12.02,
+      "end": 17.48,
+      "sources": [
+        "acoustic"
+      ],
+      "participants": [],
+      "confidence": 0.58,
+      "id": "r2",
+      "groupReaction": false
+    },
+    {
+      "start": 18.18,
+      "end": 18.96,
+      "sources": [
+        "acoustic"
+      ],
+      "participants": [],
+      "confidence": 0.58,
+      "id": "r3",
+      "groupReaction": false
+    },
+    {
+      "start": 19.62,
+      "end": 20.6,
+      "sources": [
+        "acoustic"
+      ],
+      "participants": [],
+      "confidence": 0.58,
+      "id": "r4",
+      "groupReaction": false
+    },
+    {
+      "start": 21.06,
+      "end": 21.56,
+      "sources": [
+        "acoustic"
+      ],
+      "participants": [],
+      "confidence": 0.58,
+      "id": "r5",
+      "groupReaction": false
+    },
+    {
+      "start": 22.26,
+      "end": 22.76,
+      "sources": [
+        "acoustic"
+      ],
+      "participants": [],
+      "confidence": 0.58,
+      "id": "r6",
+      "groupReaction": false
+    },
+    {
+      "start": 24.42,
+      "end": 25.16,
+      "sources": [
+        "acoustic"
+      ],
+      "participants": [],
+      "confidence": 0.58,
+      "id": "r7",
+      "groupReaction": false
+    }
+  ],
+  "jokeChains": [
+    {
+      "id": "j0",
+      "setupUtteranceId": "u3",
+      "reactionId": "r7",
+      "start": 19.28,
+      "end": 25.16,
+      "confidence": 0.7,
+      "causalHypothesis": "The preceding utterance triggered the detected reaction"
+    }
+  ],
+  "summary": {
+    "utterances": 5,
+    "interruptions": 0,
+    "overlapRegions": 0,
+    "groupReactions": 0,
+    "jokeChains": 1,
+    "speakers": [
+      "SPEAKER_00"
+    ]
+  },
+  "acousticTimeline": [
+    {
+      "time": 0.04,
+      "energyNorm": 0.6506,
+      "pitch": 231.88,
+      "voicing": 0.8714
+    },
+    {
+      "time": 0.24,
+      "energyNorm": 0.8653,
+      "pitch": 213.33,
+      "voicing": 0.5877
+    },
+    {
+      "time": 0.44,
+      "energyNorm": 0,
+      "pitch": 271.19,
+      "voicing": 0.3886
+    },
+    {
+      "time": 0.64,
+      "energyNorm": 0.3819,
+      "pitch": 200.0,
+      "voicing": 0.7056
+    },
+    {
+      "time": 0.84,
+      "energyNorm": 0.5725,
+      "pitch": 0,
+      "voicing": 0.142
+    },
+    {
+      "time": 1.04,
+      "energyNorm": 0,
+      "pitch": 0.0,
+      "voicing": 0.0
+    },
+    {
+      "time": 1.24,
+      "energyNorm": 0.8004,
+      "pitch": 197.53,
+      "voicing": 0.8901
+    },
+    {
+      "time": 1.44,
+      "energyNorm": 1,
+      "pitch": 290.91,
+      "voicing": 0.8186
+    },
+    {
+      "time": 1.64,
+      "energyNorm": 1,
+      "pitch": 228.57,
+      "voicing": 0.3253
+    },
+    {
+      "time": 1.84,
+      "energyNorm": 0.3982,
+      "pitch": 153.85,
+      "voicing": 0.6635
+    },
+    {
+      "time": 2.04,
+      "energyNorm": 0.2107,
+      "pitch": 172.04,
+      "voicing": 0.2315
+    },
+    {
+      "time": 2.24,
+      "energyNorm": 0.887,
+      "pitch": 66.95,
+      "voicing": 0.3503
+    },
+    {
+      "time": 2.44,
+      "energyNorm": 0.7679,
+      "pitch": 190.48,
+      "voicing": 0.3598
+    },
+    {
+      "time": 2.64,
+      "energyNorm": 0.8874,
+      "pitch": 168.42,
+      "voicing": 0.5188
+    },
+    {
+      "time": 2.84,
+      "energyNorm": 0.9769,
+      "pitch": 213.33,
+      "voicing": 0.3446
+    },
+    {
+      "time": 3.04,
+      "energyNorm": 0.3136,
+      "pitch": 161.62,
+      "voicing": 0.5599
+    },
+    {
+      "time": 3.24,
+      "energyNorm": 0.5922,
+      "pitch": 242.42,
+      "voicing": 0.5822
+    },
+    {
+      "time": 3.44,
+      "energyNorm": 0.9608,
+      "pitch": 285.71,
+      "voicing": 0.566
+    },
+    {
+      "time": 3.64,
+      "energyNorm": 1,
+      "pitch": 133.33,
+      "voicing": 0.4791
+    },
+    {
+      "time": 3.84,
+      "energyNorm": 0.7249,
+      "pitch": 253.97,
+      "voicing": 0.384
+    },
+    {
+      "time": 4.04,
+      "energyNorm": 0.6117,
+      "pitch": 0,
+      "voicing": 0.2097
+    },
+    {
+      "time": 4.24,
+      "energyNorm": 0.8653,
+      "pitch": 262.3,
+      "voicing": 0.5898
+    },
+    {
+      "time": 4.44,
+      "energyNorm": 0.7539,
+      "pitch": 170.21,
+      "voicing": 0.2605
+    },
+    {
+      "time": 4.64,
+      "energyNorm": 0.9289,
+      "pitch": 0,
+      "voicing": 0.1951
+    },
+    {
+      "time": 4.84,
+      "energyNorm": 0.0109,
+      "pitch": 307.69,
+      "voicing": 0.4268
+    },
+    {
+      "time": 5.04,
+      "energyNorm": 0.5844,
+      "pitch": 262.3,
+      "voicing": 0.756
+    },
+    {
+      "time": 5.24,
+      "energyNorm": 0.4738,
+      "pitch": 290.91,
+      "voicing": 0.653
+    },
+    {
+      "time": 5.44,
+      "energyNorm": 0.4421,
+      "pitch": 266.67,
+      "voicing": 0.3605
+    },
+    {
+      "time": 5.64,
+      "energyNorm": 0.3437,
+      "pitch": 186.05,
+      "voicing": 0.5134
+    },
+    {
+      "time": 5.84,
+      "energyNorm": 0.3342,
+      "pitch": 363.64,
+      "voicing": 0.3314
+    },
+    {
+      "time": 6.04,
+      "energyNorm": 0.4695,
+      "pitch": 225.35,
+      "voicing": 0.6993
+    },
+    {
+      "time": 6.24,
+      "energyNorm": 0.4195,
+      "pitch": 225.35,
+      "voicing": 0.7824
+    },
+    {
+      "time": 6.44,
+      "energyNorm": 0.3814,
+      "pitch": 0,
+      "voicing": 0.1342
+    },
+    {
+      "time": 6.64,
+      "energyNorm": 0,
+      "pitch": 156.86,
+      "voicing": 0.4902
+    },
+    {
+      "time": 6.84,
+      "energyNorm": 0.0998,
+      "pitch": 101.91,
+      "voicing": 0.5435
+    },
+    {
+      "time": 7.04,
+      "energyNorm": 0,
+      "pitch": 101.27,
+      "voicing": 0.4768
+    },
+    {
+      "time": 7.24,
+      "energyNorm": 0,
+      "pitch": 95.24,
+      "voicing": 0.36
+    },
+    {
+      "time": 7.44,
+      "energyNorm": 0.0886,
+      "pitch": 155.34,
+      "voicing": 0.5288
+    },
+    {
+      "time": 7.64,
+      "energyNorm": 0.0382,
+      "pitch": 125.0,
+      "voicing": 0.5245
+    },
+    {
+      "time": 7.84,
+      "energyNorm": 0.6354,
+      "pitch": 132.23,
+      "voicing": 0.364
+    },
+    {
+      "time": 8.04,
+      "energyNorm": 0.6715,
+      "pitch": 173.91,
+      "voicing": 0.5042
+    },
+    {
+      "time": 8.24,
+      "energyNorm": 0.6514,
+      "pitch": 150.94,
+      "voicing": 0.3122
+    },
+    {
+      "time": 8.44,
+      "energyNorm": 0.6681,
+      "pitch": 186.05,
+      "voicing": 0.7439
+    },
+    {
+      "time": 8.64,
+      "energyNorm": 0.2429,
+      "pitch": 183.91,
+      "voicing": 0.3737
+    },
+    {
+      "time": 8.84,
+      "energyNorm": 0,
+      "pitch": 98.16,
+      "voicing": 0.6533
+    },
+    {
+      "time": 9.04,
+      "energyNorm": 0,
+      "pitch": 0,
+      "voicing": 0.2048
+    },
+    {
+      "time": 9.24,
+      "energyNorm": 0,
+      "pitch": 96.97,
+      "voicing": 0.2227
+    },
+    {
+      "time": 9.44,
+      "energyNorm": 0,
+      "pitch": 173.91,
+      "voicing": 0.7785
+    },
+    {
+      "time": 9.64,
+      "energyNorm": 0.236,
+      "pitch": 320.0,
+      "voicing": 0.5958
+    },
+    {
+      "time": 9.84,
+      "energyNorm": 0.018,
+      "pitch": 266.67,
+      "voicing": 0.4342
+    },
+    {
+      "time": 10.04,
+      "energyNorm": 0.1309,
+      "pitch": 101.91,
+      "voicing": 0.5975
+    },
+    {
+      "time": 10.24,
+      "energyNorm": 0,
+      "pitch": 90.4,
+      "voicing": 0.438
+    },
+    {
+      "time": 10.44,
+      "energyNorm": 0.1038,
+      "pitch": 275.86,
+      "voicing": 0.8838
+    },
+    {
+      "time": 10.64,
+      "energyNorm": 0.1392,
+      "pitch": 400.0,
+      "voicing": 0.5428
+    },
+    {
+      "time": 10.84,
+      "energyNorm": 0.2651,
+      "pitch": 400.0,
+      "voicing": 0.4184
+    },
+    {
+      "time": 11.04,
+      "energyNorm": 0.2643,
+      "pitch": 400.0,
+      "voicing": 0.8331
+    },
+    {
+      "time": 11.24,
+      "energyNorm": 0.0188,
+      "pitch": 250.0,
+      "voicing": 0.7548
+    },
+    {
+      "time": 11.44,
+      "energyNorm": 0,
+      "pitch": 202.53,
+      "voicing": 0.5435
+    },
+    {
+      "time": 11.64,
+      "energyNorm": 0.0004,
+      "pitch": 95.81,
+      "voicing": 0.2241
+    },
+    {
+      "time": 11.84,
+      "energyNorm": 0.455,
+      "pitch": 73.73,
+      "voicing": 0.2657
+    },
+    {
+      "time": 12.04,
+      "energyNorm": 1,
+      "pitch": 285.71,
+      "voicing": 0.6391
+    },
+    {
+      "time": 12.24,
+      "energyNorm": 0.9542,
+      "pitch": 0,
+      "voicing": 0.2002
+    },
+    {
+      "time": 12.44,
+      "energyNorm": 0.8562,
+      "pitch": 307.69,
+      "voicing": 0.5196
+    },
+    {
+      "time": 12.64,
+      "energyNorm": 0.4711,
+      "pitch": 156.86,
+      "voicing": 0.4126
+    },
+    {
+      "time": 12.84,
+      "energyNorm": 0.5537,
+      "pitch": 122.14,
+      "voicing": 0.3818
+    },
+    {
+      "time": 13.04,
+      "energyNorm": 0.5474,
+      "pitch": 150.94,
+      "voicing": 0.3914
+    },
+    {
+      "time": 13.24,
+      "energyNorm": 0.5575,
+      "pitch": 0,
+      "voicing": 0.1908
+    },
+    {
+      "time": 13.44,
+      "energyNorm": 0.1326,
+      "pitch": 146.79,
+      "voicing": 0.284
+    },
+    {
+      "time": 13.64,
+      "energyNorm": 0.6247,
+      "pitch": 231.88,
+      "voicing": 0.4395
+    },
+    {
+      "time": 13.84,
+      "energyNorm": 0.401,
+      "pitch": 0,
+      "voicing": 0.1655
+    },
+    {
+      "time": 14.04,
+      "energyNorm": 0.5717,
+      "pitch": 313.73,
+      "voicing": 0.2688
+    },
+    {
+      "time": 14.24,
+      "energyNorm": 0.7946,
+      "pitch": 101.91,
+      "voicing": 0.3432
+    },
+    {
+      "time": 14.44,
+      "energyNorm": 0.7407,
+      "pitch": 164.95,
+      "voicing": 0.5831
+    },
+    {
+      "time": 14.64,
+      "energyNorm": 0.4818,
+      "pitch": 164.95,
+      "voicing": 0.4088
+    },
+    {
+      "time": 14.84,
+      "energyNorm": 0.4446,
+      "pitch": 149.53,
+      "voicing": 0.398
+    },
+    {
+      "time": 15.04,
+      "energyNorm": 0.322,
+      "pitch": 150.94,
+      "voicing": 0.4766
+    },
+    {
+      "time": 15.24,
+      "energyNorm": 0.5196,
+      "pitch": 219.18,
+      "voicing": 0.4799
+    },
+    {
+      "time": 15.44,
+      "energyNorm": 0.152,
+      "pitch": 0,
+      "voicing": 0.1823
+    },
+    {
+      "time": 15.64,
+      "energyNorm": 0,
+      "pitch": 87.43,
+      "voicing": 0.3925
+    },
+    {
+      "time": 15.84,
+      "energyNorm": 0.4561,
+      "pitch": 290.91,
+      "voicing": 0.3685
+    },
+    {
+      "time": 16.04,
+      "energyNorm": 0.2424,
+      "pitch": 285.71,
+      "voicing": 0.6852
+    },
+    {
+      "time": 16.24,
+      "energyNorm": 0.9347,
+      "pitch": 340.43,
+      "voicing": 0.8527
+    },
+    {
+      "time": 16.44,
+      "energyNorm": 0.1243,
+      "pitch": 90.4,
+      "voicing": 0.4085
+    },
+    {
+      "time": 16.64,
+      "energyNorm": 0.2801,
+      "pitch": 145.45,
+      "voicing": 0.5897
+    },
+    {
+      "time": 16.84,
+      "energyNorm": 0.0491,
+      "pitch": 156.86,
+      "voicing": 0.3094
+    },
+    {
+      "time": 17.04,
+      "energyNorm": 0.3931,
+      "pitch": 285.71,
+      "voicing": 0.387
+    },
+    {
+      "time": 17.24,
+      "energyNorm": 0.4942,
+      "pitch": 202.53,
+      "voicing": 0.5478
+    },
+    {
+      "time": 17.44,
+      "energyNorm": 0,
+      "pitch": 0,
+      "voicing": 0.0816
+    },
+    {
+      "time": 17.64,
+      "energyNorm": 0.4456,
+      "pitch": 266.67,
+      "voicing": 0.7883
+    },
+    {
+      "time": 17.84,
+      "energyNorm": 1,
+      "pitch": 307.69,
+      "voicing": 0.9476
+    },
+    {
+      "time": 18.04,
+      "energyNorm": 0.0143,
+      "pitch": 275.86,
+      "voicing": 0.2515
+    },
+    {
+      "time": 18.24,
+      "energyNorm": 0.1954,
+      "pitch": 87.91,
+      "voicing": 0.6193
+    },
+    {
+      "time": 18.44,
+      "energyNorm": 0.4524,
+      "pitch": 141.59,
+      "voicing": 0.5077
+    },
+    {
+      "time": 18.64,
+      "energyNorm": 0.8231,
+      "pitch": 181.82,
+      "voicing": 0.4423
+    },
+    {
+      "time": 18.84,
+      "energyNorm": 1,
+      "pitch": 202.53,
+      "voicing": 0.6883
+    },
+    {
+      "time": 19.04,
+      "energyNorm": 0.5999,
+      "pitch": 118.52,
+      "voicing": 0.8019
+    },
+    {
+      "time": 19.24,
+      "energyNorm": 0.3194,
+      "pitch": 111.89,
+      "voicing": 0.5235
+    },
+    {
+      "time": 19.44,
+      "energyNorm": 0.0569,
+      "pitch": 155.34,
+      "voicing": 0.6127
+    },
+    {
+      "time": 19.64,
+      "energyNorm": 0.3293,
+      "pitch": 115.94,
+      "voicing": 0.5624
+    },
+    {
+      "time": 19.84,
+      "energyNorm": 0.7997,
+      "pitch": 177.78,
+      "voicing": 0.5268
+    },
+    {
+      "time": 20.04,
+      "energyNorm": 0.2008,
+      "pitch": 111.11,
+      "voicing": 0.3051
+    },
+    {
+      "time": 20.24,
+      "energyNorm": 0.8117,
+      "pitch": 188.24,
+      "voicing": 0.5902
+    },
+    {
+      "time": 20.44,
+      "energyNorm": 0.5017,
+      "pitch": 125.98,
+      "voicing": 0.5108
+    },
+    {
+      "time": 20.64,
+      "energyNorm": 0.3742,
+      "pitch": 145.45,
+      "voicing": 0.664
+    },
+    {
+      "time": 20.84,
+      "energyNorm": 0.2433,
+      "pitch": 131.15,
+      "voicing": 0.5775
+    },
+    {
+      "time": 21.04,
+      "energyNorm": 0.2452,
+      "pitch": 0,
+      "voicing": 0.1835
+    },
+    {
+      "time": 21.24,
+      "energyNorm": 0.7429,
+      "pitch": 75.83,
+      "voicing": 0.3543
+    },
+    {
+      "time": 21.44,
+      "energyNorm": 1,
+      "pitch": 285.71,
+      "voicing": 0.6594
+    },
+    {
+      "time": 21.64,
+      "energyNorm": 0.3176,
+      "pitch": 139.13,
+      "voicing": 0.4391
+    },
+    {
+      "time": 21.84,
+      "energyNorm": 1,
+      "pitch": 340.43,
+      "voicing": 0.8856
+    },
+    {
+      "time": 22.04,
+      "energyNorm": 1,
+      "pitch": 347.83,
+      "voicing": 0.899
+    },
+    {
+      "time": 22.24,
+      "energyNorm": 0.6032,
+      "pitch": 301.89,
+      "voicing": 0.2705
+    },
+    {
+      "time": 22.44,
+      "energyNorm": 0.8645,
+      "pitch": 197.53,
+      "voicing": 0.7541
+    },
+    {
+      "time": 22.64,
+      "energyNorm": 0.2807,
+      "pitch": 210.53,
+      "voicing": 0.595
+    },
+    {
+      "time": 22.84,
+      "energyNorm": 0.0143,
+      "pitch": 97.56,
+      "voicing": 0.7404
+    },
+    {
+      "time": 23.04,
+      "energyNorm": 0.2257,
+      "pitch": 122.14,
+      "voicing": 0.4305
+    },
+    {
+      "time": 23.24,
+      "energyNorm": 0.1211,
+      "pitch": 93.02,
+      "voicing": 0.8215
+    },
+    {
+      "time": 23.44,
+      "energyNorm": 0.0266,
+      "pitch": 87.43,
+      "voicing": 0.7416
+    },
+    {
+      "time": 23.64,
+      "energyNorm": 0.362,
+      "pitch": 133.33,
+      "voicing": 0.2643
+    },
+    {
+      "time": 23.84,
+      "energyNorm": 0.0674,
+      "pitch": 91.43,
+      "voicing": 0.4866
+    },
+    {
+      "time": 24.04,
+      "energyNorm": 0.0099,
+      "pitch": 97.56,
+      "voicing": 0.7119
+    },
+    {
+      "time": 24.24,
+      "energyNorm": 0,
+      "pitch": 96.97,
+      "voicing": 0.7447
+    },
+    {
+      "time": 24.44,
+      "energyNorm": 0,
+      "pitch": 98.16,
+      "voicing": 0.6896
+    },
+    {
+      "time": 24.64,
+      "energyNorm": 0.5764,
+      "pitch": 129.03,
+      "voicing": 0.2323
+    },
+    {
+      "time": 24.84,
+      "energyNorm": 0.713,
+      "pitch": 179.78,
+      "voicing": 0.6417
+    },
+    {
+      "time": 25.04,
+      "energyNorm": 0.2591,
+      "pitch": 108.11,
+      "voicing": 0.6277
+    },
+    {
+      "time": 25.24,
+      "energyNorm": 0.0895,
+      "pitch": 98.16,
+      "voicing": 0.6407
+    }
+  ],
+  "visiblePeopleAttached": true,
+  "speakerPersonMap": {
+    "SPEAKER_00": "person-003"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "1.8",
+  "runKey": "9987f7a4201dc50934e21a83dd5c453da3347189848a1bc2fe9d01cf55a9a9f7",
+  "input": {
+    "path": "C:\\Users\\sayan\\Downloads\\clipperx-v4.8.0-capability-tested-speaker-grounding\\clipperx-ui\\runtime\\projects\\c2ed74f0\\Test_2.mp4",
+    "size": 22983283,
+    "mtimeNs": 1785039356702695300,
+    "contentHash": "58c51b0e237a899b5e93d0342425c89b9213675a28a884434803287c3ae9301f"
+  },
+  "configHash": "f5872893ddb5ce8b869aeb0f0c95f4f73d83b04b6ff44c4c87d290d0c02f7db4",
+  "profile": {
+    "name": "balanced",
+    "analysisFps": 6.0,
+    "maxPeople": 8,
+    "whisperModel": "base",
+    "yoloModel": "yolo11n.pt",
+    "openVocabulary": false,
+    "workerThreads": 4,
+    "estimatedMemoryGb": 4.5,
+    "effectiveAnalysisFps": 6.0,
+    "effectiveMaxPeople": 8,
+    "effectiveWhisperModel": "base",
+    "effectiveYoloModel": "yolo11n.pt"
+  },
+  "checkpoints": {
+    "perception-grounding": {
+      "files": {
+        "scenes.json": {
+          "size": 696,
+          "hash": "8abab6fe61aea080d6b7593802cf10bf5373979c20077b3cc93a5ae3fda80fd3"
+        },
+        "perception.json": {
+          "size": 919060,
+          "hash": "3b2ddd10a7d167f249598fbfca506722588610c18109a886b4575d6fbc82d999"
+        },
+        "grounding-report.json": {
+          "size": 6909,
+          "hash": "1541662f81ea17899cac341515f9f791d08ef2a9b6c593be0db3389033cff2a3"
+        },
+        "identity-map.json": {
+          "size": 6032,
+          "hash": "b2a908944d66d1abae825ed3d8cd684f59e873e78fe9c31d77a49516f9b25eba"
+        }
+      },
+      "completedAt": 1785039541.9974625
+    },
+    "audio-social-action": {
+      "files": {
+        "audio.json": {
+          "size": 16673,
+          "hash": "df0e5d5198ea9ff1d676daccb4b1224bd4159029f182da8d42ac4098e887a3fe"
+        },
+        "audio.wav": {
+          "size": 815182,
+          "hash": "442730e0bb13b39702fde35e0dd1129a416796f976ac0c31bdd17c1fc8564410"
+        },
+        "action-intelligence.json": {
+          "size": 7811,
+          "hash": "e7e92fc53c71b2773a5a8a4deb198fdfebb2931fa53d48bd780b6c45d0401602"
+        },
+        "social-intelligence.json": {
+          "size": 20025,
+          "hash": "aae1c4285bb4c3273640be58dcd7ff37f9acb0eb8ce70944a24be251293f7291"
+        },
+        "active-speakers.json": {
+          "size": 46808,
+          "hash": "d4812387f088ec6086154ec0980b280e25fe86d3a21431dc81cc432b04b931db"
+        }
+      },
+      "completedAt": 1785039572.7794755
+    },
+    "story-intelligence": {
+      "files": {
+        "story-graph.json": {
+          "size": 39209,
+          "hash": "11107b7b2b1da9ab52bddff47ed986133643045065f9cf65e102278f0db0ed33"
+        },
+        "story-evidence.json": {
+          "size": 395375,
+          "hash": "47181b32ce587b5986f34c8f1bfc393a2350cf923457c33b4ea230047bf3b70f"
+        }
+      },
+      "completedAt": 1785041369.1614141
+    }
+  },
+  "updatedAt": 1785041369.1614475
+}
