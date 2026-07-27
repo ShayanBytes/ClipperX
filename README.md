@@ -1,47 +1,102 @@
-# ClipperX v0.4 — native story-aware video studio
+# ClipperX
 
-Native Electron desktop software backed by a local Node + Python story-aware reframing engine. Normal use opens a dedicated rounded app window, not a browser tab.
+**Story-aware video reframing for turning horizontal footage into intelligent vertical video.**
 
-## Start as software
+ClipperX is a native Electron desktop video studio backed by a local Node.js + Python engine. Instead of blindly center-cropping a landscape video, it analyzes people, speakers, objects, actions, scenes, and story relationships to plan dynamic 9:16 compositions.
 
-Run `npm install`, `npm run doctor`, then `npm run desktop`—or double-click `Launch ClipperX Desktop.bat`. Build the installable Windows EXE by double-clicking `CREATE INSTALLABLE EXE.bat` or running `npm run desktop:installer`. The result appears in `release/` and opens only as the rounded native app window.
+> **Current direction:** story-first framing, deterministic safety, optional multimodal AI, and inspectable local processing.
 
-## What v0.2 contains
+![ClipperX Home](docs/images/home.png)
 
-- YOLO11 person, object and sports-ball detection
-- Ultralytics ByteTrack persistent identities
-- MediaPipe face detection associated with person tracks
-- Faster-Whisper transcription, VAD filtering and word timestamps
-- Optional pyannote speaker diarization
-- Audio-speaker-to-face mapping and active-speaker timeline
-- PySceneDetect shot boundaries and scene-reset behavior
-- Optional cloud vision analysis of six-frame per-shot contact sheets
-- Single, pair, group, action and wide composition planning
-- Important-object inclusion and velocity-based look-ahead
-- Time-varying crop keyframes
-- Pan-speed limiting and zoom smoothing
-- JSON manual crop corrections
-- Styled ASS subtitles
-- Full-length dynamic OpenCV crop rendering and FFmpeg audio/subtitle muxing
-- Single-concurrency processing queue, progress files and cancellation
-- Intermediate debug artifacts, evaluation metrics and regression tests
+## Why ClipperX?
 
-## Important performance note
+Traditional auto-reframing often follows the loudest speaker or the largest face. That breaks down when a scene contains conversations, reactions, moving objects, sports, or important interactions happening away from the center.
 
-The advanced engine is real code, but CPU processing is intentionally quality-first and can be slow. YOLO, Whisper and full-length frame rendering may take longer than the source duration on a laptop. Start with a 10–30 second 720p clip.
+ClipperX is designed around a different idea:
+
+**Understand what matters in the scene first, then decide how to frame it.**
+
+It combines local computer-vision and audio analysis with optional vision-model reasoning while keeping geometry and body-safety checks authoritative.
+
+## Features
+
+- **Story-aware reframing** — plans shots around speakers, reactions, actions, objects, and outcomes.
+- **Multiple composition strategies** — Single, Podcast, Group, and Action profiles.
+- **Person & object tracking** — YOLO11 detection with ByteTrack persistent identities.
+- **Face & speaker intelligence** — MediaPipe faces, Faster-Whisper transcription/VAD, and optional pyannote diarization.
+- **Active-speaker mapping** — associates audio speakers with visible people.
+- **Scene-aware editing** — shot boundaries, story beats, dialogue locks, and stable speaker changes.
+- **Dynamic 9:16 rendering** — stabilized crop keyframes plus single/shared/split/grid/action layouts.
+- **Important-object preservation** — keeps relevant actors, objects, destinations, and outcomes connected.
+- **Quality safeguards** — checks coverage, clipping, jitter, blank/frozen frames, subtitle collisions, and A/V drift.
+- **Safe fallbacks** — conservative framing wins when an advanced crop is not sufficiently reliable.
+- **Bring your own AI key** — Gemini, OpenAI, Anthropic, OpenRouter, or a custom OpenAI-compatible endpoint.
+- **Local-first workflow** — the engine still works without a cloud vision key using local perception and fallback logic.
+- **Inspectability** — processing artifacts and diagnostic JSON make decisions easier to debug.
+
+## Composition Templates
+
+ClipperX includes purpose-built starting points rather than a single universal crop strategy.
+
+![ClipperX Templates](docs/images/templates.png)
+
+| Profile | Designed for |
+| --- | --- |
+| **Single** | Tutorials, presentations, talking-head footage |
+| **Podcast** | Active-speaker conversations and pair-shot handoffs |
+| **Group** | Keeping multiple participants readable and safely framed |
+| **Action** | Preserving the relationship between an actor, important object, and destination/outcome |
+
+## Optional AI Providers
+
+Cloud intelligence is optional. Connect a supported image-capable model when you want additional scene/story understanding.
+
+![ClipperX AI Provider](docs/images/ai-provider.png)
+
+Supported provider paths include **Google Gemini, OpenAI, Anthropic, OpenRouter, and custom OpenAI-compatible endpoints**. API keys are used for the active job and are not written into project files.
+
+## How It Works
+
+```text
+Video upload
+   ↓
+Scene detection
+   ↓
+YOLO + ByteTrack + face analysis
+   ↓
+Whisper + VAD + optional speaker diarization
+   ↓
+Audio-to-face active-speaker mapping
+   ↓
+Optional multimodal story/shot semantics
+   ↓
+Story + composition planning
+   ↓
+Trajectory-aware framing / multi-viewport layout
+   ↓
+Quality and safety checks
+   ↓
+ASS subtitles + FFmpeg final mux
+   ↓
+Vertical output
+```
+
+ClipperX favors a quality-first pipeline. Advanced analysis can therefore take longer than the source duration, especially on CPU-only laptops.
 
 ## Requirements
 
-- Windows 10/11, macOS or Linux
+- Windows 10/11, macOS, or Linux
 - Node.js 18+
 - Python 3.10 or 3.11 recommended
-- FFmpeg and FFprobe on PATH
+- FFmpeg and FFprobe available on `PATH`
 - 8 GB RAM recommended
-- Internet on first run to install packages and download YOLO/Whisper weights
+- Internet connection on first run for dependencies and model weights
 
-## Windows installation
+## Quick Start
 
-Fully extract the ZIP first. Open Command Prompt inside `clipperx-ui`.
+### Windows
+
+Fully extract the project, open Command Prompt in the project directory, then run:
 
 ```bat
 npm install
@@ -54,220 +109,132 @@ npm run test:engine
 npm run desktop
 ```
 
-ClipperX opens in its own software window. `npm run dev` is retained only for browser debugging.
+ClipperX opens as a dedicated desktop application. `npm run dev` remains available for browser-based development/debugging.
 
-The first advanced run downloads `yolo11n.pt` and the selected Whisper model. Later runs use the local cache.
+For a first advanced test, use a **10–30 second 720p clip**. The first run may download YOLO and Whisper model weights.
 
-### Optional real speaker diarization
-
-The default installation produces Whisper VAD and a safe single-speaker fallback. For multi-speaker pyannote diarization:
+### Build the Windows installer
 
 ```bat
-pip install -r requirements-diarization.txt
-set HF_TOKEN=your_huggingface_token
+npm run desktop:installer
 ```
 
-The pyannote model may require accepting its model license on Hugging Face.
+The generated installer is placed in `release/`.
 
-## Windows launcher fallback
-
-If Windows security blocks the combined launcher, keep the virtual environment activated and use two Command Prompt windows:
-
-```bat
-npm run dev:api
-```
-
-```bat
-npm run dev:web
-```
-
-## Vision providers
-
-The UI supports Gemini, OpenAI, Anthropic, OpenRouter and custom OpenAI-compatible endpoints. Keys stay in browser memory, are passed to the local backend for the active job and are not written to project files.
-
-Without a vision key, the local planner still uses detection, tracking, audio and conservative fallback logic.
-
-## Processing flow
+If included in your checkout, you can also use:
 
 ```text
-Upload
-→ scene detection
-→ YOLO + ByteTrack + faces
-→ Whisper + VAD + optional diarization
-→ audio-to-face active speaker mapping
-→ optional cloud shot semantics
-→ composition solver
-→ trajectory-aware crop optimizer
-→ ASS subtitles
-→ full-length dynamic render
+CREATE INSTALLABLE EXE.bat
 ```
 
-Each project stores inspectable files in `runtime/projects/<id>/`:
+## Engine Setup & Diagnostics
 
-- `perception.json`
-- `audio.json`
-- `active-speakers.json`
-- `scenes.json`
-- `semantic.json`
-- `shots.json`
-- `crop-keyframes.json`
-- `subtitles.ass`
-- `status.json`
-- `manifest.json`
-- `output.mp4`
+Before advanced processing, ClipperX checks core dependencies such as Python, FFmpeg/FFprobe, OpenCV, YOLO, Whisper, scene detection, MediaPipe, SciPy, and SoundFile.
 
-## Manual correction format
-
-Send corrections to `PUT /api/projects/<id>/corrections`:
-
-```json
-{
-  "corrections": [
-    {
-      "start": 4.0,
-      "end": 7.5,
-      "centerX": 0.62,
-      "centerY": 0.48,
-      "cropHeight": 0.82
-    }
-  ]
-}
-```
-
-Corrections override automatic framing only inside their time ranges.
-
-## Queue and cancellation
-
-- `GET /api/queue` — running and pending jobs
-- `POST /api/projects/<id>/cancel` — cancel a running or queued job
-- `PUT /api/projects/<id>/corrections` — save manual corrections
-
-The UI changes the primary button to **Cancel processing** while a job runs.
-
-## Tests
-
-```bat
-npm run test:engine
-```
-
-Current deterministic tests cover crop interpolation, vertical crop planning and action-mode selection when a tracked ball is present. `engine/evaluate.py` calculates center error, zoom error and required-subject visibility against labeled ground truth.
-
-## Commands
-
-```text
-npm run dev          frontend + backend
-npm run dev:web      frontend only
-npm run dev:api      backend only
-npm run doctor       environment check
-npm run test:engine  Python regression tests
-npm run build        frontend typecheck/build
-```
-
-## Honest validation status
-
-Node/Python syntax, queue wiring and deterministic planner/crop tests have been validated. The earlier Phase-0 FFmpeg upload-to-render path was tested end to end. The heavyweight advanced path requires installed third-party models and cannot be fully executed in the packaging sandbox without downloading those weights. Test it first with short clips and use the generated debug JSON to isolate failures.
-
-See `WORKLOG.md` for the detailed implementation log and validation boundary.
-
-## Automatic diagnostics and repair
-
-Before every advanced run, ClipperX now checks Python, FFmpeg, FFprobe, OpenCV, YOLO, Whisper, scene detection, MediaPipe, SciPy, and SoundFile. If anything is missing, processing does not start blindly. The error notification includes **Details & fix**, a simple explanation, and a **Repair engine** action.
-
-For a complete manual setup, run:
+Run a complete setup/diagnostic pass with:
 
 ```bat
 npm run setup:engine
 npm run doctor
 ```
 
-The Windows installer builder runs both commands automatically before creating the EXE.
+## Optional Speaker Diarization
 
-## Python selection on Windows
+The default setup provides Whisper VAD and a safe single-speaker fallback. For multi-speaker pyannote diarization:
 
-ClipperX now ignores the private Hermes agent virtual environment and locates a real pip-capable system Python through the Windows `py` launcher, common Python installation folders, or PATH. The selected absolute interpreter is saved in `.clipperx-python.json` and reused by diagnostics, tests, the local API, and the installed desktop app.
+```bat
+pip install -r requirements-diarization.txt
+set HF_TOKEN=your_huggingface_token
+```
 
-## Windows status-file contention
+The relevant pyannote model may require accepting its license on Hugging Face.
 
-Version 0.5.2 handles temporary Windows file locks from antivirus, indexing, or concurrent readers. Status writes remain atomic but now serialize Python writers and retry denied file replacements automatically instead of failing the test or processing job.
+## Processing Artifacts
 
-## Narrative editor engine (v0.6.0)
+Each project keeps inspectable runtime artifacts under:
 
-ClipperX no longer treats a long multi-person scene as one continuously moving crop. It divides physical scenes into editorial story beats, locks dialogue shots, and uses hard cuts for stable speaker changes. The vision model receives 12 annotated frames, timed transcript words, active-speaker hints, and track IDs for each nine-second window so it can preserve setup, action, result, and reaction. Action coverage uses actor/object relationships, median trajectory filtering, a movement dead zone, limited pan speed, and slow zoom. This quality-first mode intentionally performs more analysis and may take longer.
+```text
+runtime/projects/<id>/
+```
 
-## Stage 1: Story Intelligence Brain
+Examples include:
 
-Version 0.7.0 adds a separate story-understanding layer before composition. Gemini receives the full video and timestamped local evidence, then a second API pass verifies the causal graph. The canonical `story-graph.json` distinguishes speakers from reactions, preserves simultaneous group laughter, connects object or sports actions to their outcomes, and records which subjects/regions later stages must cover. Provider retries are bounded to three attempts; failures fall back to an auditable local evidence graph instead of hanging.
+```text
+perception.json
+audio.json
+active-speakers.json
+scenes.json
+semantic.json
+story-graph.json
+composition-plan.json
+crop-keyframes.json
+subtitles.ass
+status.json
+manifest.json
+output.mp4
+```
 
-See `STAGE-1-STORY-INTELLIGENCE.md` for the research conclusions, schema, artifacts, and strict Stage 1/2/3 boundary.
+These artifacts are useful for debugging why a particular subject, composition, or fallback was selected.
 
-## Stage 2: Composition Director
+## Useful Commands
 
-Version 0.8.0 turns `story-graph.json` into `composition-plan.json`. It generates feasible single/shared/split/grid/action candidates, lets the API select only from those candidates, and then applies deterministic timeline optimization. Every must-show track must be assigned to a cell, grids are forbidden during continuous sports/object motion, and repeated layout changes are penalized. The output video remains a legacy single-crop preview until the Stage 3 multi-viewport renderer executes the plan.
+| Command | Purpose |
+| --- | --- |
+| `npm run desktop` | Launch the native desktop application |
+| `npm run dev` | Run frontend + backend for development |
+| `npm run dev:web` | Run frontend only |
+| `npm run dev:api` | Run backend only |
+| `npm run doctor` | Check the local environment |
+| `npm run setup:engine` | Install/setup engine dependencies |
+| `npm run test:engine` | Run Python regression tests |
+| `npm run build` | Typecheck/build the frontend |
+| `npm run desktop:installer` | Build the desktop installer |
+| `npm run release:check` | Run release validation |
 
-See `STAGE-2-COMPOSITION-DIRECTOR.md` for layout rules and the Stage 3 contract.
+## Architecture
 
-## Stage 3: Multi-Viewport Renderer and Quality Loop
+ClipperX has evolved into a staged story-aware directing system:
 
-Version 0.9.0 executes `composition-plan.json` instead of producing a legacy single-crop preview. Every cell receives an independent stabilized source camera; split, grid, story-band, shared, single and action layouts are composed into the final 9:16 video. Sampled render telemetry measures required-subject coverage, blank cells, camera velocity variation and acceleration. A failed quality gate triggers at most one corrective render, and the higher-scoring pass is muxed with audio and subtitle-safe captions.
+1. **Perceptual grounding** — people, faces, objects, motion, identity, and interactions.
+2. **Social/audio intelligence** — speech, turns, overlaps, reactions, laughter, and visible-speaker attachment.
+3. **Story intelligence** — causal roles and must-show evidence.
+4. **Composition direction** — feasible single/shared/split/grid/action candidates.
+5. **Sequence intelligence** — chooses a coherent camera sequence instead of greedy per-segment edits.
+6. **Predictive reliability** — tests planned edits against likely future exits, dropout, jitter, and framing failures.
+7. **Rendering** — stabilized cameras and multi-viewport 9:16 composition.
+8. **Quality supervision** — evaluates the encoded result and permits bounded correction.
+9. **Executive direction** — optional model reasoning compares routes while deterministic geometry and safety remain authoritative.
 
-See `STAGE-3-MULTIVIEW-RENDERER.md` for the rendering model, thresholds, correction behavior and artifacts.
+## Privacy & Reliability
 
-## Stage 4: Perceptual Grounding
+ClipperX is designed so that advanced cloud analysis is **optional**. Without a vision API key, local detection, tracking, audio analysis, composition logic, and conservative fallback behavior remain available.
 
-Version 1.0.0 adds camera-motion compensation, persistent identity stitching, optional open-vocabulary small-object detection, head-direction evidence and structured person/object interaction edges. Story planning and rendering now use camera-compensated world motion rather than raw screen movement. See `STAGE-4-PERCEPTUAL-GROUNDING.md` and `CLIPPERX-9-STAGE-ROADMAP.md`.
+When a provider is connected, keys are not written to project files. Production hardening also includes bounded execution, resumable checkpoints, crash recovery, workload guards, privacy modes, diagnostics, and release validation.
 
-## Stage 5: Social and Audio Intelligence
+## Current Status
 
-Version 1.1.0 adds local prosody analysis, bounded conversational turns, overlap and interruption structure, multimodal laughter/group-reaction detection, setup-to-payoff joke chains, and attachment of voice turns to persistent visible people. The resulting `social-intelligence.json` is included in Stage 1 evidence. See `STAGE-5-SOCIAL-AUDIO-INTELLIGENCE.md`.
+ClipperX is an actively developed, quality-first project. Core syntax, queue wiring, deterministic planner/crop tests, and the earlier FFmpeg upload-to-render path have been validated. Heavyweight model paths depend on locally installed third-party models and should be tested on short real-world clips before larger workloads.
 
-## Stage 6: Action and Outcome Specialists
+The project intentionally treats its benchmark and safety gates as part of the product rather than claiming that every real-world video can already be reframed perfectly.
 
-Version 1.2.0 reconstructs grounded object trajectories, links actors and targets, specializes sports/projectile/dice/tabletop actions, verifies outcomes from transcript and geometry, and joins Stage 5 reactions into one continuous coverage contract. See `STAGE-6-ACTION-OUTCOME-SPECIALISTS.md`.
+## Screenshots
 
-## Stage 7: Editorial Style and Retention Director
+### Home / New Project
 
-Version 1.3.0 maps energy and hook strength, labels editorial beats, applies profile-specific camera/pacing/subtitle language, suppresses unnecessary cuts and preserves every causal timestamp and required subject. Stage 3 now executes the resulting style. See `STAGE-7-EDITORIAL-STYLE-RETENTION.md`.
+![New Project](docs/images/home.png)
 
-## Stage 8: Multimodal Quality Supervisor and Benchmark Lab
+### Framing Templates
 
-Version 1.4.0 inspects the encoded output for phase-specific story coverage, face clipping, subtitle collision, jitter, blank/black/frozen/blurred frames and A/V drift. It permits one targeted quality-improving rerender, creates a contact sheet, supports optional Gemini visual critique, and writes deterministic benchmark gates. See `STAGE-8-QUALITY-SUPERVISOR-BENCHMARK.md`.
+![Framing Templates](docs/images/templates.png)
 
-## Stage 9: Production Hardening — ClipperX 2.0.0
+### Bring Your Own AI Provider
 
-The complete engine now includes hardware-aware workload selection, disk and thread guards, content-verified resumable checkpoints, crash recovery, privacy modes, bounded queue execution, performance reports and automated release validation. Run `npm run release:check` before `npm run desktop:installer`. See `STAGE-9-PRODUCTION-HARDENING.md`.
+![AI Provider](docs/images/ai-provider.png)
 
-## ClipperX 2.1: Universal Framing Recovery
+## License
 
-Version 2.1 removes all cell strokes/insets, prevents aspect-ratio squeezing, prefers one body-safe frame, rejects empty or fragmentary split cells, tracks generic moving objects through outcomes, stabilizes opening acquisition, measures body clipping, and makes API layout advice strictly subordinate to deterministic geometry. See `FRAMING-RECOVERY-PLAN-v2.1.md` and `UNIVERSAL-FRAMING-RECOVERY-v2.1.md`.
+Add your chosen license here, or include a `LICENSE` file in the repository.
 
-## ClipperX 2.2: 50-take reliability reset
+---
 
-The development process now compares every advanced output against source, center-crop and GENERAL blurred-background baselines. Fifty reviewed cases, human preference, P0/P1 severity and strict framing/action gates are required before a release can honestly pass. Run `npm run benchmark:init`, add real case media, create baselines, complete scorecards, then run `npm run benchmark:evaluate`. See `OPENSHORTS-PATH-ASSESSMENT.md` and `RELIABILITY-BENCHMARK-50.md`.
-
-## ClipperX 3.0: closed-loop dynamic director
-
-Version 3 reconstructs a time-varying world state, ranks causal roles, calibrates confidence, vetoes uncertain crops/splits, preserves full source under uncertainty, and performs a post-render safety competition. See `CLOSED-LOOP-DYNAMIC-DIRECTOR-v3.md`. The frozen 50-take benchmark remains the independent proof gate.
-
-## ClipperX 3.1: reliability architecture correction
-
-The director now repairs incomplete upstream story plans with independent evidence, predicts through bounded short occlusions, changes required roles by action phase, stabilizes policy with hysteresis, ranks render candidates by failure magnitude and targets fallback to the exact failed action segments. See `WHAT-PREVENTED-RELIABILITY-v3.1.md`.
-
-## ClipperX 3.2: selective fallback and conversation camera
-
-Semantic uncertainty no longer automatically causes a complete-source fallback. Trackable solo performers and actions keep stable crops; spatial dialogue groups use turn-duration gating, story-weighted dominance and persistent borderless group coverage. See `SELECTIVE-FALLBACK-CONVERSATION-CAMERA-v3.2.md`.
-
-## ClipperX 3.3: predictive reliability guard
-
-Every planned edit now undergoes future-trajectory and counterfactual testing before render. The guard predicts edge exits, detection dropout, box jitter, confidence loss, hurried dialogue changes, redundant splits and fallback overuse, then repairs affected segments. See `PREDICTIVE-RELIABILITY-PLAN-v3.3.md` and `PREDICTIVE-RELIABILITY-GUARD-v3.3.md`.
-
-## ClipperX 3.4: adaptive utility director
-
-Fallback is no longer selected by a universal confidence cutoff. Each video calibrates its own confidence, motion, subject-size, conversation and coverage distributions. Advanced crops, stable views, group layouts and complete-source framing compete by context-weighted expected utility. See `ADAPTIVE-UTILITY-DIRECTOR-v3.4.md`.
-
-## ClipperX 3.5: sequence-level intelligence
-
-ClipperX now optimizes the complete camera sequence instead of choosing each segment greedily. A dynamic-programming editing graph combines risk-adjusted candidate utility with story-aware continuity, preventing isolated fallback flicker and unmotivated camera changes. See `SEQUENCE-LEVEL-INTELLIGENCE-v3.5.md`.
-
-## ClipperX 4.0: executive director
-
-ClipperX 4.0 turns direction, sequence optimization, predictive verification, and model criticism into callable capabilities selected by a bounded executive brain. A connected model can compare route consequences, while local geometry and body-safety checks remain authoritative. Every run now includes a downloadable diagnostic package with model-use and routing transparency. See `CLIPPERX-4-EXECUTIVE-DIRECTOR.md`.
+**ClipperX — make every frame matter.**
